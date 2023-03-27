@@ -1,5 +1,14 @@
 <script>
 	import '../app.css';
+	import '../prism-night-owl.css';
+	import Nav from '../lib/components/Nav.svelte';
 </script>
 
-<slot />
+<header
+	class="fixed z-10 top-0 inset-x-0 border-b border-gray-800
+  bg-gray-900"
+>
+	<Nav />
+</header>
+<main class="mt-24 max-w-5xl mx-auto"><slot /></main>
+<footer />

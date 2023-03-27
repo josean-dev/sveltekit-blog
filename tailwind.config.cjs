@@ -2,7 +2,14 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				sans: ['Poppins', 'sans-serif']
+			},
+			colors: {
+				'gray-900': '#0F161E'
+			}
+		}
 	},
-	plugins: []
+	plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/typography')]
 };
