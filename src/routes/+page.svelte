@@ -9,7 +9,11 @@
 <section class="sm:flex pt-2 pb-6">
 	<div class="w-40 sm:w-60 mr-8 mb-4">
 		<div class="w-full aspect-w-1 aspect-h-1 rounded-full overflow-hidden">
-			<img src="/youtube-profile-picture.jpg" alt="Profile" class="w-full h-full object-cover" />
+			<img
+				src="https://res.cloudinary.com/martinez-cloud/image/upload/v1690661944/youtube-profile-picture_dtxnt8.jpg"
+				alt="Profile"
+				class="w-full h-full object-cover"
+			/>
 		</div>
 	</div>
 	<div class="flex-1 space-y-4">
