@@ -3,6 +3,7 @@ title: 'How To Setup Your Mac Terminal'
 img: '/images/terminal-setup.jpg'
 youtubeId: 'CF1tMjvHDRA'
 publishedAt: 'Oct 3, 2022'
+summary: 'This is my supplementary blog post for setting up a terminal window on mac with Oh-My-Zsh and Powerlevel10k. You can use this along with the youtube video to follow along!'
 ---
 
 ## Install Homebrew

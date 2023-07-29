@@ -2,7 +2,8 @@
 title: 'How To Setup And Use The Yabai Tiling Window Manager On Mac'
 img: '/images/yabai-setup.jpg'
 youtubeId: 'k94qImbFKWE'
-publishedAt: 'Feb 11, 2022'
+publishedAt: 'Feb 11, 2023'
+summary: 'Use this guide along with my youtube video to setup and use the yabai tiling window manager on your Mac. Yabai has been great for leveling up my window management workflow.'
 ---
 
 ## Configure MacOs Specific Settings

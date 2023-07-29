@@ -10,5 +10,5 @@
 >
 	<Nav />
 </header>
-<main class="mt-24 max-w-5xl mx-auto"><slot /></main>
+<main class="mt-24 max-w-5xl mx-auto px-4 pt-4 pb-8"><slot /></main>
 <footer />
