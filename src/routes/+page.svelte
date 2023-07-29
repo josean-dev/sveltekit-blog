@@ -4,8 +4,6 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	$: console.log(data);
 </script>
 
 <section class="sm:flex pt-2 pb-6">
