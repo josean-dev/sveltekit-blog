@@ -1,7 +1,6 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
-import shiki from 'shiki';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

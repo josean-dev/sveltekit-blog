@@ -1,9 +1,35 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import CopyCodeButton from '$lib/components/CopyCodeButton.svelte';
 
 	export let data: PageData;
 
 	const { metadata, Post } = data;
+
+	onMount(() => {
+		// will add a children to any <pre> element with class language-*
+		let pres: HTMLCollection = document.getElementsByTagName('pre');
+		for (let _ of pres) {
+			const pre = _ as HTMLPreElement;
+			if (![...pre.classList].some((el) => el.startsWith('language-'))) {
+				continue;
+			}
+			const preParent = pre.parentNode;
+
+			const wrapper = document.createElement('div');
+			wrapper.className = 'relative';
+
+			new CopyCodeButton({
+				target: wrapper
+			});
+
+			if (preParent) {
+				preParent.replaceChild(wrapper, pre);
+				wrapper.appendChild(pre);
+			}
+		}
+	});
 </script>
 
 <header>
@@ -29,6 +55,6 @@
 		</div>
 	</div>
 </header>
-<article class="prose prose-lg prose-invert max-w-none py-6">
+<article class="prose prose-invert max-w-none py-6">
 	<Post />
 </article>
