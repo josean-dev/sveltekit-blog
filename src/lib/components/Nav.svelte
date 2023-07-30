@@ -5,7 +5,7 @@
 </script>
 
 <nav
-	class="flex items-center justify-between max-w-5xl mx-auto
+	class="flex items-center justify-between max-w-6xl mx-auto
           h-24 px-4"
 >
 	<a href="/">
