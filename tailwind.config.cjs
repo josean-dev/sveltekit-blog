@@ -21,7 +21,7 @@ module.exports = {
 								content: 'none'
 							},
 							code: {
-								color: theme('colors.gray.300'),
+								color: theme('colors.gray.50'),
 								backgroundColor: theme('colors.gray.700'),
 								borderRadius: theme('borderRadius.DEFAULT'),
 								paddingLeft: theme('spacing[1.5]'),
