@@ -62,7 +62,6 @@ pre[class*='language-'] {
 pre[class*='language-'] {
 	color: white;
 	background: #192533;
-	/* @apply bg-slate-800; */
 }
 
 :not(pre) > code[class*='language-'] {
