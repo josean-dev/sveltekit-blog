@@ -1,9 +1,9 @@
 ---
-title: 'How To Use and Configure Tmux Alongside Neovim'
-img: 'https://res.cloudinary.com/martinez-cloud/image/upload/v1690661935/josean-youtube-blog/tmux-setup_tgrkce.jpg'
-youtubeId: 'U-omALWIBos'
-publishedAt: 'Oct 27, 2022'
-summary: 'Follow along my youtube video with this blog post to get up and running with Tmux quickly and use it alongside Neovim for an awesome software development workflow.'
+title: "How To Use and Configure Tmux Alongside Neovim"
+imgUrl: "/post-images/tmux-setup.jpg"
+youtubeId: "U-omALWIBos"
+publishedAt: "2022-10-27"
+summary: "Follow along my youtube video with this blog post to get up and running with Tmux quickly and use it alongside Neovim for an awesome software development workflow."
 ---
 
 ## Install TMUX with Homebrew

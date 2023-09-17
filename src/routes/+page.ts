@@ -1,11 +1,15 @@
-import type { FetchMarkdownPostsResult, MarkdownFile } from '$lib/utils';
-import type { PageLoad } from './$types';
+import type { MarkdownPostMetadataAndSlug } from "../types";
+import type { PageLoad } from "./$types";
 
-export const load = (async ({ fetch }) => {
-	const response = await fetch(`/api/posts`);
-	const posts: FetchMarkdownPostsResult = await response.json();
+export const load: PageLoad = async ({ fetch }) => {
+  // get posts from api with sveltekit special fetch
+  const response = await fetch("/api/posts");
 
-	return {
-		posts
-	};
-}) satisfies PageLoad;
+  // get posts from response
+  const posts: MarkdownPostMetadataAndSlug[] =
+    await response.json();
+
+  return {
+    posts
+  };
+};

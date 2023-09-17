@@ -1,14 +1,24 @@
-<script>
-	import '../app.css';
-	import '../prism-night-owl.css';
-	import Nav from '../lib/components/Nav.svelte';
+<script lang="ts">
+  import MainHeader from "$lib/components/MainHeader.svelte";
+  import ThemeInitializer from "$lib/components/ThemeInitializer.svelte";
+  import { fly } from "svelte/transition";
+  import "../app.css";
+  import type { LayoutData } from "./$types";
+
+  export let data: LayoutData;
+
+  $: pagePath = data.pathname;
 </script>
 
-<header
-	class="fixed z-10 top-0 inset-x-0 border-b border-gray-800
-  bg-gray-900"
->
-	<Nav />
-</header>
-<main class="mt-24 max-w-6xl mx-auto px-4 pt-4 pb-8"><slot /></main>
-<footer />
+<ThemeInitializer>
+  <MainHeader />
+  {#key pagePath}
+    <main
+      in:fly={{ y: -15, duration: 200, delay: 300 }}
+      out:fly={{ y: 15, duration: 200 }}
+      class="pt-24 max-w-5xl mx-auto"
+    >
+      <slot />
+    </main>
+  {/key}
+</ThemeInitializer>

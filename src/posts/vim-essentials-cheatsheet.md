@@ -1,9 +1,9 @@
 ---
-title: 'Vim Essentials Cheatsheet & Guide'
-img: 'https://res.cloudinary.com/martinez-cloud/image/upload/v1691247140/josean-youtube-blog/vim-beginners-tutorial_u32v9a.jpg'
-youtubeId: '80mWp6H4zEw'
-publishedAt: 'August 5, 2023'
-summary: 'This is my Vim cheatsheet with all of the most essential commands! You can check out my youtube video for a complete guide on how almost all of these work and how I go about remembering them.'
+title: "Vim Essentials Cheatsheet & Guide"
+imgUrl: "/post-images/vim-essentials-cheatsheet.jpg"
+youtubeId: "80mWp6H4zEw"
+publishedAt: "2023-08-05"
+summary: "This is my Vim cheatsheet with all of the most essential commands! You can check out my youtube video for a complete guide on how almost all of these work and how I go about remembering them."
 ---
 
 This is my Vim cheatsheet with all of the most essential commands! You can check out my

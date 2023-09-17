@@ -1,10 +1,13 @@
-import type { MarkdownFile } from '$lib/utils';
+import type { MarkdownPost } from '../../../types';
 import type { PageLoad } from './$types';
 
-export const load = (async ({ params }) => {
-	const markdownFile: MarkdownFile = await import(`../../../posts/${params.slug}.md`);
+export const load: PageLoad = async ({ params }) => {
+	const slug = params.slug;
+
+	const markdownPost: MarkdownPost = await import(`../../../posts/${slug}.md`);
+
 	return {
-		metadata: markdownFile.metadata,
-		Post: markdownFile.default
+		metadata: markdownPost.metadata,
+		post: markdownPost.default
 	};
-}) satisfies PageLoad;
+};
