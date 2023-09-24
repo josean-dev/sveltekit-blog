@@ -6,8 +6,7 @@ export const load: PageLoad = async ({ fetch }) => {
   const response = await fetch("/api/posts");
 
   // get posts from response
-  const posts: MarkdownPostMetadataAndSlug[] =
-    await response.json();
+  const posts: MarkdownPostMetadataAndSlug[] = await response.json();
 
   return {
     posts

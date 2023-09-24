@@ -20,16 +20,10 @@
     <div class="flex space-x-1 items-center">
       <DarkmodeButton />
 
-      <IconLink
-        href="https://www.youtube.com/@joseanmartinez/featured"
-        target="_blank"
-      >
+      <IconLink href="https://www.youtube.com/@joseanmartinez/featured" target="_blank">
         <YoutubeIcon class="w-8 h-8 fill-current" />
       </IconLink>
-      <IconLink
-        href="https://github.com/josean-dev"
-        target="_blank"
-      >
+      <IconLink href="https://github.com/josean-dev" target="_blank">
         <GithubIcon class="w-8 h-8 fill-current" />
       </IconLink>
     </div>
