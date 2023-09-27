@@ -4,24 +4,14 @@
   import { fly } from "svelte/transition";
   import "../app.css";
   import type { LayoutData } from "./$types";
+  import GoogleAnalytics from "$lib/components/GoogleAnalytics.svelte";
 
   export let data: LayoutData;
 
   $: pagePath = data.pathname;
 </script>
 
-<svelte:head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3CWT307QF"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-
-    gtag("config", "G-T3CWT307QF");
-  </script>
-</svelte:head>
+<GoogleAnalytics />
 
 <ThemeInitializer>
   <MainHeader />
