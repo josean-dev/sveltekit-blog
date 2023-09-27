@@ -28,6 +28,7 @@ module.exports = {
     }
   ],
   rules: {
-    "no-undef": "off"
+    "no-undef": "off",
+    "prefer-const": "warn"
   }
 };
