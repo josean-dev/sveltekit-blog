@@ -6,6 +6,20 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <title>Josean Martinez</title>
+  <meta
+    name="description"
+    content="Full-stack dev passionate about web dev, neovim, dev workflows, mechanical keyboards and sharing what I know."
+  />
+  <meta property="og:title" content="Josean Martinez" />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:description"
+    content="Full-stack dev passionate about web dev, neovim, dev workflows, mechanical keyboards and sharing what I know."
+  />
+</svelte:head>
+
 <HomeHeader />
 
 <section class="pb-6">
