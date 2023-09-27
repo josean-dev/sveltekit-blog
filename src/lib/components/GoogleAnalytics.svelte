@@ -3,7 +3,7 @@
 
   $: {
     if (typeof gtag !== "undefined") {
-      gtag("config", "MEASUREMENT_ID", {
+      gtag("config", "G-T3CWT307QF", {
         page_title: document.title,
         page_path: $page.url.pathname
       });
