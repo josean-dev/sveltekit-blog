@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from "$app/stores";
   import HomeHeader from "$lib/components/HomeHeader.svelte";
   import PostListing from "$lib/components/PostListing.svelte";
   import type { PageData } from "./$types";
@@ -14,6 +15,11 @@
   />
   <meta property="og:title" content="Josean Martinez" />
   <meta property="og:type" content="website" />
+  <meta
+    property="og:image"
+    content="https://res.cloudinary.com/martinez-cloud/image/upload/v1691247140/josean-youtube-blog/vim-beginners-tutorial_u32v9a.jpg"
+  />
+  <meta property="og:url" content={$page.url.href} />
   <meta
     property="og:description"
     content="Full-stack dev passionate about web dev, neovim, dev workflows, mechanical keyboards and sharing what I know."
