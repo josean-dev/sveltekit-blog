@@ -37,6 +37,10 @@
   },
   "type": "module",
   "dependencies": {
-    "prettier": "^3.0.3"
+    "escape-html": "^1.0.3",
+    "prettier": "^3.0.3",
+    "prismjs": "^1.29.0",
+    "shiki": "^0.14.4",
+    "shiki-themes": "^0.2.7"
   }
 }

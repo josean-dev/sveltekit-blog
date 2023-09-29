@@ -5,9 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark-background": "#0F161E"
+        "dark-background": "#011423"
       }
     }
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio")]
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio")
+  ]
 };

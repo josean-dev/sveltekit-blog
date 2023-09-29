@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+code .line {
+  display: inline-block;
+}
+
+code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: #627e97;
+}
+
+.line-highlight {
+  background-color: #143652;
+}
