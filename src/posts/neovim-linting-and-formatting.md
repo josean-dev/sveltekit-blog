@@ -698,4 +698,4 @@ This adds mason-tool-installer as a dependency and uses a `ensure_installed` lis
 so that Neovim automatically installs the listed linters and formatters whenever
 it starts up.
 
-## You're done!
+## You're done! 🎉
