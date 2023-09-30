@@ -1,12 +1,14 @@
-import type { MarkdownPost, MarkdownPostMetadataAndSlug } from "../../../types";
+import type {
+  MarkdownPost,
+  MarkdownPostMetadataAndSlug
+} from "../../../types";
 import { json, type RequestHandler } from "@sveltejs/kit";
 
 export const GET: RequestHandler = async () => {
   // use vite glob import to get all markdown posts
-  const markdownPostModules = import.meta.glob("/src/posts/*") as Record<
-    string,
-    () => Promise<MarkdownPost>
-  >;
+  const markdownPostModules = import.meta.glob(
+    "/src/posts/*"
+  ) as Record<string, () => Promise<MarkdownPost>>;
 
   const postPromises: Promise<MarkdownPostMetadataAndSlug>[] = [];
 
@@ -18,7 +20,9 @@ export const GET: RequestHandler = async () => {
       const markdownPostModule = await loadMarkdownPostModule();
 
       // slug is everything after last / without the file extension
-      const slug = path.slice(path.lastIndexOf("/") + 1).replace(".md", "");
+      const slug = path
+        .slice(path.lastIndexOf("/") + 1)
+        .replace(".md", "");
 
       return {
         slug,

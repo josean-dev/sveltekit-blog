@@ -29,7 +29,7 @@
   <PostHeader {metadata} />
 
   <div
-    class="prose md:prose-lg dark:prose-invert py-4 px-4 max-w-none"
+    class="prose max-w-none px-4 py-4 dark:prose-invert md:prose-lg"
   >
     <CopyCodeInjector>
       <Post />

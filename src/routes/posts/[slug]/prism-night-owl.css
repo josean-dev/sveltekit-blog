@@ -9,7 +9,8 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: #d6deeb;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -181,17 +182,32 @@ pre {
 }
 
 .code-line.inserted {
-  background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
+  background-color: rgba(
+    16,
+    185,
+    129,
+    0.2
+  ); /* Set inserted line (+) color */
 }
 
 .code-line.deleted {
-  background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
+  background-color: rgba(
+    239,
+    68,
+    68,
+    0.2
+  ); /* Set deleted line (-) color */
 }
 
 .highlight-line {
   margin-left: -16px;
   margin-right: -16px;
-  background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
+  background-color: rgba(
+    55,
+    65,
+    81,
+    0.5
+  ); /* Set highlight bg color */
   border-left: 4px solid rgb(59, 130, 246); /* Set highlight accent border color */
 }
 

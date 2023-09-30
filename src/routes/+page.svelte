@@ -30,8 +30,8 @@
 
 <section class="pb-6">
   <header
-    class="inline-block border-b dark:border-gray-700
-    py-2 mx-4 mb-4"
+    class="mx-4 mb-4 inline-block
+    border-b py-2 dark:border-gray-700"
   >
     <h2 class="text-3xl font-semibold">Blog Posts</h2>
   </header>

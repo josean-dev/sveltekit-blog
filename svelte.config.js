@@ -9,7 +9,7 @@ async function codeHighlighter(code, langStr) {
   const lineOptions = [];
 
   if (langStr) {
-    const langArr = langStr?.split(":");
+    const langArr = langStr?.split("{");
 
     lang = langArr[0];
 
@@ -17,7 +17,7 @@ async function codeHighlighter(code, langStr) {
 
     if (lineNumbersStr) {
       lineNumbersStr = lineNumbersStr.substring(
-        1,
+        0,
         lineNumbersStr.length - 1
       );
 

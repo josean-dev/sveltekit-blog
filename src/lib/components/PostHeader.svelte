@@ -6,8 +6,8 @@
 </script>
 
 <header class="p-4">
-  <div class="w-full sm:w-3/5 mb-6">
-    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+  <div class="mb-6 w-full sm:w-3/5">
+    <div class="aspect-h-9 aspect-w-16 overflow-hidden rounded-lg">
       {#if metadata.youtubeId}
         <iframe
           title={metadata.title}
@@ -15,17 +15,21 @@
           allow="fullscreen"
         />
       {:else}
-        <img src={metadata.imgUrl} alt={metadata.title} class="object-cover" />
+        <img
+          src={metadata.imgUrl}
+          alt={metadata.title}
+          class="object-cover"
+        />
       {/if}
     </div>
   </div>
 
   <div>
-    <h1 class="text-4xl font-bold mb-4">
+    <h1 class="mb-4 text-4xl font-bold">
       {metadata.title}
     </h1>
 
-    <div class="py-2 border-t dark:border-gray-700 inline-block">
+    <div class="inline-block border-t py-2 dark:border-gray-700">
       <span>Published: </span>
       <time class="font-light" datetime={metadata.publishedAt}>
         {formatPublishedAt(metadata.publishedAt)}

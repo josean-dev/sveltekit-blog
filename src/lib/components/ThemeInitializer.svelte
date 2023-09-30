@@ -13,7 +13,8 @@
 
     if (
       localStorage.theme === "dark" ||
-      (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      (!localStorage.theme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       window.prefersDarkmode = true;
       document.documentElement.classList.add("dark");
