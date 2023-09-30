@@ -1,6 +1,6 @@
 ---
 title: "How To Setup Linting & Formatting In Neovim To Replace null-ls"
-imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1696090125/josean-youtube-blog/neovim-lintin-and-formatting_wxciyc.jpg"
+imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1696101593/josean-youtube-blog/linting-and-formatting-v5_qfzbzm.jpg"
 youtubeId: "ybUE4D80XSk"
 publishedAt: "2023-09-30"
 summary: "How to setup linting & formatting in Neovim with conform.nvim and nvim-lint to replace the archived null-ls plugin"
