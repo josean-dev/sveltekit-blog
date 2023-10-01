@@ -1,5 +1,5 @@
 ---
-title: "How To Setup Linting & Formatting In Neovim To Replace null-ls"
+title: "How To Setup Linting & Formatting In Neovim And Replace null-ls"
 imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1696137241/josean-youtube-blog/linting-and-formatting-v7_g1ex5u.jpg"
 youtubeId: "ybUE4D80XSk"
 publishedAt: "2023-09-30"
