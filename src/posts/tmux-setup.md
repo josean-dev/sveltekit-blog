@@ -6,6 +6,8 @@ publishedAt: "2022-10-27"
 summary: "Follow along my youtube video with this blog post to get up and running with Tmux quickly and use it alongside Neovim for an awesome software development workflow."
 ---
 
+You can find my current tmux config and the rest of my dotfiles here: [dotfiles](https://github.com/josean-dev/dev-environment-files)
+
 ## Install TMUX with Homebrew
 
 ```bash

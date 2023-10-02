@@ -6,6 +6,8 @@ publishedAt: "2023-02-11"
 summary: "Use this guide along with my youtube video to setup and use the yabai tiling window manager on your Mac. Yabai has been great for leveling up my window management workflow."
 ---
 
+You can find my current yabai config and the rest of my dotfiles here: [dotfiles](https://github.com/josean-dev/dev-environment-files)
+
 ## Configure MacOs Specific Settings
 
 1. Open Several Desktops (~7) on Your Machine

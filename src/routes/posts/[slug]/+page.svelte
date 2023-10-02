@@ -11,6 +11,10 @@
 
   const { metadata, post: Post } = data;
 
+  function hello() {
+    console.log("hi!");
+  }
+
   onMount(() => {});
 </script>
 

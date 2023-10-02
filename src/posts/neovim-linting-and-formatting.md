@@ -6,6 +6,8 @@ publishedAt: "2023-09-30"
 summary: "How to setup linting & formatting in Neovim with conform.nvim and nvim-lint to replace the archived null-ls plugin"
 ---
 
+You can find my current Neovim config and the rest of my dotfiles here: [dotfiles](https://github.com/josean-dev/dev-environment-files)
+
 ## Basic Folder Structure
 
 I'm using the [lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager in my Neovim config
