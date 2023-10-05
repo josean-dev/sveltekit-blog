@@ -791,7 +791,7 @@ Take a look at the `ecma` text objects [query file](https://github.com/nvim-tree
 
 You can take look at all of the text object query files for different languages here: [All Query Files](https://github.com/nvim-treesitter/nvim-treesitter-textobjects/tree/master/queries)
 
-To extend the `ecma` queries, we'll need to create this file: `~/.config/nvim/after/queries/ecma/textobjects.scm`
+To extend the `ecma` queries, we'll need to create this file:
 
 ```bash{7}
 ~/.config/nvim
