@@ -42,7 +42,7 @@
     category="General"
     categoryId="DIC_kwDOKBNW884CZ5C-"
     mapping="specific"
-    term="Welcome to @giscus/svelte component!"
+    term={$page.url.pathname}
     reactionsEnabled="1"
     emitMetadata="0"
     inputPosition="bottom"
