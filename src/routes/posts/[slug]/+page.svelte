@@ -34,7 +34,7 @@
   </div>
 </article>
 
-<div class="py-4">
+<div class="px-4 py-4">
   <Giscus
     id="comments"
     repo="josean-dev/sveltekit-blog"
