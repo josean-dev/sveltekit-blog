@@ -5,17 +5,11 @@
   import PostHeader from "$lib/components/PostHeader.svelte";
   import "prismjs/plugins/line-numbers/prism-line-numbers.js";
   import { page } from "$app/stores";
-  import { onMount } from "svelte";
+  import Giscus from "@giscus/svelte";
 
   export let data: PageData;
 
   const { metadata, post: Post } = data;
-
-  function hello() {
-    console.log("hi!");
-  }
-
-  onMount(() => {});
 </script>
 
 <svelte:head>
@@ -28,7 +22,6 @@
   <meta property="og:url" content={$page.url.href} />
   <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
-
 <article>
   <PostHeader {metadata} />
 
@@ -40,3 +33,21 @@
     </CopyCodeInjector>
   </div>
 </article>
+
+<div class="py-4">
+  <Giscus
+    id="comments"
+    repo="josean-dev/sveltekit-blog"
+    repoId="R_kgDOKBNW8w"
+    category="General"
+    categoryId="DIC_kwDOKBNW884CZ5C-"
+    mapping="specific"
+    term="Welcome to @giscus/svelte component!"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="bottom"
+    theme="dark_tritanopia"
+    lang="en"
+    loading="lazy"
+  />
+</div>
