@@ -1,7 +1,7 @@
 ---
 title: "How To Make An Amazing Custom Menu Bar For Your Mac With Sketchybar"
 imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1704812910/josean-youtube-blog/sketchybar-setup_fdzwqt.jpg"
-youtubeId: "W06wMNZmo8"
+youtubeId: "8W06wMNZmo8"
 publishedAt: "2024-01-08"
 summary: "Use this guide along with my youtube video to make an amazing custom menu bar for your Mac!"
 ---
