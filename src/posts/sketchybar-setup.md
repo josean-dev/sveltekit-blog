@@ -263,12 +263,12 @@ Now modify sketchybarrc to use the new variables from the colors.sh file like so
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar height=37        /\
-                 blur_radius=30   /\
-                 position=top     /\
-                 sticky=off       /\
-                 padding_left=10  /\
-                 padding_right=10 /\
+sketchybar --bar height=37        \\
+                 blur_radius=30   \\
+                 position=top     \\
+                 sticky=off       \\
+                 padding_left=10  \\
+                 padding_right=10 \\
                  color=$BAR_COLOR
 
 ##### Changing Defaults #####
@@ -276,15 +276,15 @@ sketchybar --bar height=37        /\
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --default icon.font="Hack Nerd Font:Bold:17.0"  /\
-                     icon.color=$WHITE                 /\
-                     label.font="Hack Nerd Font:Bold:14.0" /\
-                     label.color=$WHITE                /\
-                     padding_left=5                    /\
-                     padding_right=5                   /\
-                     label.padding_left=4              /\
-                     label.padding_right=4             /\
-                     icon.padding_left=4               /\
+sketchybar --default icon.font="Hack Nerd Font:Bold:17.0"  \\
+                     icon.color=$WHITE                 \\
+                     label.font="Hack Nerd Font:Bold:14.0" \\
+                     label.color=$WHITE                \\
+                     padding_left=5                    \\
+                     padding_right=5                   \\
+                     label.padding_left=4              \\
+                     label.padding_right=4             \\
+                     icon.padding_left=4               \\
                      icon.padding_right=4
 ```
 
@@ -320,15 +320,15 @@ In `sketchybarrc` change default fonts to the following:
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --default icon.font="SF Pro:Semibold:15.0"  /\
-                     icon.color=$WHITE                 /\
-                     label.font="SF Pro:Semibold:15.0" /\
-                     label.color=$WHITE                /\
-                     padding_left=5                    /\
-                     padding_right=5                   /\
-                     label.padding_left=4              /\
-                     label.padding_right=4             /\
-                     icon.padding_left=4               /\
+sketchybar --default icon.font="SF Pro:Semibold:15.0"  \\
+                     icon.color=$WHITE                 \\
+                     label.font="SF Pro:Semibold:15.0" \\
+                     label.color=$WHITE                \\
+                     padding_left=5                    \\
+                     padding_right=5                   \\
+                     label.padding_left=4              \\
+                     label.padding_right=4             \\
+                     icon.padding_left=4               \\
                      icon.padding_right=4
 
 ```
@@ -348,15 +348,15 @@ SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  sketchybar --add space space.$sid left                                 /\
-             --set space.$sid space=$sid                                 /\
-                              icon=${SPACE_ICONS[i]}                     /\
-                              background.color=0x44ffffff                /\
-                              background.corner_radius=5                 /\
-                              background.height=20                       /\
-                              background.drawing=off                     /\
-                              label.drawing=off                          /\
-                              script="$PLUGIN_DIR/space.sh"              /\
+  sketchybar --add space space.$sid left                                 \\
+             --set space.$sid space=$sid                                 \\
+                              icon=${SPACE_ICONS[i]}                     \\
+                              background.color=0x44ffffff                \\
+                              background.corner_radius=5                 \\
+                              background.height=20                       \\
+                              background.drawing=off                     \\
+                              label.drawing=off                          \\
+                              script="$PLUGIN_DIR/space.sh"              \\
                               click_script="yabai -m space --focus $sid"
 done
 
@@ -364,15 +364,15 @@ done
 # We add some regular items to the left side of the bar
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item space_separator left                         /\
-           --set space_separator icon=                            /\
-                                 padding_left=10                   /\
-                                 padding_right=10                  /\
-                                 label.drawing=off                 /\
-                                                                   /\
-           --add item front_app left                               /\
-           --set front_app       script="$PLUGIN_DIR/front_app.sh" /\
-                                 icon.drawing=off                  /\
+sketchybar --add item space_separator left                         \\
+           --set space_separator icon=                            \\
+                                 padding_left=10                   \\
+                                 padding_right=10                  \\
+                                 label.drawing=off                 \\
+                                                                   \\
+           --add item front_app left                               \\
+           --set front_app       script="$PLUGIN_DIR/front_app.sh" \\
+                                 icon.drawing=off                  \\
            --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
@@ -386,18 +386,18 @@ sketchybar --add item space_separator left                         /\
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add item clock right                              /\
-           --set clock   update_freq=10                        /\
-                         icon=                                /\
-                         script="$PLUGIN_DIR/clock.sh"         /\
-                                                               /\
-           --add item volume right                             /\
-           --set volume  script="$PLUGIN_DIR/volume.sh"        /\
-           --subscribe volume volume_change                    /\
-                                                               /\
-           --add item battery right                            /\
-           --set battery script="$PLUGIN_DIR/battery.sh"       /\
-                         update_freq=120                       /\
+sketchybar --add item clock right                              \\
+           --set clock   update_freq=10                        \\
+                         icon=                                \\
+                         script="$PLUGIN_DIR/clock.sh"         \\
+                                                               \\
+           --add item volume right                             \\
+           --set volume  script="$PLUGIN_DIR/volume.sh"        \\
+           --subscribe volume volume_change                    \\
+                                                               \\
+           --add item battery right                            \\
+           --set battery script="$PLUGIN_DIR/battery.sh"       \\
+                         update_freq=120                       \\
            --subscribe battery system_woke power_source_change
 
 ##### Finalizing Setup #####
@@ -420,8 +420,8 @@ Add the following highlighted lines to your `sketchybarrc` file.
 ```bash
 # --- Right Side Items ---
 
-sketchybar --add item calendar right /\
-           --set calendar icon=􀧞  /\
+sketchybar --add item calendar right \\
+           --set calendar icon=􀧞  \\
                           label="$(date +'%a %d %b %I:%M %p')"
 
 ##### Finalizing Setup #####
@@ -449,18 +449,18 @@ In `sketchybarrc` add/modify these lines to the default item settings to setup a
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --default icon.font="SF Pro:Semibold:15.0"  /\
-                     icon.color=$WHITE                 /\
-                     label.font="SF Pro:Semibold:15.0" /\
-                     label.color=$WHITE                /\
-                     background.color=$ITEM_BG_COLOR       /\
-                     background.corner_radius=5            /\
-                     background.height=24                  /\
-                     padding_left=5                        /\
-                     padding_right=5                       /\
-                     label.padding_left=4                  /\
-                     label.padding_right=10                /\
-                     icon.padding_left=10                  /\
+sketchybar --default icon.font="SF Pro:Semibold:15.0"  \\
+                     icon.color=$WHITE                 \\
+                     label.font="SF Pro:Semibold:15.0" \\
+                     label.color=$WHITE                \\
+                     background.color=$ITEM_BG_COLOR       \\
+                     background.corner_radius=5            \\
+                     background.height=24                  \\
+                     padding_left=5                        \\
+                     padding_right=5                       \\
+                     label.padding_left=4                  \\
+                     label.padding_right=10                \\
+                     icon.padding_left=10                  \\
                      icon.padding_right=4
 ```
 
@@ -477,12 +477,12 @@ In `sketchybarrc` modify this line:
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar height=37        /\
-                 blur_radius=30   /\
-                 position=top     /\
-                 sticky=off       /\
-                 padding_left=10  /\
-                 padding_right=10 /\
+sketchybar --bar height=37        \\
+                 blur_radius=30   \\
+                 position=top     \\
+                 sticky=off       \\
+                 padding_left=10  \\
+                 padding_right=10 \\
                  color=$BAR_COLOR
 ```
 
@@ -519,9 +519,9 @@ Open `sketchybarrc` and modify the calendar item to look like so:
 ```bash{3-6}
 # --- Right Side Items ---
 
-sketchybar --add item calendar right /\
-           --set calendar icon=􀧞  /\
-                          update_freq=30 /\
+sketchybar --add item calendar right \\
+           --set calendar icon=􀧞  \\
+                          update_freq=30 \\
                           script="$PLUGIN_DIR/calendar.sh"
 
 ##### Finalizing Setup #####
@@ -548,9 +548,9 @@ Add calendar item code to `items/calendar.sh` like so:
 ```bash
 #!/bin/bash
 
-sketchybar --add item calendar right /\
-           --set calendar icon=􀧞  /\
-                          update_freq=30 /\
+sketchybar --add item calendar right \\
+           --set calendar icon=􀧞  \\
+                          update_freq=30 \\
                           script="$PLUGIN_DIR/calendar.sh"
 ```
 
@@ -606,9 +606,9 @@ Add the following code to `volume.sh`:
 ```bash
 #!/bin/bash
 
-sketchybar --add item volume right /\
-           --set volume script="$PLUGIN_DIR/volume.sh" /\
-           --subscribe volume volume_change /\
+sketchybar --add item volume right \\
+           --set volume script="$PLUGIN_DIR/volume.sh" \\
+           --subscribe volume volume_change \\
 ```
 
 Open `~/.config/sketchybar/plugins/volume.sh` in your editor.
@@ -673,9 +673,9 @@ Add the following code to `battery.sh`:
 ```bash
 #!/bin/bash
 
-sketchybar --add item battery right /\
-           --set battery update_freq=120 /\
-                         script="$PLUGIN_DIR/battery.sh" /\
+sketchybar --add item battery right \\
+           --set battery update_freq=120 \\
+                         script="$PLUGIN_DIR/battery.sh" \\
            --subscribe battery system_woke power_source_change
 ```
 
@@ -686,7 +686,7 @@ Modify the code to use SF Symbol icons like so:
 ```bash{11,13,15,17,19,23}
 #!/bin/sh
 
-PERCENTAGE=$(pmset -g batt | grep -Eo "/\d+%" | cut -d% -f1)
+PERCENTAGE=$(pmset -g batt | grep -Eo "\\d+%" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep 'AC Power')
 
 if [ $PERCENTAGE = "" ]; then
@@ -750,9 +750,9 @@ Add the following code to `cpu.sh`:
 ```bash
 #!/bin/bash
 
-sketchybar --add item cpu right /\
-           --set cpu  update_freq=2 /\
-                      icon=􀧓  /\
+sketchybar --add item cpu right \\
+           --set cpu  update_freq=2 \\
+                      icon=􀧓  \\
                       script="$PLUGIN_DIR/cpu.sh"
 ```
 
@@ -771,10 +771,10 @@ Open `~/.config/sketchybar/plugins/cpu.sh` and add the following code to it:
 
 CORE_COUNT=$(sysctl -n machdep.cpu.thread_count)
 CPU_INFO=$(ps -eo pcpu,user)
-CPU_SYS=$(echo "$CPU_INFO" | grep -v $(whoami) | sed "s/[^ 0-9/\.]//g" | awk "{sum+=/\$1} END {print sum/(100.0 * $CORE_COUNT)}")
-CPU_USER=$(echo "$CPU_INFO" | grep $(whoami) | sed "s/[^ 0-9/\.]//g" | awk "{sum+=/\$1} END {print sum/(100.0 * $CORE_COUNT)}")
+CPU_SYS=$(echo "$CPU_INFO" | grep -v $(whoami) | sed "s/[^ 0-9\\.]//g" | awk "{sum+=\\$1} END {print sum/(100.0 * $CORE_COUNT)}")
+CPU_USER=$(echo "$CPU_INFO" | grep $(whoami) | sed "s/[^ 0-9\\.]//g" | awk "{sum+=\\$1} END {print sum/(100.0 * $CORE_COUNT)}")
 
-CPU_PERCENT="$(echo "$CPU_SYS $CPU_USER" | awk '{printf "%.0f/\n", ($1 + $2)*100}')"
+CPU_PERCENT="$(echo "$CPU_SYS $CPU_USER" | awk '{printf "%.0f\\n", ($1 + $2)*100}')"
 
 sketchybar --set $NAME label="$CPU_PERCENT%"
 ```
@@ -844,12 +844,12 @@ Add the following code to `front_app.sh`:
 ```bash
 #!/bin/bash
 
-sketchybar --add item front_app left /\
-           --set front_app       background.color=$ACCENT_COLOR /\
-                                 icon.color=$BAR_COLOR /\
-                                 icon.font="sketchybar-app-font:Regular:16.0" /\
-                                 label.color=$BAR_COLOR /\
-                                 script="$PLUGIN_DIR/front_app.sh"            /\
+sketchybar --add item front_app left \\
+           --set front_app       background.color=$ACCENT_COLOR \\
+                                 icon.color=$BAR_COLOR \\
+                                 icon.font="sketchybar-app-font:Regular:16.0" \\
+                                 label.color=$BAR_COLOR \\
+                                 script="$PLUGIN_DIR/front_app.sh"            \\
            --subscribe front_app front_app_switched
 ```
 
@@ -912,12 +912,12 @@ SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
 
 for sid in "${SPACE_SIDS[@]}"
 do
-  sketchybar --add space space.$sid left                                 /\
-             --set space.$sid space=$sid                                 /\
-                              icon=$sid                                  /\
-                              label.font="sketchybar-app-font:Regular:16.0" /\
-                              label.padding_right=20                     /\
-                              label.y_offset=-1                          /\
+  sketchybar --add space space.$sid left                                 \\
+             --set space.$sid space=$sid                                 \\
+                              icon=$sid                                  \\
+                              label.font="sketchybar-app-font:Regular:16.0" \\
+                              label.padding_right=20                     \\
+                              label.y_offset=-1                          \\
                               script="$PLUGIN_DIR/space.sh"
 done
 ```
@@ -934,13 +934,13 @@ Open `~/.config/sketchybar/plugins/space.sh` and replace the code with the follo
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 
 if [ $SELECTED = true ]; then
-  sketchybar --set $NAME background.drawing=on /\
-                         background.color=$ACCENT_COLOR /\
-                         label.color=$BAR_COLOR /\
+  sketchybar --set $NAME background.drawing=on \\
+                         background.color=$ACCENT_COLOR \\
+                         label.color=$BAR_COLOR \\
                          icon.color=$BAR_COLOR
 else
-  sketchybar --set $NAME background.drawing=off /\
-                         label.color=$ACCENT_COLOR /\
+  sketchybar --set $NAME background.drawing=off \\
+                         label.color=$ACCENT_COLOR \\
                          icon.color=$ACCENT_COLOR
 fi
 ```
@@ -984,22 +984,22 @@ SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
 
 for sid in "${SPACE_SIDS[@]}"
 do
-  sketchybar --add space space.$sid left                                 /\
-             --set space.$sid space=$sid                                 /\
-                              icon=$sid                                  /\
-                              label.font="sketchybar-app-font:Regular:16.0" /\
-                              label.padding_right=20                     /\
-                              label.y_offset=-1                          /\
+  sketchybar --add space space.$sid left                                 \\
+             --set space.$sid space=$sid                                 \\
+                              icon=$sid                                  \\
+                              label.font="sketchybar-app-font:Regular:16.0" \\
+                              label.padding_right=20                     \\
+                              label.y_offset=-1                          \\
                               script="$PLUGIN_DIR/space.sh"
 done
 
-sketchybar --add item space_separator left                             /\
-           --set space_separator icon="􀆊"                                /\
-                                 icon.color=$ACCENT_COLOR /\
-                                 icon.padding_left=4                   /\
-                                 label.drawing=off                     /\
-                                 background.drawing=off                /\
-                                 script="$PLUGIN_DIR/space_windows.sh" /\
+sketchybar --add item space_separator left                             \\
+           --set space_separator icon="􀆊"                                \\
+                                 icon.color=$ACCENT_COLOR \\
+                                 icon.padding_left=4                   \\
+                                 label.drawing=off                     \\
+                                 background.drawing=off                \\
+                                 script="$PLUGIN_DIR/space_windows.sh" \\
            --subscribe space_separator space_windows_change
 ```
 
@@ -1055,15 +1055,15 @@ Add the following code to `items/media.sh`:
 ```bash
 #!/bin/bash
 
-sketchybar --add item media e /\
-           --set media label.color=$ACCENT_COLOR /\
-                       label.max_chars=20 /\
-                       icon.padding_left=0 /\
-                       scroll_texts=on /\
-                       icon=􀑪             /\
-                       icon.color=$ACCENT_COLOR   /\
-                       background.drawing=off /\
-                       script="$PLUGIN_DIR/media.sh" /\
+sketchybar --add item media e \\
+           --set media label.color=$ACCENT_COLOR \\
+                       label.max_chars=20 \\
+                       icon.padding_left=0 \\
+                       scroll_texts=on \\
+                       icon=􀑪             \\
+                       icon.color=$ACCENT_COLOR   \\
+                       background.drawing=off \\
+                       script="$PLUGIN_DIR/media.sh" \\
            --subscribe media media_change
 ```
 
