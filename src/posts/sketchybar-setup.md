@@ -417,7 +417,7 @@ sketchybar --reload
 
 Add the following highlighted lines to your `sketchybarrc` file.
 
-```bash
+```bash{3-5}
 # --- Right Side Items ---
 
 sketchybar --add item calendar right \\
