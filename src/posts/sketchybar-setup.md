@@ -1072,10 +1072,10 @@ Add `media.sh` file under `~/.config/sketchybar/plugins`
 Make this file an executable by running:
 
 ```bash
-chmod +x ~/.config/sketchybar/items/media.sh
+chmod +x ~/.config/sketchybar/plugins/media.sh
 ```
 
-Open `~/.config/sketchybar/items/media.sh` and add the following code to it:
+Open `~/.config/sketchybar/plugins/media.sh` and add the following code to it:
 
 ```bash
 #!/bin/bash
