@@ -1,5 +1,5 @@
 ---
-title: "How I Setup Neovim To Make it AMAZING in 2024"
+title: "How I Setup Neovim On My Mac To Make it AMAZING in 2024"
 imgUrl: ""
 youtubeId: ""
 publishedAt: "2024-04-01"
