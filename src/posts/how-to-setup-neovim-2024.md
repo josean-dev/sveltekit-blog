@@ -1,8 +1,8 @@
 ---
 title: "How I Setup Neovim On My Mac To Make it AMAZING in 2024"
-imgUrl: ""
-youtubeId: ""
-publishedAt: "2024-04-01"
+imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1712156378/josean-youtube-blog/how-to-setup-neovim-2024.jpg"
+youtubeId: "6pAG3BHurdM"
+publishedAt: "2024-04-03"
 summary: "Use this guide along with my youtube video to setup Neovim & make it amazing in 2024"
 ---
 
