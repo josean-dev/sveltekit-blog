@@ -12,10 +12,10 @@
     bg-white dark:border-gray-800 dark:bg-dark-background"
 >
   <nav
-    class="mx-auto flex h-24 max-w-5xl
+    class="mx-auto flex h-20 max-w-5xl
     items-center justify-between px-4"
   >
-    <a href="/"> <Logo class="h-28 w-28" /> </a>
+    <a href="/"> <Logo class="h-2: w-20" /> </a>
 
     <div class="flex items-center space-x-1">
       <DarkmodeButton />
