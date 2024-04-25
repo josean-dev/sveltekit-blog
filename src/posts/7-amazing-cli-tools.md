@@ -376,10 +376,10 @@ _fzf_comprun() {
 This will setup file previews with bat as well as directory previews with eza and some other previews as well.
 
 There is one slight issue with this code though. When we are looking for files and directories with `Ctrl-T`
-or doing something like `nvim **Tab`, we are using bat to generate the preview but this won't work for directories
+or doing something like `nvim **Tab`, we are using `bat` to generate the preview but this won't work for directories
 and we'll get an error.
 
-We can fix this by using an if statement that checks if whether the path to what we should preview is a directory or not and use eza
+We can fix this by using an **if statement** that checks whether the path to what we should preview is a directory or not and use `eza`
 instead for the preview in this case.
 
 To do this you can replace the previous code with something like the following:
