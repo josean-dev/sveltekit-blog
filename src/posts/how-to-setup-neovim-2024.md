@@ -1595,7 +1595,7 @@ return {
 
 Navigate to `mason.lua` and add the following to auto install formatters:
 
-```lua{5,43-50}
+```lua{5,14,43-50}
 return {
   "williamboman/mason.nvim",
   dependencies = {
