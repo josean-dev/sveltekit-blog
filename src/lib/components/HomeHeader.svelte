@@ -1,7 +1,7 @@
 <section class="px-4 py-6">
   <div class="h-40 w-40 overflow-hidden rounded-full">
     <img
-      src="https://res.cloudinary.com/martinez-cloud/image/upload/v1712161158/josean-youtube-blog/profile-pic-2.jpg"
+      src="/profile-pic-for-blog.jpg"
       alt="Profile"
       class="object-cover"
     />
