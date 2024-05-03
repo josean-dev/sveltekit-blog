@@ -365,7 +365,7 @@ You can create an alias for it in `~/.zshrc` like so:
 ```bash
 # ---- Eza (better ls) -----
 
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ls="eza --icons=always"
 ```
 
 ## Install zoxide (better cd)
