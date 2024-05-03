@@ -1209,7 +1209,7 @@ Exit with `:q` and reenter Neovim with `nvim`
 
 Open the file explorer with `<leader>ee` (in my config the `<leader>` key is `space`).
 
-Under `lua/josean` add a new directory with `a`, calling it `lsp/`
+Under `lua/josean/plugins` add a new directory with `a`, calling it `lsp/`
 
 Navigate to `lazy.lua` and modify it so that `lazy.nvim` knows about the new `lsp` directory like so:
 
