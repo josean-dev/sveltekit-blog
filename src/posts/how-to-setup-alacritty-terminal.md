@@ -1,7 +1,7 @@
 ---
 title: "How To Create A Minimal & Amazing Mac Terminal Setup w/ Alacritty"
 imgUrl: "/post-images/how-to-setup-alacritty-terminal/thumbnail.jpg"
-youtubeId: "AITF53ndTCI"
+youtubeId: "uOnL4fEnldA"
 publishedAt: "2024-05-01"
 summary: "This is my step by step guide on how to setup Alacritty for an amazing minimal & fast terminal setup for macOs"
 ---
