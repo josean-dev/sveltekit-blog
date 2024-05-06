@@ -7,7 +7,7 @@ summary: "This is my step by step guide on how to setup Alacritty for an amazing
 ---
 
 _After recommendations from you guys, I've swapped out Alacritty for [WezTerm](https://wezfurlong.org/wezterm/index.html)!
-Everything is the same except the Alacritty config file, you can swap it out with this [~/.wezterm.lua](.wezterm.lua) file and everything should look and work very similar to Alacritty!_
+Everything is the same except the Alacritty config file, you can swap it out with this [~/.wezterm.lua](https://github.com/josean-dev/dev-environment-files/blob/main/.wezterm.lua) file and everything should look and work very similar to Alacritty!_
 
 Alacritty is an awesome, minimal and fast terminal setup that has worked great for me as an alternative to iTerm2.
 Let's set it up!
