@@ -3,7 +3,9 @@ import { migrate } from "drizzle-orm/postgres-js/migrator";
 import { db, connection } from "./client";
 
 // This will run migrations on the database, skipping the ones already applied
-await migrate(db, { migrationsFolder: "./db/drizzle" });
+await migrate(db, {
+  migrationsFolder: "./src/lib/server/db/drizzle"
+});
 
 // Don't forget to close the connection, otherwise the script will hang
 await connection.end();

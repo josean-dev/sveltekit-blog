@@ -2,20 +2,23 @@ import "dotenv/config";
 import { db, connection } from "./client";
 import { faker } from "@faker-js/faker";
 import {
-  InsertCourse,
-  InsertSection,
-  InsertSubsection,
+  type InsertCourse,
+  type InsertSection,
+  type InsertSubsection,
   course,
   section,
   subsection
 } from "./schema";
+import { capitalize } from "$lib/utils/strings";
 
 const coursesInsertData: InsertCourse[] = [];
 
 for (let i = 0; i < 5; i++) {
+  const slug = faker.word.sample();
   coursesInsertData.push({
     id: i + 1,
-    name: faker.word.sample()
+    name: capitalize(slug),
+    slug
   });
 }
 
@@ -24,9 +27,11 @@ const sectionsInsertData: InsertSection[] = [];
 let sectionId = 1;
 coursesInsertData.forEach((course) => {
   for (let i = 0; i < 5; i++) {
+    const slug = faker.word.sample();
     sectionsInsertData.push({
       id: sectionId,
-      title: faker.word.sample(),
+      name: capitalize(slug),
+      slug,
       courseId: course.id!
     });
     sectionId += 1;
@@ -38,9 +43,13 @@ const subsectionsInsertData: InsertSubsection[] = [];
 let subsectionId = 1;
 sectionsInsertData.forEach((section) => {
   for (let i = 0; i < 5; i++) {
+    const slug = faker.word.sample();
     subsectionsInsertData.push({
       id: subsectionId,
-      title: faker.word.sample(),
+      name: capitalize(slug),
+      slug,
+      vimeoVideoId: "942798419",
+      videoLength: 77,
       sectionId: section.id!
     });
     subsectionId += 1;

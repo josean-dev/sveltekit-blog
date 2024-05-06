@@ -5,7 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark-background": "#011423",
+        "dark-blue": {
+          400: "#034072",
+          500: "#033259",
+          600: "#022440",
+          700: "#011C32",
+          800: "#011628",
+          900: "#011423"
+        }
       },
       typography(theme) {
         return {

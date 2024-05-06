@@ -9,7 +9,7 @@
 
 <header
   class="fixed inset-x-0 top-0 z-10 border-b
-    bg-white dark:border-gray-800 dark:bg-dark-background"
+    bg-white dark:border-gray-800 dark:bg-dark-blue-900"
 >
   <nav
     class="mx-auto flex h-20 max-w-5xl
