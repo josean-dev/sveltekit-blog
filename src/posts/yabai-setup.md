@@ -146,7 +146,7 @@ yabai -m rule --add app="^Karabiner-Elements$" manage=off
 Start it like so:
 
 ```bash
-brew services start yabai
+yabai --start-service
 ```
 
 Allow any prompts for accessibility permissions.
@@ -154,7 +154,7 @@ Allow any prompts for accessibility permissions.
 Restart yabai:
 
 ```bash
-brew services restart yabai
+yabai --restart-service
 ```
 
 ### Start Skhd
@@ -162,7 +162,7 @@ brew services restart yabai
 Start it like so:
 
 ```bash
-brew services start skhd
+skdh --start-service
 ```
 
 Allow any prompts for accessibility permissions.
@@ -170,7 +170,7 @@ Allow any prompts for accessibility permissions.
 Restart skhd:
 
 ```bash
-brew services restart skhd
+skhd --restart-service
 ```
 
 ## Create Skhd Config File in Home Directory
@@ -300,9 +300,9 @@ shift + alt - 7 : yabai -m window --space 7;
 
 ```bash
 # stop/start/restart yabai
-ctrl + alt - q : brew services stop yabai
-ctrl + alt - s : brew services start yabai
-ctrl + alt - r : brew services restart yabai
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
+ctrl + alt - r : yabai --restart-service
 ```
 
 ## That's It, You're Done!

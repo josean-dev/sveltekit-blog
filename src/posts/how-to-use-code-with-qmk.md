@@ -1,6 +1,6 @@
 ---
 title: "How To Use Code To Create Custom Keymaps With QMK"
-imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1710975202/josean-youtube-blog/how-to-use-code-with-qmk.jpg"
+imgUrl: "/post-images/how-to-use-code-with-qmk/thumbnail.jpg"
 youtubeId: "AA8fw2MbpYg"
 publishedAt: "2024-03-20"
 summary: "Use this guide along with my youtube video to learn how to create and compile keymaps with QMK"

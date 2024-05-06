@@ -4,8 +4,8 @@
 
   export let post: MarkdownPostMetadataAndSlug;
 
-  let href = `/posts/${post.slug}`;
-  let youtubeHref = post.metadata.youtubeId
+  const href = `/posts/${post.slug}`;
+  const youtubeHref = post.metadata.youtubeId
     ? `https://youtu.be/${post.metadata.youtubeId}`
     : "";
 </script>

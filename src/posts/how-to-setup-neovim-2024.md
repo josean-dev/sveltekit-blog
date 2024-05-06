@@ -1,6 +1,6 @@
 ---
 title: "How I Setup Neovim On My Mac To Make it AMAZING in 2024"
-imgUrl: "https://res.cloudinary.com/martinez-cloud/image/upload/v1712156378/josean-youtube-blog/how-to-setup-neovim-2024.jpg"
+imgUrl: "/post-images/how-to-setup-neovim-2024/thumbnail.jpg"
 youtubeId: "6pAG3BHurdM"
 publishedAt: "2024-04-03"
 summary: "Use this guide along with my youtube video to setup Neovim & make it amazing in 2024"
@@ -1209,7 +1209,7 @@ Exit with `:q` and reenter Neovim with `nvim`
 
 Open the file explorer with `<leader>ee` (in my config the `<leader>` key is `space`).
 
-Under `lua/josean` add a new directory with `a`, calling it `lsp/`
+Under `lua/josean/plugins` add a new directory with `a`, calling it `lsp/`
 
 Navigate to `lazy.lua` and modify it so that `lazy.nvim` knows about the new `lsp` directory like so:
 
@@ -1595,7 +1595,7 @@ return {
 
 Navigate to `mason.lua` and add the following to auto install formatters:
 
-```lua{5,43-50}
+```lua{5,14,43-50}
 return {
   "williamboman/mason.nvim",
   dependencies = {
