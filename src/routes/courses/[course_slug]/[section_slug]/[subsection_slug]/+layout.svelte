@@ -1,7 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import PageTransition from "$lib/components/PageTransition.svelte";
-  import LightbulbIcon from "$lib/components/svg/LightbulbIcon.svelte";
   import RoundPlayVideoIcon from "$lib/components/svg/RoundPlayVideoIcon.svelte";
   import { formatHoursMinutesSeconds } from "$lib/utils/time";
   import type { LayoutData } from "./$types";
@@ -41,8 +40,8 @@
                               "bg-gray-200 font-semibold text-black dark:bg-dark-blue-600 dark:text-white"
                             }`}
                   >
-                    <span class="block justify-between">
-                      <span>{subsection.name}</span>
+                    <span class="block">
+                      {subsection.name}
                     </span>
                     <span
                       class="flex flex-1 items-center space-x-1 font-light"

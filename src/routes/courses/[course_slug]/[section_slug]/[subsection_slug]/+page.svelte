@@ -21,12 +21,12 @@
   </div>
 
   {#if Markdown}
-    <div
+    <article
       class="prose max-w-none px-4 py-4 dark:prose-invert md:prose-lg"
     >
       <CopyCodeInjector>
         <Markdown />
       </CopyCodeInjector>
-    </div>
+    </article>
   {/if}
 {/if}
