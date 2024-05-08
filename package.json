@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.15",
     "dayjs": "^1.11.11",
-    "drizzle-kit": "^0.20.17",
+    "drizzle-kit": "^0.20.18",
     "drizzle-orm": "^0.30.10",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",

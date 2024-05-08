@@ -42,14 +42,23 @@ const subsectionsInsertData: InsertSubsection[] = [];
 
 let subsectionId = 1;
 sectionsInsertData.forEach((section) => {
+  const vimeoVideoIdOne = "942798419";
+  const vimeoVideoOneLength = 77;
+  const vimeoVideoIdTwo = "943297126";
+  const vimeoVideoTwoLength = 10;
   for (let i = 0; i < 5; i++) {
+    const isEven = i % 2 === 0;
+    const vimeoVideoId = isEven ? vimeoVideoIdOne : vimeoVideoIdTwo;
+    const vimeoVideoLength = isEven
+      ? vimeoVideoOneLength
+      : vimeoVideoTwoLength;
     const slug = faker.word.sample();
     subsectionsInsertData.push({
       id: subsectionId,
       name: capitalize(slug),
       slug,
-      vimeoVideoId: "942798419",
-      videoLength: 77,
+      vimeoVideoId: vimeoVideoId,
+      videoLength: vimeoVideoLength,
       sectionId: section.id!
     });
     subsectionId += 1;
