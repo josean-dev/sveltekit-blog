@@ -1,3 +1,3 @@
-<div class="mx-auto max-w-7xl">
+<div class="mx-auto max-w-8xl">
   <slot />
 </div>

@@ -20,7 +20,7 @@
 
   {#if Markdown}
     <article
-      class="prose max-w-none px-4 py-4 dark:prose-invert md:prose-lg"
+      class="prose max-w-none px-4 sm:px-8 py-8 dark:prose-invert md:prose-lg"
     >
       <CopyCodeInjector>
         <Markdown />

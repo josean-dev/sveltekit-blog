@@ -10,7 +10,7 @@
 
 <header
   class="fixed inset-x-0 top-0 z-10 border-b
-    bg-white dark:border-gray-800 dark:bg-dark-blue-900"
+    bg-white dark:border-gray-700 dark:bg-dark-blue-900"
 >
   <MainMargins>
     <nav

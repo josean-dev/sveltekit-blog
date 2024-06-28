@@ -14,6 +14,9 @@ export default {
           900: "#011423"
         }
       },
+      maxWidth: {
+        "8xl": "85rem"
+      },
       typography(theme) {
         return {
           DEFAULT: {

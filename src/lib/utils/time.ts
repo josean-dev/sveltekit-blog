@@ -13,16 +13,28 @@ export function getHoursMinutesSeconds(seconds: number) {
   };
 }
 
-export function formatHoursMinutesSeconds(seconds: number) {
+export function formatHoursMinutesSeconds(
+  seconds: number,
+  noWords?: boolean
+) {
   const {
     hours,
     minutes,
     seconds: remainingSeconds
   } = getHoursMinutesSeconds(seconds);
+  let formattedHours = "";
+  let formattedMinutes = "";
+  let formattedSeconds = "";
 
-  const formattedHours = hours ? `${hours} hr ` : "";
-  const formattedMinutes = minutes ? `${minutes} min ` : "";
-  const formattedSeconds = `${remainingSeconds} sec`;
+  if (!noWords) {
+    formattedHours = hours ? `${hours} hr ` : "";
+    formattedMinutes = minutes ? `${minutes} min ` : "";
+    formattedSeconds = `${remainingSeconds} sec`;
+  } else {
+    formattedHours = hours ? `${hours}:` : "";
+    formattedMinutes = minutes ? `${minutes}:` : "0:";
+    formattedSeconds = `${remainingSeconds}`;
+  }
 
   return `${formattedHours}${formattedMinutes}${formattedSeconds}`;
 }
