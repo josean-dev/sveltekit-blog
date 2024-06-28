@@ -26,8 +26,9 @@
           <li>
             <h3
               class={cn({
-                "border-b border-dashed px-3 py-3.5 text-lg font-black dark:border-gray-700": true,
-                "text-purple-500": sectionActive
+                "border-b border-dashed px-3 py-3.5 text-lg font-black": true,
+                "dark:border-gray-700": !sectionActive,
+                "text-purple-500 border-purple-700": sectionActive
               })}
             >
               {section.name}
