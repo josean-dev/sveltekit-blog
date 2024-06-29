@@ -2,7 +2,6 @@
   import { page } from "$app/stores";
   import PageTransition from "$lib/components/PageTransition.svelte";
   import DottedCircleIcon from "$lib/components/svg/DottedCircleIcon.svelte";
-  import PlayVideoIcon from "$lib/components/svg/PlayVideoIcon.svelte";
   import { cn } from "$lib/utils/tailwindcss";
   import { formatHoursMinutesSeconds } from "$lib/utils/time";
   import type { LayoutData } from "./$types";
@@ -28,7 +27,7 @@
               class={cn({
                 "border-b border-dashed px-3 py-3.5 text-lg font-black": true,
                 "dark:border-gray-700": !sectionActive,
-                "text-purple-500 border-purple-700": sectionActive
+                "text-sky-500 border-sky-500": sectionActive
               })}
             >
               {section.name}
@@ -44,8 +43,7 @@
                       "flex items-center justify-between py-2 pl-3 pr-3": true,
                       "dark:hover:text-gray-100 hover:text-gray-600 ":
                         !subsectionActive,
-                      "font-semibold text-purple-500":
-                        subsectionActive
+                      "font-semibold text-sky-500": subsectionActive
                     })}
                   >
                     <div class="flex items-center space-x-2">
