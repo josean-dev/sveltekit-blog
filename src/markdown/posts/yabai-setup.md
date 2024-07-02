@@ -162,7 +162,7 @@ yabai --restart-service
 Start it like so:
 
 ```bash
-skdh --start-service
+skhd --start-service
 ```
 
 Allow any prompts for accessibility permissions.
