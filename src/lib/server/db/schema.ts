@@ -1,16 +1,25 @@
-import { relations } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
   integer,
   pgTable,
   serial,
   text,
+  timestamp,
   varchar
 } from "drizzle-orm/pg-core";
 
 export const course = pgTable("course", {
   id: serial("id").primaryKey(),
   name: text("name"),
-  slug: text("slug")
+  slug: text("slug"),
+  createdAt: timestamp("created_at", {
+    withTimezone: true
+  }).defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    withTimezone: true
+  })
+    .defaultNow()
+    .$onUpdate(() => sql`now()`)
 });
 
 export type SelectCourse = typeof course.$inferSelect;
@@ -26,7 +35,15 @@ export const section = pgTable("section", {
   slug: text("slug"),
   courseId: integer("course_id")
     .references(() => course.id, { onDelete: "cascade" })
-    .notNull()
+    .notNull(),
+  createdAt: timestamp("created_at", {
+    withTimezone: true
+  }).defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    withTimezone: true
+  })
+    .defaultNow()
+    .$onUpdate(() => sql`now()`)
 });
 
 export type SelectSection = typeof section.$inferSelect;
@@ -52,7 +69,15 @@ export const subsection = pgTable("subsection", {
   markdownFilePath: text("markdown_file_path"),
   sectionId: integer("section_id")
     .references(() => section.id, { onDelete: "cascade" })
-    .notNull()
+    .notNull(),
+  createdAt: timestamp("created_at", {
+    withTimezone: true
+  }).defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    withTimezone: true
+  })
+    .defaultNow()
+    .$onUpdate(() => sql`now()`)
 });
 
 export type SelectSubsection = typeof subsection.$inferSelect;

@@ -1,10 +1,8 @@
 {
-  "id": "608762a1-c790-4378-952c-bdfa98932c7f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "course": {
+    "public.course": {
       "name": "course",
       "schema": "",
       "columns": {
@@ -26,7 +24,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "section": {
+    "public.section": {
       "name": "section",
       "schema": "",
       "columns": {
@@ -54,21 +52,21 @@
         "section_course_id_course_id_fk": {
           "name": "section_course_id_course_id_fk",
           "tableFrom": "section",
-          "tableTo": "course",
           "columnsFrom": [
             "course_id"
           ],
+          "tableTo": "course",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "subsection": {
+    "public.subsection": {
       "name": "subsection",
       "schema": "",
       "columns": {
@@ -114,15 +112,15 @@
         "subsection_section_id_section_id_fk": {
           "name": "subsection_section_id_section_id_fk",
           "tableFrom": "subsection",
-          "tableTo": "section",
           "columnsFrom": [
             "section_id"
           ],
+          "tableTo": "section",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -132,8 +130,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "608762a1-c790-4378-952c-bdfa98932c7f",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

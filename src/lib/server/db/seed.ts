@@ -25,8 +25,8 @@ for (let i = 0; i < 5; i++) {
 const sectionsInsertData: InsertSection[] = [];
 
 let sectionId = 1;
-coursesInsertData.forEach((course) => {
-  for (let i = 0; i < 5; i++) {
+coursesInsertData.forEach((course, courseIndex) => {
+  for (let i = 0; i < courseIndex + 2; i++) {
     const slug = faker.word.sample();
     sectionsInsertData.push({
       id: sectionId,
@@ -41,12 +41,12 @@ coursesInsertData.forEach((course) => {
 const subsectionsInsertData: InsertSubsection[] = [];
 
 let subsectionId = 1;
-sectionsInsertData.forEach((section) => {
+sectionsInsertData.forEach((section, sectionIndex) => {
   const vimeoVideoIdOne = "942798419";
   const vimeoVideoOneLength = 77;
   const vimeoVideoIdTwo = "943297126";
   const vimeoVideoTwoLength = 10;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < sectionIndex + 2; i++) {
     const isEven = i % 2 === 0;
     const vimeoVideoId = isEven ? vimeoVideoIdOne : vimeoVideoIdTwo;
     const vimeoVideoLength = isEven

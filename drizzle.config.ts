@@ -8,8 +8,8 @@ if (!dbUrl) throw Error("Database url not defined");
 export default {
   schema: "./src/lib/server/db/schema.ts",
   out: "./src/lib/server/db/drizzle",
-  driver: "pg", // 'pg' | 'mysql2' | 'better-sqlite' | 'libsql' | 'turso'
+  dialect: "postgresql",
   dbCredentials: {
-    connectionString: dbUrl
+    url: dbUrl
   }
 } satisfies Config;

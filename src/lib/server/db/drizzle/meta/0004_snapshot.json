@@ -1,4 +1,6 @@
 {
+  "id": "fc9f9988-a0c4-426c-84f3-de3871fdcfbd",
+  "prevId": "ba78ecbc-63e2-4777-b963-d39980841387",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -23,6 +25,20 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -40,8 +56,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "title": {
-          "name": "title",
+        "name": {
+          "name": "name",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -64,15 +80,15 @@
         "section_course_id_course_id_fk": {
           "name": "section_course_id_course_id_fk",
           "tableFrom": "section",
+          "tableTo": "course",
           "columnsFrom": [
             "course_id"
           ],
-          "tableTo": "course",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -88,8 +104,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "title": {
-          "name": "title",
+        "name": {
+          "name": "name",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -100,20 +116,20 @@
           "primaryKey": false,
           "notNull": false
         },
-        "videoUrl": {
-          "name": "videoUrl",
-          "type": "text",
+        "vimeo_video_id": {
+          "name": "vimeo_video_id",
+          "type": "varchar(9)",
           "primaryKey": false,
           "notNull": false
         },
-        "videoLength": {
-          "name": "videoLength",
+        "video_length": {
+          "name": "video_length",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "markdownFilePath": {
-          "name": "markdownFilePath",
+        "markdown_file_path": {
+          "name": "markdown_file_path",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -130,15 +146,15 @@
         "subsection_section_id_section_id_fk": {
           "name": "subsection_section_id_section_id_fk",
           "tableFrom": "subsection",
+          "tableTo": "section",
           "columnsFrom": [
             "section_id"
           ],
-          "tableTo": "section",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -148,10 +164,8 @@
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "5c826947-1f0c-4bf8-a6cc-ccae3f3973ab",
-  "prevId": "608762a1-c790-4378-952c-bdfa98932c7f"
+    "tables": {}
+  }
 }
