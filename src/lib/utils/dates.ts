@@ -6,3 +6,17 @@ export function formatPublishedAt(date: string) {
     timeZone: "UTC" // don't convert to client's local timezone
   });
 }
+
+export function formatDate(date: Date) {
+  return date.toLocaleString("en-us", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  });
+}
+
+export function formatDateShort(date: Date) {
+  return date.toLocaleString("en-us", {
+    dateStyle: "short",
+    timeStyle: "short"
+  });
+}
