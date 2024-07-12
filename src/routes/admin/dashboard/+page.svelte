@@ -1,35 +1,48 @@
 <script lang="ts">
+  import Button from "$lib/components/Button.svelte";
+  import H1 from "$lib/components/headings/H1.svelte";
+  import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
+  import PlusIcon from "$lib/components/svg/PlusIcon.svelte";
+  import Table from "$lib/components/table/Table.svelte";
+  import Td from "$lib/components/table/Td.svelte";
+  import Th from "$lib/components/table/Th.svelte";
+  import { formatDateShort } from "$lib/utils/dates";
   import type { PageData } from "./$types";
 
   export let data: PageData;
 
   const { courses, coursesCount } = data;
-
-  $: console.log(courses, coursesCount);
 </script>
 
 <div>
-  <div class="py-2 px-4 border-b dark:border-gray-700">
-    <h2>Courses</h2>
-  </div>
+  <HeadingContainer>
+    <H1>Courses</H1>
+    <Button slot="button">
+      <PlusIcon class="size-5 fill-current" />
+      <span>Add Course</span>
+    </Button>
+  </HeadingContainer>
 
-  <table>
+  <Table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Sections</th>
-        <th>Created At</th>
+        <Th>Name</Th>
+        <Th>Slug</Th>
+        <Th>Sections</Th>
+        <Th>Created At</Th>
+        <Th>Updated At</Th>
       </tr>
     </thead>
     <tbody>
       {#each courses as course}
         <tr>
-          <td>{course.name}</td>
-          <td>{course.slug}</td>
-          <td>{course.sectionsCount}</td>
+          <Td>{course.name}</Td>
+          <Td>{course.slug}</Td>
+          <Td>{course.sectionsCount}</Td>
+          <Td>{formatDateShort(course.createdAt)}</Td>
+          <Td>{formatDateShort(course.updatedAt)}</Td>
         </tr>
       {/each}
     </tbody>
-  </table>
+  </Table>
 </div>
