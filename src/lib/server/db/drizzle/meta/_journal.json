@@ -43,6 +43,13 @@
       "when": 1720614849670,
       "tag": "0005_medical_redwing",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1720639028008,
+      "tag": "0006_sweet_vengeance",
+      "breakpoints": true
     }
   ]
 }

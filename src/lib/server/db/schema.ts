@@ -14,12 +14,15 @@ export const course = pgTable("course", {
   slug: text("slug"),
   createdAt: timestamp("created_at", {
     withTimezone: true
-  }).defaultNow(),
+  })
+    .defaultNow()
+    .notNull(),
   updatedAt: timestamp("updated_at", {
     withTimezone: true
   })
     .defaultNow()
     .$onUpdate(() => sql`now()`)
+    .notNull()
 });
 
 export type SelectCourse = typeof course.$inferSelect;
@@ -38,12 +41,15 @@ export const section = pgTable("section", {
     .notNull(),
   createdAt: timestamp("created_at", {
     withTimezone: true
-  }).defaultNow(),
+  })
+    .defaultNow()
+    .notNull(),
   updatedAt: timestamp("updated_at", {
     withTimezone: true
   })
     .defaultNow()
     .$onUpdate(() => sql`now()`)
+    .notNull()
 });
 
 export type SelectSection = typeof section.$inferSelect;
@@ -72,12 +78,15 @@ export const subsection = pgTable("subsection", {
     .notNull(),
   createdAt: timestamp("created_at", {
     withTimezone: true
-  }).defaultNow(),
+  })
+    .defaultNow()
+    .notNull(),
   updatedAt: timestamp("updated_at", {
     withTimezone: true
   })
     .defaultNow()
     .$onUpdate(() => sql`now()`)
+    .notNull()
 });
 
 export type SelectSubsection = typeof subsection.$inferSelect;
