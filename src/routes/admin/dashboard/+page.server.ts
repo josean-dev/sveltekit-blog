@@ -13,6 +13,8 @@ export const load: PageServerLoad = async () => {
       id: course.id,
       name: course.name,
       slug: course.slug,
+      createdAt: course.createdAt,
+      updatedAt: course.updatedAt,
       sectionsCount: count(section.id)
     })
     .from(course)
