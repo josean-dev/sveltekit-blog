@@ -17,7 +17,7 @@
 <div>
   <HeadingContainer>
     <H1>Courses</H1>
-    <Button slot="button">
+    <Button href="/admin/courses/add" slot="button">
       <PlusIcon class="size-5 fill-current" />
       <span>Add Course</span>
     </Button>
