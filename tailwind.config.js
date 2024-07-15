@@ -17,6 +17,9 @@ export default {
       maxWidth: {
         "8xl": "85rem"
       },
+      animation: {
+        "spin-slower": "spin 1.25s linear infinite"
+      },
       typography(theme) {
         return {
           DEFAULT: {
