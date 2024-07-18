@@ -8,6 +8,27 @@ export const load: PageServerLoad = async ({ params }) => {
       id: true,
       name: true,
       slug: true
+    },
+    with: {
+      sections: {
+        columns: {
+          id: true,
+          slug: true,
+          name: true,
+          updatedAt: true
+        },
+        with: {
+          subsections: {
+            columns: {
+              id: true,
+              slug: true,
+              name: true,
+              videoLength: true,
+              updatedAt: true
+            }
+          }
+        }
+      }
     }
   });
 
