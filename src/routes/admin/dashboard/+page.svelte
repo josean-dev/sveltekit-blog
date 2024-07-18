@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
