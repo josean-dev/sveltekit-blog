@@ -11,20 +11,23 @@
   type $$Props = ButtonProps & { loading?: boolean };
   type $$Events = ButtonEvents;
 
+  let klass: string | undefined | null = "";
+
+  export { klass as class };
+
   export let loading = false;
 </script>
 
 <Button.Root
-  {...$$restProps}
   class={cn(
     "relative",
     "px-3 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-md",
     "font-medium",
-    $$restProps.class
+    klass
   )}
-  type="button"
   on:click
   on:keydown
+  {...$$restProps}
 >
   <div
     class={cn({
