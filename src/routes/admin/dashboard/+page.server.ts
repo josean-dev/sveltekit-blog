@@ -1,7 +1,7 @@
 import { db } from "$lib/server/db/client";
 import { count, eq } from "drizzle-orm";
-import type { PageServerLoad } from "./$types";
 import { course, section } from "$lib/server/db/schema";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
   const coursesCount = await db
