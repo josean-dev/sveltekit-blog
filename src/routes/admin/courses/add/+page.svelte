@@ -13,6 +13,7 @@
   import { schema } from "./formSchema";
   import { zodClient } from "sveltekit-superforms/adapters";
   import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
+  import FormError from "$lib/components/forms/FormError.svelte";
 
   export let data: PageData;
 
@@ -32,9 +33,9 @@
 
   <FormContainer>
     {#if $message}
-      <h3 class="text-sky-500 font-medium">
+      <FormError>
         {$message}
-      </h3>
+      </FormError>
     {/if}
     <form method="POST" use:enhance>
       <FormInputContainer>
@@ -47,7 +48,7 @@
           bind:value={$form.name}
         />
         {#if $errors.name}
-          <FormFieldError>{$errors.name}</FormFieldError>
+          <FormFieldError>{$errors.name[0]}</FormFieldError>
         {/if}
       </FormInputContainer>
       <FormInputContainer>
@@ -60,7 +61,7 @@
           bind:value={$form.slug}
         />
         {#if $errors.slug}
-          <FormFieldError>{$errors.slug}</FormFieldError>
+          <FormFieldError>{$errors.slug[0]}</FormFieldError>
         {/if}
       </FormInputContainer>
       <FormSubmitButtonContainer>
