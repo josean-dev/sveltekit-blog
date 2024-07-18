@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
@@ -35,12 +36,13 @@
     </thead>
     <tbody>
       {#each courses as course}
+        {@const href = `/admin/courses/${course.slug}`}
         <tr>
-          <Td>{course.name}</Td>
-          <Td>{course.slug}</Td>
-          <Td>{course.sectionsCount}</Td>
-          <Td>{formatDateShort(course.createdAt)}</Td>
-          <Td>{formatDateShort(course.updatedAt)}</Td>
+          <Td {href}>{course.name}</Td>
+          <Td {href}>{course.slug}</Td>
+          <Td {href}>{course.sectionsCount}</Td>
+          <Td {href}>{formatDateShort(course.createdAt)}</Td>
+          <Td {href}>{formatDateShort(course.updatedAt)}</Td>
         </tr>
       {/each}
     </tbody>
