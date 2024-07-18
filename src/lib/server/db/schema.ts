@@ -10,8 +10,8 @@ import {
 
 export const course = pgTable("course", {
   id: serial("id").primaryKey(),
-  name: text("name"),
-  slug: text("slug"),
+  name: text("name").notNull(),
+  slug: text("slug").unique().notNull(),
   createdAt: timestamp("created_at", {
     withTimezone: true
   })
@@ -34,8 +34,8 @@ export const courseRelations = relations(course, ({ many }) => ({
 
 export const section = pgTable("section", {
   id: serial("id").primaryKey(),
-  name: text("name"),
-  slug: text("slug"),
+  name: text("name").notNull(),
+  slug: text("slug").unique().notNull(),
   courseId: integer("course_id")
     .references(() => course.id, { onDelete: "cascade" })
     .notNull(),
@@ -68,8 +68,8 @@ export const sectionRelations = relations(
 
 export const subsection = pgTable("subsection", {
   id: serial("id").primaryKey(),
-  name: text("name"),
-  slug: text("slug"),
+  name: text("name").notNull(),
+  slug: text("slug").unique().notNull(),
   vimeoVideoId: varchar("vimeo_video_id", { length: 9 }),
   videoLength: integer("video_length"),
   markdownFilePath: text("markdown_file_path"),

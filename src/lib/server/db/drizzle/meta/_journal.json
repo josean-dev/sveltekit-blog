@@ -50,6 +50,20 @@
       "when": 1720639028008,
       "tag": "0006_sweet_vengeance",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1721313429200,
+      "tag": "0007_easy_fat_cobra",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1721314734957,
+      "tag": "0008_typical_mimic",
+      "breakpoints": true
     }
   ]
 }
