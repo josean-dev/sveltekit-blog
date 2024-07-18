@@ -1,9 +1,10 @@
-import { superValidate } from "sveltekit-superforms";
+import { message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail, redirect } from "@sveltejs/kit";
 import { schema } from "./formSchema";
 import { db } from "$lib/server/db/client";
-import { course } from "$lib/server/db/schema";
+import { course, SelectCourse } from "$lib/server/db/schema";
+import { PostgresError } from "postgres";
 
 export const load = async () => {
   const form = await superValidate(zod(schema));
@@ -21,16 +22,44 @@ export const actions = {
       return fail(400, { form });
     }
 
-    const [createdCourse] = await db
-      .insert(course)
-      .values({
-        name: form.data.name,
-        slug: form.data.slug
-      })
-      .returning();
+    let createdCourse: SelectCourse | undefined = undefined;
 
-    throw redirect(303, `/admin/courses/${createdCourse.slug}`);
+    try {
+      const insertedCourses = await db
+        .insert(course)
+        .values({
+          name: form.data.name,
+          slug: form.data.slug
+        })
+        .returning();
 
-    return { form, createdCourse };
+      createdCourse = insertedCourses[0];
+    } catch (err) {
+      if (err instanceof PostgresError) {
+        if (err.constraint_name === "course_slug_unique") {
+          // Will also return fail, since status is >= 400
+          // form.valid will also be set to false.
+          return message(
+            form,
+            "A course with this slug already exists.",
+            {
+              status: 400
+            }
+          );
+        } else {
+          return message(
+            form,
+            "Something went wrong creating course.",
+            {
+              status: 400
+            }
+          );
+        }
+      }
+    }
+
+    if (createdCourse) {
+      throw redirect(303, `/admin/courses/${createdCourse.slug}`);
+    }
   }
 };
