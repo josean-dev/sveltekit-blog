@@ -188,7 +188,7 @@ return config
 You can setup theme colors directly in the config file. If instead you'd like to use my coolnight theme add the following
 code instead:
 
-```lua{18-28}
+```lua{18-29}
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
@@ -206,6 +206,7 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 10
 
+-- my coolnight colorscheme:
 config.colors = {
 	foreground = "#CBE0F0",
 	background = "#011423",
