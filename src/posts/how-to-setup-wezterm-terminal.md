@@ -1,15 +1,12 @@
 ---
-title: "How To Make Your macOS Terminal Amazing With Alacritty"
-imgUrl: "/post-images/how-to-setup-alacritty-terminal/thumbnail.jpg"
-youtubeId: "uOnL4fEnldA"
-publishedAt: "2024-05-01"
-summary: "This is my step by step guide on how to setup Alacritty for an amazing minimal & fast terminal setup for macOs"
+title: "How To Create An Amazing Terminal Setup With Wezterm"
+imgUrl: "/post-images/how-to-setup-wezterm-terminal/thumbnail.jpg"
+youtubeId: "TTgQV21X0SQ"
+publishedAt: "2024-07-21"
+summary: "This is my step by step guide on how to setup Wezterm for an awesome, simple, feature-rich  & fast terminal setup for macOs"
 ---
 
-_After recommendations from you guys, I've swapped out Alacritty for [WezTerm](https://wezfurlong.org/wezterm/index.html)!
-Everything is the same except the Alacritty config file, you can swap it out with this [~/.wezterm.lua](https://github.com/josean-dev/dev-environment-files/blob/main/.wezterm.lua) file and everything should look and work very similar to Alacritty!_
-
-Alacritty is an awesome, minimal and fast terminal setup that has worked great for me as an alternative to iTerm2.
+Wezterm is an awesome, fast terminal emulator written in Rust with great features that has worked great for me as an alternative to iTerm2 & Alacritty.
 Let's set it up!
 
 **You can find my dotfiles [here](https://github.com/josean-dev/dev-environment-files)**
@@ -59,12 +56,12 @@ Now source `~/.zprofile` by doing:
 source ~/.zprofile
 ```
 
-## Install Alacritty
+## Install Wezterm
 
-Now you can install alacritty:
+Now you can install wezterm:
 
 ```bash
-brew install --cask alacritty
+brew install --cask wezterm
 ```
 
 ## Install git
@@ -89,26 +86,15 @@ Then you can install the nerd font you'd like
 brew install font-meslo-lg-nerd-font
 ```
 
-## Setup Alacritty Config File
+## Setup Wezterm Config File
 
-Next we'll setup the `~/.config/alacritty/alacritty.toml` configuration file to configure Alacritty.
+Next we'll setup the `~/.wezterm.lua` configuration file to configure Wezterm.
+This file is written in lua which is a really nice benefit of using Wezterm!
 
-First create the necessary directory:
-
-```bash
-mkdir -p ~/.config/alacritty
-```
-
-Then move into it:
+First create the config file:
 
 ```bash
-cd ~/.config/alacritty
-```
-
-Now add the `alacritty.toml` file like so:
-
-```bash
-touch alacritty.toml
+touch ~/.wezterm.lua
 ```
 
 Then open it with your editor of choice. I use Neovim, but you can use whatever you prefer.
@@ -116,54 +102,128 @@ Then open it with your editor of choice. I use Neovim, but you can use whatever 
 To open with Neovim do:
 
 ```bash
-nvim alacritty.toml
+nvim ~/.wezterm.lua
 ```
 
 You can also open with Vim:
 
 ```bash
-vim alacritty.toml
+vim ~/.wezterm.lua
 ```
 
 Or TextEdit:
 
 ```bash
-open -a TextEdit alacritty.toml
+open -a TextEdit ~/.wezterm.lua
 ```
 
 Or VSCode:
 
 ```bash
-code alacritty.toml
+code ~/.wezterm.lua
 ```
 
-## Add the configuration to alacritty.toml
+## Add the configuration to ~/.wezterm.lua
 
-See [this](https://alacritty.org/config-alacritty.html) for all the available options.
-See [this](https://toml.io/en/v1.0.0) to learn more about the toml.
+See [this](https://wezfurlong.org/wezterm/config/files.html) for the official documentation.
 
 Add the following configuration to this file. You can modify this to suit your needs.
 
-```toml
-[env]
-TERM = "xterm-256color"
+```lua
+-- Pull in the wezterm API
+local wezterm = require("wezterm")
 
-[window]
-padding.x = 10
-padding.y = 10
+-- This will hold the configuration.
+local config = wezterm.config_builder()
 
-decorations = "Buttonless"
+-- This is where you actually apply your config choices
 
-opacity = 0.7
-blur = true
+config.font = wezterm.font("MesloLGS Nerd Font Mono")
+config.font_size = 19
 
-option_as_alt = "Both"
+config.enable_tab_bar = false
 
-[font]
-normal.family = "MesloLGS Nerd Font Mono"
+config.window_decorations = "RESIZE"
 
-size = 18
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 10
+
+-- and finally, return the configuration to wezterm
+return config
 ```
+
+## Choose a colorscheme
+
+Take a look at the available colorschemes [here](https://wezfurlong.org/wezterm/colorschemes/index.html)
+
+Once you find one you like, you can select a colorscheme for wezterm like so (the highlighted line below):
+
+```lua{9}
+-- Pull in the wezterm API
+local wezterm = require("wezterm")
+
+-- This will hold the configuration.
+local config = wezterm.config_builder()
+
+-- This is where you actually apply your config choices
+
+config.color_scheme = "Batman"
+
+config.font = wezterm.font("MesloLGS Nerd Font Mono")
+config.font_size = 19
+
+config.enable_tab_bar = false
+
+config.window_decorations = "RESIZE"
+
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 10
+
+-- and finally, return the configuration to wezterm
+return config
+```
+
+## Setup my coolnight theme
+
+You can setup theme colors directly in the config file. If instead you'd like to use my coolnight theme add the following
+code instead:
+
+```lua{18-28}
+-- Pull in the wezterm API
+local wezterm = require("wezterm")
+
+-- This will hold the configuration.
+local config = wezterm.config_builder()
+
+-- This is where you actually apply your config choices
+
+config.font = wezterm.font("MesloLGS Nerd Font Mono")
+config.font_size = 19
+
+config.enable_tab_bar = false
+
+config.window_decorations = "RESIZE"
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 10
+
+config.colors = {
+	foreground = "#CBE0F0",
+	background = "#011423",
+	cursor_bg = "#47FF9C",
+	cursor_border = "#47FF9C",
+	cursor_fg = "#011423",
+	selection_bg = "#033259",
+	selection_fg = "#CBE0F0",
+	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+}
+
+-- and finally, return the configuration to wezterm
+return config
+
+```
+
+Save this file and go back to the command line.
 
 ## Install powerlevel10k theme
 
@@ -195,48 +255,6 @@ If you want to open the wizard manually do: `p10k configure`.
 
 Answer the prompts to make the theme look like you would like it to. For the colors of my coolnight theme to work
 use either **lean** (with the 8 colors option) or **rainbow**.
-
-## Setup the colorscheme for powerlevel10k and the terminal
-
-Now we'll setup the colorscheme.
-
-Navigate to `~/.config/alacritty`
-
-```bash
-cd ~/.config/alacritty
-```
-
-Then clone this [repo](https://github.com/alacritty/alacritty-theme) which has a bunch of different alacritty themes like so:
-
-```bash
-git clone https://github.com/alacritty/alacritty-theme themes
-```
-
-Make sure you use the command as shown above to create a `themes` directory inside of `~/.config/alacritty`.
-
-### Add my coolnight theme to the themes folder
-
-I've put together my own theme called coolnight, inspired by my previous iTerm2 theme.
-
-You can add it to the themes directory with this command:
-
-```bash
-curl https://raw.githubusercontent.com/josean-dev/dev-environment-files/main/.config/alacritty/themes/themes/coolnight.toml --output ~/.config/alacritty/themes/themes/coolnight.toml
-```
-
-Now open the `alacritty.toml` file with your editor of choice. With Neovim it would be:
-
-```bash
-nvim alacritty.toml
-```
-
-Now add the following to the top of this file:
-
-```toml
-import = [
-    "~/.config/alacritty/themes/themes/coolnight.toml"
-]
-```
 
 Save this file and go back to the command line.
 
