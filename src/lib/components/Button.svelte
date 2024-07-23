@@ -20,7 +20,7 @@
 
 <Button.Root
   class={cn(
-    "relative",
+    "relative block",
     "px-3 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-md",
     "font-medium",
     klass
