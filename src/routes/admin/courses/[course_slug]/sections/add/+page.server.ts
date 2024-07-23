@@ -1,13 +1,13 @@
 import { message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail, redirect } from "@sveltejs/kit";
-import { addCourseFormSchema } from "./addCourseFormSchema";
+import { addSectionFormSchema } from "./addSectionFormSchema";
 import { db } from "$lib/server/db/client";
-import { course, SelectCourse } from "$lib/server/db/schema";
+import { section, SelectSection } from "$lib/server/db/schema";
 import { PostgresError } from "postgres";
 
 export const load = async () => {
-  const form = await superValidate(zod(addCourseFormSchema));
+  const form = await superValidate(zod(addSectionFormSchema));
 
   // Always return { form } in load functions
   return { form };
@@ -17,7 +17,7 @@ export const actions = {
   default: async ({ request }) => {
     const form = await superValidate(
       request,
-      zod(addCourseFormSchema)
+      zod(addSectionFormSchema)
     );
 
     if (!form.valid) {
@@ -25,26 +25,27 @@ export const actions = {
       return fail(400, { form });
     }
 
-    let createdCourse: SelectCourse | undefined = undefined;
+    let createdSection: SelectSection | undefined = undefined;
 
     try {
-      const insertedCourses = await db
-        .insert(course)
+      const insertedSections = await db
+        .insert(section)
         .values({
           name: form.data.name,
-          slug: form.data.slug
+          slug: form.data.slug,
+          courseId: form.data.courseId
         })
         .returning();
 
-      createdCourse = insertedCourses[0];
+      createdSection = insertedSections[0];
     } catch (err) {
       if (err instanceof PostgresError) {
-        if (err.constraint_name === "course_slug_unique") {
+        if (err.constraint_name === "section_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
           return message(
             form,
-            "A course with this slug already exists.",
+            "A section with this slug already exists.",
             {
               status: 400
             }
@@ -52,7 +53,7 @@ export const actions = {
         } else {
           return message(
             form,
-            "Something went wrong creating course.",
+            "Something went wrong creating section.",
             {
               status: 400
             }
@@ -61,8 +62,8 @@ export const actions = {
       }
     }
 
-    if (createdCourse) {
-      throw redirect(303, `/admin/courses/${createdCourse.slug}`);
+    if (createdSection) {
+      throw redirect(303, `/admin/courses/${form.data.courseSlug}`);
     }
   }
 };

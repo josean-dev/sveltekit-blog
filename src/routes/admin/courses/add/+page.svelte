@@ -10,7 +10,7 @@
   import type { PageData } from "./$types";
   import FormFieldError from "$lib/components/forms/FormFieldError.svelte";
   import FormPage from "$lib/components/forms/FormPage.svelte";
-  import { schema } from "./formSchema";
+  import { addCourseFormSchema } from "./addCourseFormSchema";
   import { zodClient } from "sveltekit-superforms/adapters";
   import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
   import FormError from "$lib/components/forms/FormError.svelte";
@@ -20,7 +20,7 @@
   const { form, errors, message, enhance, submitting } = superForm(
     data.form,
     {
-      validators: zodClient(schema),
+      validators: zodClient(addCourseFormSchema),
       validationMethod: "oninput"
     }
   );
@@ -56,7 +56,7 @@
         <Input
           type="text"
           name="slug"
-          placeholder="Slug is auto generated from name"
+          placeholder="Enter a unique slug for the course"
           aria-invalid={$errors.slug ? "true" : undefined}
           bind:value={$form.slug}
         />
@@ -64,6 +64,7 @@
           <FormFieldError>{$errors.slug[0]}</FormFieldError>
         {/if}
       </FormInputContainer>
+
       <FormSubmitButtonContainer>
         <FormSubmitButton submitting={$submitting}>
           Create Course
