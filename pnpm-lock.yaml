@@ -20,6 +20,9 @@ importers:
       escape-html:
         specifier: ^1.0.3
         version: 1.0.3
+      formsnap:
+        specifier: ^1.0.1
+        version: 1.0.1(svelte@4.2.18)(sveltekit-superforms@2.16.0(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3))(svelte@4.2.18))
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
@@ -100,16 +103,16 @@ importers:
         specifier: ^8.4.29
         version: 8.4.38
       prettier:
-        specifier: ^2.8.8
-        version: 2.8.8
+        specifier: ^3.3.3
+        version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^2.10.1
-        version: 2.10.1(prettier@2.8.8)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
       prettier-plugin-tailwindcss:
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-svelte@2.10.1(prettier@2.8.8)(svelte@4.2.18))(prettier@2.8.8)
+        version: 0.4.1(prettier-plugin-svelte@3.2.6(prettier@3.3.3)(svelte@4.2.18))(prettier@3.3.3)
       svelte:
-        specifier: ^4.0.5
+        specifier: ^4.2.18
         version: 4.2.18
       svelte-check:
         specifier: ^3.4.3
@@ -1320,6 +1323,12 @@ packages:
     resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}
     engines: {node: '>=14'}
 
+  formsnap@1.0.1:
+    resolution: {integrity: sha512-TvU9CoLSiacW1c7wXhLiyVpyy/LBfG0CEFDbs3M3jrsxBSrkTpsuhbQ8JYKY3CNCmIhZlgxCH+Vqr7RBF9G53w==}
+    peerDependencies:
+      svelte: ^4.0.0 || ^5.0.0-next.1
+      sveltekit-superforms: ^2.3.0
+
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
@@ -1839,11 +1848,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-svelte@2.10.1:
-    resolution: {integrity: sha512-Wlq7Z5v2ueCubWo0TZzKc9XHcm7TDxqcuzRuGd0gcENfzfT4JZ9yDlCbEgxWgiPmLHkBjfOtpAWkcT28MCDpUQ==}
+  prettier-plugin-svelte@3.2.6:
+    resolution: {integrity: sha512-Y1XWLw7vXUQQZmgv1JAEiLcErqUniAF2wO7QJsw8BVMvpLET2dI5WpEIEJx1r11iHVdSMzQxivyfrH9On9t2IQ==}
     peerDependencies:
-      prettier: ^1.16.4 || ^2.0.0
-      svelte: ^3.2.0 || ^4.0.0-next.0
+      prettier: ^3.0.0
+      svelte: ^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0
 
   prettier-plugin-tailwindcss@0.4.1:
     resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
@@ -1897,9 +1906,9 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
 
-  prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+    engines: {node: '>=14'}
     hasBin: true
 
   prism-svelte@0.4.7:
@@ -3389,6 +3398,12 @@ snapshots:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
 
+  formsnap@1.0.1(svelte@4.2.18)(sveltekit-superforms@2.16.0(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3))(svelte@4.2.18)):
+    dependencies:
+      nanoid: 5.0.7
+      svelte: 4.2.18
+      sveltekit-superforms: 2.16.0(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3))(svelte@4.2.18)
+
   fraction.js@4.3.7: {}
 
   fs.realpath@1.0.0: {}
@@ -3845,18 +3860,18 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-svelte@2.10.1(prettier@2.8.8)(svelte@4.2.18):
+  prettier-plugin-svelte@3.2.6(prettier@3.3.3)(svelte@4.2.18):
     dependencies:
-      prettier: 2.8.8
+      prettier: 3.3.3
       svelte: 4.2.18
 
-  prettier-plugin-tailwindcss@0.4.1(prettier-plugin-svelte@2.10.1(prettier@2.8.8)(svelte@4.2.18))(prettier@2.8.8):
+  prettier-plugin-tailwindcss@0.4.1(prettier-plugin-svelte@3.2.6(prettier@3.3.3)(svelte@4.2.18))(prettier@3.3.3):
     dependencies:
-      prettier: 2.8.8
+      prettier: 3.3.3
     optionalDependencies:
-      prettier-plugin-svelte: 2.10.1(prettier@2.8.8)(svelte@4.2.18)
+      prettier-plugin-svelte: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
 
-  prettier@2.8.8: {}
+  prettier@3.3.3: {}
 
   prism-svelte@0.4.7: {}
 

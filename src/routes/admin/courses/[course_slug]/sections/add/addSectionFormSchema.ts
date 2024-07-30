@@ -1,7 +1,7 @@
 import {
   nameSchemaField,
   slugSchemaField
-} from "$lib/utils/forms/sharedSchemaFields";
+} from "$lib/forms/sharedSchemaFields";
 import { z } from "zod";
 
 // Define outside the load function so the adapter can be cached
