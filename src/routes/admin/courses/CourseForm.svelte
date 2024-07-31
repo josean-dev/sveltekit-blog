@@ -15,18 +15,36 @@
   import FormControl from "$lib/components/forms/FormControl.svelte";
   import Input from "$lib/components/forms/Input.svelte";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
-  import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
+  import Button from "$lib/components/Button.svelte";
 
   export let courseForm: SuperValidated<Infer<CourseFormSchema>>;
   export let edit: boolean = false;
 
+  $: initialData = courseForm.data;
+
   const form = superForm(courseForm, {
     validators: zodClient(courseFormSchema),
-    validationMethod: "oninput"
+    validationMethod: "oninput",
+    resetForm: false
   });
 
+  export let formId = "courseForm";
+
   const { form: formData, message, enhance, submitting } = form;
+
+  $: dataChanged =
+    JSON.stringify($formData) !== JSON.stringify(initialData);
 </script>
+
+{#if edit}
+  <div class="flex w-full justify-end p-3">
+    <Button
+      disabled={!dataChanged}
+      form={formId}
+      loading={$submitting}>Save Changes</Button
+    >
+  </div>
+{/if}
 
 <FormContainer>
   {#if $message}
@@ -34,7 +52,7 @@
       {$message}
     </FormError>
   {/if}
-  <form method="POST" use:enhance>
+  <form id={formId} method="POST" use:enhance>
     <FormField {form} name="name">
       <FormControl label="Name" let:attrs>
         <Input
@@ -59,14 +77,12 @@
 
     <Input type="hidden" name="id" value={$formData.id} />
 
-    <FormSubmitButtonContainer>
-      <FormSubmitButton submitting={$submitting}>
-        {#if edit}
-          Update Course
-        {:else}
+    {#if !edit}
+      <FormSubmitButtonContainer>
+        <Button class="w-full" loading={$submitting}>
           Create Course
-        {/if}
-      </FormSubmitButton>
-    </FormSubmitButtonContainer>
+        </Button>
+      </FormSubmitButtonContainer>
+    {/if}
   </form>
 </FormContainer>

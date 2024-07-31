@@ -9,11 +9,11 @@
 
   export let data: PageData;
 
-  const { course, sections, form } = data;
+  $: ({ course, sections, form } = data);
 </script>
 
 {#if course && sections}
-  <HeadingContainer>
+  <HeadingContainer underline>
     <H1>{course.name}</H1>
   </HeadingContainer>
 
@@ -22,11 +22,16 @@
   <div class="px-4">
     <HeadingContainer underline>
       <H2>Sections</H2>
+      <Button
+        slot="button"
+        href="/admin/courses/{course.id}/sections/add"
+        color="purple">+ Add Section</Button
+      >
     </HeadingContainer>
     <ul>
       {#each sections as section}
         <li
-          class="flex justify-between py-4 border-b dark:border-gray-700 dark:text-gray-300"
+          class="flex justify-between p-4 border-b dark:border-gray-700 dark:text-gray-300"
         >
           <div>
             {section.name}
@@ -39,10 +44,6 @@
           </div>
         </li>
       {/each}
-      <Button
-        href="/admin/courses/{course.id}/sections/add"
-        class="w-full rounded-none">+ Add Section</Button
-      >
     </ul>
   </div>
 {/if}

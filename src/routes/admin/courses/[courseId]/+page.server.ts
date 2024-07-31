@@ -70,6 +70,7 @@ export const actions = {
         .returning();
 
       updatedCourse = updatedCourses[0];
+
       invalidate(`/admin/courses/${updatedCourse.slug}`);
     } catch (err) {
       console.log(err);
@@ -87,7 +88,7 @@ export const actions = {
         } else {
           return message(
             form,
-            "Something went wrong creating course.",
+            "Something went wrong updating course.",
             {
               status: 400
             }
@@ -96,8 +97,6 @@ export const actions = {
       }
     }
 
-    // if (updatedCourse) {
-    //   throw redirect(303, `/admin/courses/${updatedCourse.id}`);
-    // }
+    return { form };
   }
 };
