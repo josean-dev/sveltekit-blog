@@ -18,6 +18,7 @@
   import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
 
   export let courseForm: SuperValidated<Infer<CourseFormSchema>>;
+  export let edit: boolean = false;
 
   const form = superForm(courseForm, {
     validators: zodClient(courseFormSchema),
@@ -56,9 +57,15 @@
       </FormControl>
     </FormField>
 
+    <Input type="hidden" name="id" value={$formData.id} />
+
     <FormSubmitButtonContainer>
       <FormSubmitButton submitting={$submitting}>
-        Create Course
+        {#if edit}
+          Update Course
+        {:else}
+          Create Course
+        {/if}
       </FormSubmitButton>
     </FormSubmitButtonContainer>
   </form>

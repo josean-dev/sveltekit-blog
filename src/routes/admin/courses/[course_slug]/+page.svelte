@@ -4,10 +4,12 @@
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import pluralize from "pluralize";
   import type { PageData } from "./$types";
+  import CourseForm from "../CourseForm.svelte";
+  import H2 from "$lib/components/headings/H2.svelte";
 
   export let data: PageData;
 
-  const { course, sections } = data;
+  const { course, sections, form } = data;
 </script>
 
 {#if course && sections}
@@ -15,7 +17,12 @@
     <H1>{course.name}</H1>
   </HeadingContainer>
 
+  <CourseForm edit courseForm={form} />
+
   <div class="px-4">
+    <HeadingContainer underline>
+      <H2>Sections</H2>
+    </HeadingContainer>
     <ul>
       {#each sections as section}
         <li
