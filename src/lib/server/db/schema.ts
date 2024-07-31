@@ -21,7 +21,7 @@ export const course = pgTable("course", {
     withTimezone: true
   })
     .defaultNow()
-    .$onUpdate(() => sql`now()`)
+    .$onUpdate(() => new Date())
     .notNull()
 });
 
@@ -48,7 +48,7 @@ export const section = pgTable("section", {
     withTimezone: true
   })
     .defaultNow()
-    .$onUpdate(() => sql`now()`)
+    .$onUpdate(() => new Date())
     .notNull()
 });
 
@@ -85,7 +85,7 @@ export const subsection = pgTable("subsection", {
     withTimezone: true
   })
     .defaultNow()
-    .$onUpdate(() => sql`now()`)
+    .$onUpdate(() => new Date())
     .notNull()
 });
 
