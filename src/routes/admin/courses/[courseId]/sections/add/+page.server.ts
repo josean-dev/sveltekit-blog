@@ -63,7 +63,7 @@ export const actions = {
     }
 
     if (createdSection) {
-      throw redirect(303, `/admin/courses/${form.data.courseSlug}`);
+      throw redirect(303, `/admin/courses/${form.data.courseId}`);
     }
   }
 };

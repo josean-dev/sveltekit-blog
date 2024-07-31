@@ -1,16 +1,17 @@
 import { db } from "$lib/server/db/client";
 import { fail, message, superValidate } from "sveltekit-superforms";
-import type { PageServerLoad } from "./$types";
 import { zod } from "sveltekit-superforms/adapters";
 import { courseFormSchema } from "../courseFormSchema";
 import { course, SelectCourse } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import { PostgresError } from "postgres";
 import { invalidate } from "$app/navigation";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params }) => {
   const course = await db.query.course.findFirst({
-    where: (course, { eq }) => eq(course.slug, params.course_slug),
+    where: (course, { eq }) =>
+      eq(course.id, parseInt(params.courseId)),
     columns: {
       id: true,
       name: true,
@@ -96,7 +97,7 @@ export const actions = {
     }
 
     // if (updatedCourse) {
-    //   throw redirect(303, `/admin/courses/${updatedCourse.slug}`);
+    //   throw redirect(303, `/admin/courses/${updatedCourse.id}`);
     // }
   }
 };

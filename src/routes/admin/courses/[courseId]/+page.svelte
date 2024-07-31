@@ -40,7 +40,7 @@
         </li>
       {/each}
       <Button
-        href="/admin/courses/{course.slug}/sections/add"
+        href="/admin/courses/{course.id}/sections/add"
         class="w-full rounded-none">+ Add Section</Button
       >
     </ul>

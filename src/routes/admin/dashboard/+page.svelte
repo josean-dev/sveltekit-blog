@@ -35,7 +35,7 @@
     </thead>
     <tbody>
       {#each courses as course}
-        {@const href = `/admin/courses/${course.slug}`}
+        {@const href = `/admin/courses/${course.id}`}
         <tr>
           <Td {href}>{course.name}</Td>
           <Td {href}>{course.slug}</Td>
