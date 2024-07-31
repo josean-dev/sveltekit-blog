@@ -1,13 +1,13 @@
 import { message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail, redirect } from "@sveltejs/kit";
-import { addCourseFormSchema } from "./addCourseFormSchema";
+import { courseFormSchema } from "../courseFormSchema";
 import { db } from "$lib/server/db/client";
 import { course, SelectCourse } from "$lib/server/db/schema";
 import { PostgresError } from "postgres";
 
 export const load = async () => {
-  const form = await superValidate(zod(addCourseFormSchema));
+  const form = await superValidate(zod(courseFormSchema));
 
   // Always return { form } in load functions
   return { form };
@@ -15,10 +15,7 @@ export const load = async () => {
 
 export const actions = {
   default: async ({ request }) => {
-    const form = await superValidate(
-      request,
-      zod(addCourseFormSchema)
-    );
+    const form = await superValidate(request, zod(courseFormSchema));
 
     if (!form.valid) {
       // Again, return { form } and things will just work.
