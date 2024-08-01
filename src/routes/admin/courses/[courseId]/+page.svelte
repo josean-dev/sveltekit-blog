@@ -25,7 +25,7 @@
       <Button
         slot="button"
         href="/admin/courses/{course.id}/sections/add"
-        color="purple">+ Add Section</Button
+        style="outline">+ Add Section</Button
       >
     </HeadingContainer>
     <ul>
