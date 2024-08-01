@@ -12,20 +12,25 @@
   let klass: string | undefined | null = "";
 
   export { klass as class };
-
-  const classes = `block px-6 py-4 dark:text-gray-300 text-gray-800 
-                   border-b dark:border-gray-700
-                   ${klass}`;
 </script>
 
 <td
   class={cn({
-    classes: !href
+    "dark:text-gray-300 text-gray-800": true,
+    "border-b dark:border-gray-700": true,
+    "px-6 py-4": !href,
+    [klass || ""]: true
   })}
   {...$$restProps}
 >
   {#if href}
-    <a {href} class={classes}>
+    <a
+      {href}
+      class={cn({
+        block: true,
+        "px-6 py-4": true
+      })}
+    >
       <slot />
     </a>
   {:else}
