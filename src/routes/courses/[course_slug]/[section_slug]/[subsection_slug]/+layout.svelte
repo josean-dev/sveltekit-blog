@@ -41,7 +41,7 @@
                   <a
                     href={`/courses/${course.slug}/${section.slug}/${subsection.slug}`}
                     class={cn({
-                      "flex items-center justify-between py-2 pl-3 pr-3": true,
+                      "flex items-center justify-between py-2 px-3": true,
                       "dark:hover:text-gray-100 hover:text-gray-600 ":
                         !subsectionActive,
                       "font-semibold text-sky-500": subsectionActive
