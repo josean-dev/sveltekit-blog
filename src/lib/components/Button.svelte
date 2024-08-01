@@ -10,7 +10,8 @@
   /* eslint-disable @typescript-eslint/no-unused-vars */
   type $$Props = ButtonProps & {
     loading?: boolean;
-    color?: "blue" | "purple";
+    color?: "primary" | "secondary";
+    style?: "solid" | "outline";
   };
   type $$Events = ButtonEvents;
 
@@ -18,7 +19,8 @@
 
   export { klass as class };
 
-  export let color: "blue" | "purple" = "blue";
+  export let color: "primary" | "secondary" = "primary";
+  export let style: "solid" | "outline" = "solid";
 
   export let loading = false;
 </script>
@@ -30,8 +32,15 @@
     "font-medium": true,
     "disabled:bg-slate-200 disabled:text-slate-400": true,
     "dark:disabled:bg-slate-700 dark:disabled:text-slate-500": true,
-    "bg-sky-500 hover:bg-sky-600": color === "blue",
-    "bg-purple-500 hover:bg-purple-600": color === "purple",
+    "bg-sky-500 hover:bg-sky-600":
+      color === "primary" && style === "solid",
+    "bg-indigo-500 hover:bg-indigo-600":
+      color === "secondary" && style === "solid",
+    "border-2 border-sky-500 hover:bg-sky-500 text-sky-500":
+      color === "primary" && style === "outline",
+    "border-2 border-indigo-500 hover:bg-indigo-500 text-indigo-500":
+      color === "secondary" && style === "outline",
+    "hover:text-white": style === "outline",
     [`${klass}`]: true
   })}
   on:click
