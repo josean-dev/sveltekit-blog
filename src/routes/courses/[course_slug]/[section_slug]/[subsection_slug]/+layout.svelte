@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import PageTransition from "$lib/components/PageTransition.svelte";
+  import H3 from "$lib/components/headings/H3.svelte";
   import DottedCircleIcon from "$lib/components/svg/DottedCircleIcon.svelte";
   import { cn } from "$lib/utils/tailwindcss";
   import { formatHoursMinutesSeconds } from "$lib/utils/time";
@@ -23,15 +24,15 @@
         {#each course.sections as section}
           {@const sectionActive = section.slug === sectionSlug}
           <li>
-            <h3
+            <H3
               class={cn({
-                "border-b border-dashed px-3 py-3.5 text-lg font-black": true,
+                "border-b px-3 py-3.5 font-bold": true,
                 "dark:border-gray-700": !sectionActive,
                 "text-sky-500 border-sky-500": sectionActive
               })}
             >
               {section.name}
-            </h3>
+            </H3>
             <ul>
               {#each section.subsections as subsection}
                 {@const subsectionActive =
