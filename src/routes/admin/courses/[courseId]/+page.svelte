@@ -6,6 +6,9 @@
   import type { PageData } from "./$types";
   import CourseForm from "../CourseForm.svelte";
   import H2 from "$lib/components/headings/H2.svelte";
+  import H3 from "$lib/components/headings/H3.svelte";
+  import H4 from "$lib/components/headings/H4.svelte";
+  import { formatHoursMinutesSeconds } from "$lib/utils/time";
 
   export let data: PageData;
 
@@ -25,23 +28,57 @@
       <Button
         slot="button"
         href="/admin/courses/{course.id}/sections/add"
-        style="outline">+ Add Section</Button
+        style="outline"
       >
+        + Add Section
+      </Button>
     </HeadingContainer>
     <ul>
       {#each sections as section}
-        <li
-          class="flex justify-between p-4 border-b dark:border-gray-700 dark:text-gray-300"
-        >
-          <div>
-            {section.name}
+        <li class="dark:text-gray-300">
+          <div
+            class="flex items-center justify-between p-4
+                   border-b dark:border-gray-700"
+          >
+            <div>
+              <H3>
+                {section.name}
+              </H3>
+              <p class="font-light">
+                {pluralize(
+                  "subsections",
+                  section.subsections.length,
+                  true
+                )}
+              </p>
+            </div>
+
+            <Button
+              slot="button"
+              href="/admin/courses/{course.id}/sections/{section.id}/subsections/add"
+              style="outline"
+              color="secondary"
+            >
+              + Add Subsection
+            </Button>
           </div>
-          <div>
-            {section.slug}
-          </div>
-          <div>
-            {pluralize("sections", section.subsections.length, true)}
-          </div>
+          <ul>
+            {#each section.subsections as subsection}
+              <li>
+                <div>
+                  <H4>{subsection.name}</H4>
+                </div>
+                {#if subsection.videoLength}
+                  <div>
+                    {formatHoursMinutesSeconds(
+                      subsection.videoLength,
+                      true
+                    )}
+                  </div>
+                {/if}
+              </li>
+            {/each}
+          </ul>
         </li>
       {/each}
     </ul>
