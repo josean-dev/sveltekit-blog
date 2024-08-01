@@ -1,8 +1,9 @@
 <script lang="ts">
   import { cn } from "$lib/utils/tailwindcss";
+  import type { HTMLHeadingAttributes } from "bits-ui/dist/internal";
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  interface $$Props extends Partial<HTMLHeadingElement> {}
+  interface $$Props extends Partial<HTMLHeadingAttributes> {}
 
   let klass: string | undefined | null = "";
 

@@ -10,6 +10,6 @@
   export { klass as class };
 </script>
 
-<h1 class={cn("font-bold text-4xl", klass)} {...$$restProps}>
+<h3 class={cn("font-medium text-xl", klass)} {...$$restProps}>
   <slot />
-</h1>
+</h3>
