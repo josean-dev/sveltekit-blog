@@ -25,20 +25,13 @@
   <div class="px-4">
     <HeadingContainer underline>
       <H2>Sections</H2>
-      <Button
-        slot="button"
-        href="/admin/courses/{course.id}/sections/add"
-        style="outline"
-      >
-        + Add Section
-      </Button>
     </HeadingContainer>
     <ul>
       {#each sections as section}
         <li class="dark:text-gray-300">
           <div
             class="flex items-center justify-between p-4
-                   border-b dark:border-gray-700"
+                   border-b border-dashed dark:border-gray-700"
           >
             <div>
               <H3>
@@ -52,15 +45,6 @@
                 )}
               </p>
             </div>
-
-            <Button
-              slot="button"
-              href="/admin/courses/{course.id}/sections/{section.id}/subsections/add"
-              style="outline"
-              color="secondary"
-            >
-              + Add Subsection
-            </Button>
           </div>
           <ul>
             {#each section.subsections as subsection}
@@ -79,8 +63,30 @@
               </li>
             {/each}
           </ul>
+          <div
+            class="py-4 border-b border-dashed dark:border-gray-700"
+          >
+            <Button
+              slot="button"
+              href="/admin/courses/{course.id}/sections/{section.id}/subsections/add"
+              outline
+              color="secondary"
+            >
+              + Add Subsection
+            </Button>
+          </div>
         </li>
       {/each}
     </ul>
+    <div class="py-4">
+      <Button
+        slot="button"
+        href="/admin/courses/{course.id}/sections/add"
+        outline
+        color="primary"
+      >
+        + Add Section
+      </Button>
+    </div>
   </div>
 {/if}
