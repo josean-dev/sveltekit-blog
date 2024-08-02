@@ -10,8 +10,9 @@
   /* eslint-disable @typescript-eslint/no-unused-vars */
   type $$Props = ButtonProps & {
     loading?: boolean;
-    color?: "primary" | "secondary";
-    style?: "solid" | "outline";
+    color?: "primary" | "secondary" | "neutral";
+    outline?: boolean;
+    dashedOutline?: boolean;
   };
   type $$Events = ButtonEvents;
 
@@ -19,8 +20,9 @@
 
   export { klass as class };
 
-  export let color: "primary" | "secondary" = "primary";
-  export let style: "solid" | "outline" = "solid";
+  export let color: "primary" | "secondary" | "neutral" = "primary";
+  export let outline: boolean = false;
+  export let dashedOutline: boolean = false;
 
   export let loading = false;
 </script>
@@ -32,15 +34,19 @@
     "font-medium": true,
     "disabled:bg-slate-200 disabled:text-slate-400": true,
     "dark:disabled:bg-slate-700 dark:disabled:text-slate-500": true,
-    "bg-sky-500 hover:bg-sky-600":
-      color === "primary" && style === "solid",
-    "bg-teal-500 hover:bg-teal-600":
-      color === "secondary" && style === "solid",
+    "hover:text-white": outline,
+    "bg-sky-500 hover:bg-sky-600": color === "primary" && !outline,
     "border-2 border-sky-500 hover:bg-sky-500 text-sky-500":
-      color === "primary" && style === "outline",
-    "border-2 border-teal-500 hover:bg-teal-500 text-teal-500":
-      color === "secondary" && style === "outline",
-    "hover:text-white": style === "outline",
+      color === "primary" && outline,
+    "bg-indigo-400 hover:bg-indigo-500":
+      color === "secondary" && !outline,
+    "border-2 border-indigo-400 hover:bg-indigo-400 text-indigo-400":
+      color === "secondary" && outline,
+    "bg-black hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-300 text-white dark:text-black":
+      color === "neutral" && !outline,
+    "border-2 border-black hover:bg-black dark:border-white dark:hover:bg-white text-black hover:text-white dark:text-white dark:hover:text-black":
+      color === "neutral" && outline,
+    "border-dashed": dashedOutline,
     [`${klass}`]: true
   })}
   on:click
