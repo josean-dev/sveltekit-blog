@@ -13,6 +13,10 @@
   export let data: PageData;
 
   $: ({ course, sections, form } = data);
+
+  $: if (course) {
+    form.data = course;
+  }
 </script>
 
 {#if course && sections}
@@ -29,23 +33,21 @@
     <ul>
       {#each sections as section}
         <li class="dark:text-gray-300">
-          <div
-            class="flex items-center justify-between p-4
-                   border-b border-dashed dark:border-gray-700"
+          <a
+            href="/admin/courses/{course.id}/sections/{section.id}"
+            class="block p-4 border-b border-dashed dark:border-gray-700"
           >
-            <div>
-              <H3>
-                {section.name}
-              </H3>
-              <p class="font-light">
-                {pluralize(
-                  "subsections",
-                  section.subsections.length,
-                  true
-                )}
-              </p>
-            </div>
-          </div>
+            <H3>
+              {section.name}
+            </H3>
+            <p class="font-light">
+              {pluralize(
+                "subsections",
+                section.subsections.length,
+                true
+              )}
+            </p>
+          </a>
           <ul>
             {#each section.subsections as subsection}
               <li>

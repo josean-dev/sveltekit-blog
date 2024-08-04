@@ -1,13 +1,13 @@
 <script lang="ts">
   import {
-    type SuperValidated,
+    superForm,
     type Infer,
-    superForm
+    type SuperValidated
   } from "sveltekit-superforms";
   import {
-    courseFormSchema,
-    type CourseFormSchema
-  } from "./courseFormSchema";
+    sectionFormSchema,
+    type SectionFormSchema
+  } from "./sectionFormSchema";
   import { zodClient } from "sveltekit-superforms/adapters";
   import FormContainer from "$lib/components/forms/FormContainer.svelte";
   import FormError from "$lib/components/forms/FormError.svelte";
@@ -15,21 +15,22 @@
   import FormControl from "$lib/components/forms/FormControl.svelte";
   import Input from "$lib/components/forms/Input.svelte";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
-  import Button from "$lib/components/Button.svelte";
-  import EntityDetailPageSaveButton from "./EntityDetailPageSaveButton.svelte";
+  import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
+  import EntityDetailPageSaveButton from "../../EntityDetailPageSaveButton.svelte";
 
-  export let courseForm: SuperValidated<Infer<CourseFormSchema>>;
+  export let sectionForm: SuperValidated<Infer<SectionFormSchema>>;
   export let edit: boolean = false;
+  export let courseId: number;
 
-  $: initialData = courseForm.data;
+  $: initialData = sectionForm.data;
 
-  const form = superForm(courseForm, {
-    validators: zodClient(courseFormSchema),
+  const form = superForm(sectionForm, {
+    validators: zodClient(sectionFormSchema),
     validationMethod: "oninput",
     resetForm: false
   });
 
-  export let formId = "courseForm";
+  export let formId = "sectionForm";
 
   const { form: formData, message, enhance, submitting } = form;
 
@@ -51,12 +52,13 @@
       {$message}
     </FormError>
   {/if}
+
   <form id={formId} method="POST" use:enhance>
     <FormField {form} name="name">
       <FormControl label="Name" let:attrs>
         <Input
           type="text"
-          placeholder="Enter the name of the course"
+          placeholder="Enter the name of the section"
           bind:value={$formData.name}
           {...attrs}
         />
@@ -67,7 +69,7 @@
       <FormControl label="Slug" let:attrs>
         <Input
           type="text"
-          placeholder="Enter a unique slug for the course"
+          placeholder="Enter a unique slug for the section"
           bind:value={$formData.slug}
           {...attrs}
         />
@@ -75,12 +77,13 @@
     </FormField>
 
     <Input type="hidden" name="id" value={$formData.id} />
+    <Input type="hidden" name="courseId" value={courseId} />
 
     {#if !edit}
       <FormSubmitButtonContainer>
-        <Button class="w-full" loading={$submitting}>
-          Create Course
-        </Button>
+        <FormSubmitButton submitting={$submitting}>
+          Create Section
+        </FormSubmitButton>
       </FormSubmitButtonContainer>
     {/if}
   </form>

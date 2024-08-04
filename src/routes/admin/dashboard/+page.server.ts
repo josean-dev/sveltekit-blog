@@ -20,7 +20,7 @@ export const load: PageServerLoad = async () => {
     .from(course)
     .leftJoin(section, eq(course.id, section.courseId))
     .groupBy(course.id)
-    .orderBy(course.name);
+    .orderBy(course.createdAt);
 
   return {
     coursesCount,

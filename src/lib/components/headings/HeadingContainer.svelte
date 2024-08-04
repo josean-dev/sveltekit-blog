@@ -17,6 +17,8 @@
     [$$restProps.class]: true
   })}
 >
-  <slot />
+  <div>
+    <slot />
+  </div>
   <slot name="button" />
 </div>
