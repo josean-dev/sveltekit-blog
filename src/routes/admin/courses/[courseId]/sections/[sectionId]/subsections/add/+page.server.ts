@@ -1,13 +1,13 @@
-import { message, superValidate } from "sveltekit-superforms";
+import { fail, message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
-import { fail, redirect } from "@sveltejs/kit";
+import { subsectionFormSchema } from "../subsectionFormSchema";
+import { SelectSubsection, subsection } from "$lib/server/db/schema";
 import { db } from "$lib/server/db/client";
-import { section, SelectSection } from "$lib/server/db/schema";
 import { PostgresError } from "postgres";
-import { sectionFormSchema } from "../sectionFormSchema.js";
+import { redirect } from "@sveltejs/kit";
 
 export const load = async () => {
-  const form = await superValidate(zod(sectionFormSchema));
+  const form = await superValidate(zod(subsectionFormSchema));
 
   // Always return { form } in load functions
   return { form };
@@ -15,34 +15,37 @@ export const load = async () => {
 
 export const actions = {
   default: async ({ request, params }) => {
-    const form = await superValidate(request, zod(sectionFormSchema));
+    const form = await superValidate(
+      request,
+      zod(subsectionFormSchema)
+    );
 
     if (!form.valid) {
       // Again, return { form } and things will just work.
       return fail(400, { form });
     }
 
-    let createdSection: SelectSection | undefined = undefined;
+    let createdSubsection: SelectSubsection | undefined = undefined;
 
     try {
-      const insertedSections = await db
-        .insert(section)
+      const insertedSubsections = await db
+        .insert(subsection)
         .values({
           name: form.data.name,
           slug: form.data.slug,
-          courseId: parseInt(params.courseId)
+          sectionId: parseInt(params.sectionId)
         })
         .returning();
 
-      createdSection = insertedSections[0];
+      createdSubsection = insertedSubsections[0];
     } catch (err) {
       if (err instanceof PostgresError) {
-        if (err.constraint_name === "section_slug_unique") {
+        if (err.constraint_name === "subsection_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
           return message(
             form,
-            "A section with this slug already exists.",
+            "A subsection with this slug already exists.",
             {
               status: 400
             }
@@ -59,8 +62,11 @@ export const actions = {
       }
     }
 
-    if (createdSection) {
-      throw redirect(303, `/admin/courses/${params.courseId}`);
+    if (createdSubsection) {
+      throw redirect(
+        303,
+        `/admin/courses/${params.courseId}/sections/${params.sectionId}`
+      );
     }
   }
 };

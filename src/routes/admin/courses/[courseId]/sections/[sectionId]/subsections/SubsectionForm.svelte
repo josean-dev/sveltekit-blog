@@ -4,10 +4,6 @@
     type Infer,
     type SuperValidated
   } from "sveltekit-superforms";
-  import {
-    sectionFormSchema,
-    type SectionFormSchema
-  } from "./sectionFormSchema";
   import { zodClient } from "sveltekit-superforms/adapters";
   import FormContainer from "$lib/components/forms/FormContainer.svelte";
   import FormError from "$lib/components/forms/FormError.svelte";
@@ -16,15 +12,21 @@
   import Input from "$lib/components/forms/Input.svelte";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
   import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
-  import EntityDetailPageSaveButton from "../../EntityDetailPageSaveButton.svelte";
+  import {
+    subsectionFormSchema,
+    type SubsectionFormSchema
+  } from "./subsectionFormSchema";
+  import EntityDetailPageSaveButton from "../../../../EntityDetailPageSaveButton.svelte";
 
-  export let sectionForm: SuperValidated<Infer<SectionFormSchema>>;
+  export let subsectionForm: SuperValidated<
+    Infer<SubsectionFormSchema>
+  >;
   export let edit: boolean = false;
 
-  $: initialData = sectionForm.data;
+  $: initialData = subsectionForm.data;
 
-  const form = superForm(sectionForm, {
-    validators: zodClient(sectionFormSchema),
+  const form = superForm(subsectionForm, {
+    validators: zodClient(subsectionFormSchema),
     validationMethod: "oninput",
     resetForm: false
   });
@@ -57,7 +59,7 @@
       <FormControl label="Name" let:attrs>
         <Input
           type="text"
-          placeholder="Enter the name of the section"
+          placeholder="Enter the name of the subsection"
           bind:value={$formData.name}
           {...attrs}
         />
@@ -68,7 +70,7 @@
       <FormControl label="Slug" let:attrs>
         <Input
           type="text"
-          placeholder="Enter a unique slug for the section"
+          placeholder="Enter a unique slug for the subsection"
           bind:value={$formData.slug}
           {...attrs}
         />
@@ -80,7 +82,7 @@
     {#if !edit}
       <FormSubmitButtonContainer>
         <FormSubmitButton submitting={$submitting}>
-          Create Section
+          Create Subsection
         </FormSubmitButton>
       </FormSubmitButtonContainer>
     {/if}

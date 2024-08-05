@@ -8,8 +8,7 @@ import { z } from "zod";
 export const sectionFormSchema = z.object({
   id: z.number().int().optional(),
   name: nameSchemaField,
-  slug: slugSchemaField,
-  courseId: z.number().int()
+  slug: slugSchemaField
 });
 
 export type SectionFormSchema = typeof sectionFormSchema;

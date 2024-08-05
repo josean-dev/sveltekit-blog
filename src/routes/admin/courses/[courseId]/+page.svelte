@@ -1,14 +1,11 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
-  import pluralize from "pluralize";
   import type { PageData } from "./$types";
   import CourseForm from "../CourseForm.svelte";
-  import H2 from "$lib/components/headings/H2.svelte";
-  import H3 from "$lib/components/headings/H3.svelte";
-  import H4 from "$lib/components/headings/H4.svelte";
-  import { formatHoursMinutesSeconds } from "$lib/utils/time";
+  import AdminSubsectionListItem from "./AdminSubsectionListItem.svelte";
+  import AdminSectionList from "./AdminSectionList.svelte";
+  import AdminSectionListItem from "./AdminSectionListItem.svelte";
 
   export let data: PageData;
 
@@ -17,6 +14,8 @@
   $: if (course) {
     form.data = course;
   }
+
+  $: console.log(sections);
 </script>
 
 {#if course && sections}
@@ -26,69 +25,17 @@
 
   <CourseForm edit courseForm={form} />
 
-  <div class="px-4">
-    <HeadingContainer underline>
-      <H2>Sections</H2>
-    </HeadingContainer>
-    <ul>
-      {#each sections as section}
-        <li class="dark:text-gray-300">
-          <a
-            href="/admin/courses/{course.id}/sections/{section.id}"
-            class="block p-4 border-b border-dashed dark:border-gray-700"
-          >
-            <H3>
-              {section.name}
-            </H3>
-            <p class="font-light">
-              {pluralize(
-                "subsections",
-                section.subsections.length,
-                true
-              )}
-            </p>
-          </a>
-          <ul>
-            {#each section.subsections as subsection}
-              <li>
-                <div>
-                  <H4>{subsection.name}</H4>
-                </div>
-                {#if subsection.videoLength}
-                  <div>
-                    {formatHoursMinutesSeconds(
-                      subsection.videoLength,
-                      true
-                    )}
-                  </div>
-                {/if}
-              </li>
-            {/each}
-          </ul>
-          <div
-            class="py-4 border-b border-dashed dark:border-gray-700"
-          >
-            <Button
-              slot="button"
-              href="/admin/courses/{course.id}/sections/{section.id}/subsections/add"
-              outline
-              color="secondary"
-            >
-              + Add Subsection
-            </Button>
-          </div>
-        </li>
-      {/each}
-    </ul>
-    <div class="py-4">
-      <Button
-        slot="button"
-        href="/admin/courses/{course.id}/sections/add"
-        outline
-        color="primary"
+  <AdminSectionList courseId={course.id}>
+    {#each sections as section}
+      <AdminSectionListItem
+        {section}
+        numSubsections={section.subsections.length}
+        courseId={course.id}
       >
-        + Add Section
-      </Button>
-    </div>
-  </div>
+        {#each section.subsections as subsection}
+          <AdminSubsectionListItem {subsection} />
+        {/each}
+      </AdminSectionListItem>
+    {/each}
+  </AdminSectionList>
 {/if}

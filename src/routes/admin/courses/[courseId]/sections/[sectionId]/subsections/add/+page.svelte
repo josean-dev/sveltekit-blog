@@ -4,23 +4,25 @@
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import H1 from "$lib/components/headings/H1.svelte";
   import H2 from "$lib/components/headings/H2.svelte";
-  import SectionForm from "../SectionForm.svelte";
+  import SubsectionForm from "../SubsectionForm.svelte";
 
   export let data: PageData;
 
-  const { course } = data;
+  const { course, section } = data;
 </script>
 
-{#if course}
+{#if course && section}
   <FormPage>
     <HeadingContainer underline>
-      <H1>{course.name}</H1>
+      <span class="font-light text-slate-400 mb-2">{course.name}</span
+      >
+      <H1>{section.name}</H1>
     </HeadingContainer>
 
     <HeadingContainer>
-      <H2>Add New Section</H2>
+      <H2>Add New Subsection</H2>
     </HeadingContainer>
 
-    <SectionForm sectionForm={data.form} />
+    <SubsectionForm subsectionForm={data.form} />
   </FormPage>
 {/if}

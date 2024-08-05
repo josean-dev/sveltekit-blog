@@ -8,32 +8,23 @@ import { eq } from "drizzle-orm";
 import { PostgresError } from "postgres";
 
 export const load: PageServerLoad = async ({ params }) => {
-  const section = await db.query.section.findFirst({
-    where: (section, { eq }) =>
-      eq(section.id, parseInt(params.sectionId)),
+  const subsections = await db.query.subsection.findMany({
+    where: (subsection, { eq }) =>
+      eq(subsection.sectionId, parseInt(params.sectionId)),
+    orderBy: (subsection, { asc }) => [asc(subsection.createdAt)],
     columns: {
       id: true,
+      slug: true,
       name: true,
-      slug: true
-    },
-    with: {
-      subsections: {
-        orderBy: (subsection, { asc }) => [asc(subsection.createdAt)],
-        columns: {
-          id: true,
-          slug: true,
-          name: true,
-          videoLength: true,
-          updatedAt: true
-        }
-      }
+      videoLength: true,
+      updatedAt: true
     }
   });
 
   const form = await superValidate(zod(sectionFormSchema));
 
   return {
-    section,
+    subsections,
     form
   };
 };
