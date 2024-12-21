@@ -1,7 +1,7 @@
 ---
 title: "How To Use The Awesome Yazi Terminal File Manager"
 imgUrl: "/post-images/how-to-use-yazi-file-manager/thumbnail.jpg"
-youtubeId: "pcLcGDiB8Ds"
+youtubeId: "iKb3cHDD9hw"
 publishedAt: "2024-12-20"
 summary: "Use this guide along with my youtube video to learn how to setup & use the yazi terminal file manager for an awesome boost to your workflow."
 ---
