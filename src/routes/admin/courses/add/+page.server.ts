@@ -59,7 +59,7 @@ export const actions = {
     }
 
     if (createdCourse) {
-      throw redirect(303, `/admin/courses/${createdCourse.id}`);
+      redirect(303, `/admin/courses/${createdCourse.id}`);
     }
   }
 };

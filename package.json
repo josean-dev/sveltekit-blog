@@ -18,8 +18,9 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@sveltejs/adapter-auto": "^2.0.0",
-    "@sveltejs/kit": "^1.20.4",
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.10",
     "@types/gtag.js": "^0.0.14",
@@ -51,7 +52,7 @@
     "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "typescript-svelte-plugin": "^0.3.31",
-    "vite": "^4.4.2",
+    "vite": "^5.0.0",
     "zod": "^3.23.8"
   },
   "type": "module",

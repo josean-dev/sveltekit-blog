@@ -60,7 +60,7 @@ export const actions = {
     }
 
     if (createdSection) {
-      throw redirect(303, `/admin/courses/${params.courseId}`);
+      redirect(303, `/admin/courses/${params.courseId}`);
     }
   }
 };

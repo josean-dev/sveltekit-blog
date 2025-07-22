@@ -63,10 +63,10 @@ export const actions = {
     }
 
     if (createdSubsection) {
-      throw redirect(
-        303,
-        `/admin/courses/${params.courseId}/sections/${params.sectionId}`
-      );
+      redirect(
+                303,
+                `/admin/courses/${params.courseId}/sections/${params.sectionId}`
+              );
     }
   }
 };
