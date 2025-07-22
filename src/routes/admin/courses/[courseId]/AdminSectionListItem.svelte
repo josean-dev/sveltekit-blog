@@ -4,9 +4,19 @@
   import type { SelectSection } from "$lib/server/db/schema";
   import pluralize from "pluralize";
 
-  export let section: Pick<SelectSection, "name" | "id">;
-  export let numSubsections: number;
-  export let courseId: number;
+  interface Props {
+    section: Pick<SelectSection, "name" | "id">;
+    numSubsections: number;
+    courseId: number;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    section,
+    numSubsections,
+    courseId,
+    children
+  }: Props = $props();
 </script>
 
 <li class="dark:text-gray-300">
@@ -22,16 +32,18 @@
     </p>
   </a>
   <ul>
-    <slot />
+    {@render children?.()}
   </ul>
   <div class="py-4 border-b border-dashed dark:border-gray-700">
-    <Button
-      slot="button"
-      href="/admin/courses/{courseId}/sections/{section.id}/subsections/add"
-      outline
-      color="secondary"
-    >
-      + Add Subsection
-    </Button>
+    {#snippet button()}
+        <Button
+        
+        href="/admin/courses/{courseId}/sections/{section.id}/subsections/add"
+        outline
+        color="secondary"
+      >
+        + Add Subsection
+      </Button>
+      {/snippet}
   </div>
 </li>

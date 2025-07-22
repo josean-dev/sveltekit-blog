@@ -1,16 +1,22 @@
 <script lang="ts">
   import { cn } from "$lib/utils/tailwindcss";
   import type { HTMLTableAttributes } from "svelte/elements";
+  interface Props {
+    children?: import('svelte').Snippet;
+    [key: string]: any
+  }
+
+  let { children, ...rest }: Props = $props();
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  interface $$Props extends Partial<HTMLTableAttributes> {}
+  
 </script>
 
 <div class="overflow-x-auto">
   <table
-    {...$$restProps}
-    class={cn("w-full text-left", $$restProps.class)}
+    {...rest}
+    class={cn("w-full text-left", rest.class)}
   >
-    <slot />
+    {@render children?.()}
   </table>
 </div>

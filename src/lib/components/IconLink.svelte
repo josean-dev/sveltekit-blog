@@ -1,6 +1,11 @@
 <script lang="ts">
-  export let href: string;
-  export let target: "_self" | "_blank" = "_self";
+  interface Props {
+    href: string;
+    target?: "_self" | "_blank";
+    children?: import('svelte').Snippet;
+  }
+
+  let { href, target = "_self", children }: Props = $props();
 </script>
 
 <a
@@ -9,5 +14,5 @@
   {href}
   {target}
 >
-  <slot />
+  {@render children?.()}
 </a>

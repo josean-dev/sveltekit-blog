@@ -7,15 +7,27 @@
     label: string;
   };
 
-  export let label: string;
+  interface Props {
+    label: string;
+    children?: import('svelte').Snippet<[any]>;
+    [key: string]: any
+  }
+
+  let { label, children, ...rest }: Props = $props();
+
+  const children_render = $derived(children);
 </script>
 
-<Control let:attrs {...$$restProps}>
-  <div class="flex flex-col gap-2">
-    <Label asChild let:labelAttrs>
-      <FormLabel {...labelAttrs}>{label}</FormLabel>
-    </Label>
+<Control  {...rest}>
+  {#snippet children({ attrs })}
+    <div class="flex flex-col gap-2">
+      <Label asChild >
+        {#snippet children({ labelAttrs })}
+            <FormLabel {...labelAttrs}>{label}</FormLabel>
+                  {/snippet}
+        </Label>
 
-    <slot {attrs} />
-  </div>
+      {@render children_render?.({ attrs, })}
+    </div>
+  {/snippet}
 </Control>

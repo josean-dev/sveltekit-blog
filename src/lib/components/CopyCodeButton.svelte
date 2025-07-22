@@ -2,8 +2,8 @@
   import CheckIcon from "./svg/CheckIcon.svelte";
   import CopyIcon from "./svg/CopyIcon.svelte";
 
-  let copyButton: HTMLButtonElement;
-  let showCheckmark = false;
+  let copyButton: HTMLButtonElement = $state();
+  let showCheckmark = $state(false);
 
   function handleClick() {
     const preTagSibling =
@@ -19,7 +19,7 @@
 
 <button
   bind:this={copyButton}
-  on:click={handleClick}
+  onclick={handleClick}
   class={`absolute right-3 top-3 rounded-md p-1
   shadow-md
   ${

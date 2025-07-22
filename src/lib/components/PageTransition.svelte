@@ -1,6 +1,11 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  export let pagePath: string;
+  interface Props {
+    pagePath: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let { pagePath, children }: Props = $props();
 </script>
 
 {#key pagePath}
@@ -8,6 +13,6 @@
     in:fly={{ y: -15, duration: 200, delay: 300 }}
     out:fly={{ y: 15, duration: 200 }}
   >
-    <slot />
+    {@render children?.()}
   </div>
 {/key}

@@ -28,7 +28,7 @@
 
 <button
   class="p-2 text-purple-800 dark:text-yellow-200"
-  on:click={toggleDarkmode}
+  onclick={toggleDarkmode}
 >
   {#if $darkmode}
     <div in:slide={inTransition} out:slide={outTransition}>

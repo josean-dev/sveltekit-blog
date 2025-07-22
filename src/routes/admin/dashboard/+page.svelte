@@ -9,7 +9,11 @@
   import { formatDateShort } from "$lib/utils/dates";
   import type { PageData } from "./$types";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const { courses, coursesCount } = data;
 </script>
@@ -17,10 +21,12 @@
 <div>
   <HeadingContainer>
     <H1>Courses</H1>
-    <Button href="/admin/courses/add" slot="button">
-      <PlusIcon class="size-5 fill-current" />
-      <span>Add Course</span>
-    </Button>
+    {#snippet button()}
+        <Button href="/admin/courses/add" >
+        <PlusIcon class="size-5 fill-current" />
+        <span>Add Course</span>
+      </Button>
+      {/snippet}
   </HeadingContainer>
 
   <Table>

@@ -1,8 +1,12 @@
 <script lang="ts">
   import type { ErrorAttrs } from "formsnap";
 
-  export let errorAttrs: ErrorAttrs;
-  export let errorMessage: string;
+  interface Props {
+    errorAttrs: ErrorAttrs;
+    errorMessage: string;
+  }
+
+  let { errorAttrs, errorMessage }: Props = $props();
 </script>
 
 <div class="text-red-500 mt-2" {...errorAttrs}>

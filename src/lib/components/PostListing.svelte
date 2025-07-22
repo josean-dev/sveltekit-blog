@@ -2,7 +2,11 @@
   import type { MarkdownPostMetadataAndSlug } from "../../types";
   import { formatPublishedAt } from "$lib/utils/dates";
 
-  export let post: MarkdownPostMetadataAndSlug;
+  interface Props {
+    post: MarkdownPostMetadataAndSlug;
+  }
+
+  let { post }: Props = $props();
 
   const href = `/posts/${post.slug}`;
   const youtubeHref = post.metadata.youtubeId

@@ -5,6 +5,11 @@
   import GoogleAnalytics from "$lib/components/GoogleAnalytics.svelte";
   import MainMargins from "$lib/components/MainMargins.svelte";
   import MainPadding from "$lib/components/MainPadding.svelte";
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
 <GoogleAnalytics />
@@ -14,7 +19,7 @@
   <main>
     <MainMargins>
       <MainPadding>
-        <slot />
+        {@render children?.()}
       </MainPadding>
     </MainMargins>
   </main>

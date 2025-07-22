@@ -5,7 +5,11 @@
   import FormPage from "$lib/components/forms/FormPage.svelte";
   import CourseForm from "../CourseForm.svelte";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <FormPage>

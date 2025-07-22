@@ -2,7 +2,11 @@
   import CopyCodeInjector from "$lib/components/CopyCodeInjector.svelte";
   import type { PageData } from "./$types";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const { subsection, markdown: Markdown } = data;
 </script>
@@ -15,7 +19,7 @@
       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
       style="position:absolute;top:0;left:0;width:100%;height:100%;"
       title={subsection.name}
-    />
+></iframe>
   </div>
 
   {#if Markdown}

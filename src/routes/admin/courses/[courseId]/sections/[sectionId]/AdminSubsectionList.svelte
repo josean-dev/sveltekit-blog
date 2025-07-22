@@ -3,8 +3,13 @@
   import H2 from "$lib/components/headings/H2.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
 
-  export let courseId: number;
-  export let sectionId: number;
+  interface Props {
+    courseId: number;
+    sectionId: number;
+    children?: import('svelte').Snippet;
+  }
+
+  let { courseId, sectionId, children }: Props = $props();
 </script>
 
 <div class="px-4">
@@ -13,17 +18,19 @@
   </HeadingContainer>
 
   <ul class="dark:text-gray-300">
-    <slot />
+    {@render children?.()}
   </ul>
 
   <div class="py-4">
-    <Button
-      slot="button"
-      href="/admin/courses/{courseId}/sections/{sectionId}/subsections/add"
-      outline
-      color="secondary"
-    >
-      + Add Section
-    </Button>
+    {#snippet button()}
+        <Button
+        
+        href="/admin/courses/{courseId}/sections/{sectionId}/subsections/add"
+        outline
+        color="secondary"
+      >
+        + Add Section
+      </Button>
+      {/snippet}
   </div>
 </div>

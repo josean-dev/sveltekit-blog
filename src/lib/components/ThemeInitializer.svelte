@@ -1,6 +1,11 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { darkmode } from "$lib/stores/darkmode";
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 
   if (browser) {
     $darkmode = window.prefersDarkmode;
@@ -24,4 +29,4 @@
   </script>
 </svelte:head>
 
-<slot />
+{@render children?.()}

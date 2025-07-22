@@ -3,13 +3,19 @@
   import type { HTMLHeadingAttributes } from "bits-ui/dist/internal";
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  interface $$Props extends Partial<HTMLHeadingAttributes> {}
+  
 
-  let klass: string | undefined | null = "";
+  interface Props {
+    class?: string | undefined | null;
+    children?: import('svelte').Snippet;
+    [key: string]: any
+  }
 
-  export { klass as class };
+  let { class: klass = "", children, ...rest }: Props = $props();
+
+  
 </script>
 
-<h3 class={cn("font-medium text-xl", klass)} {...$$restProps}>
-  <slot />
+<h3 class={cn("font-medium text-xl", klass)} {...rest}>
+  {@render children?.()}
 </h3>

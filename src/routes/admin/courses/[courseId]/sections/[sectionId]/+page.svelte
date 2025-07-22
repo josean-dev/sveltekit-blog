@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import AdminSubsectionListItem from "../../AdminSubsectionListItem.svelte";
@@ -6,13 +8,19 @@
   import type { PageData } from "./$types";
   import AdminSubsectionList from "./AdminSubsectionList.svelte";
 
-  export let data: PageData;
-
-  $: ({ course, section, subsections, form } = data);
-
-  $: if (course && section) {
-    form.data = section;
+  interface Props {
+    data: PageData;
   }
+
+  let { data }: Props = $props();
+
+  let { course, section, subsections, form } = $derived(data);
+
+  run(() => {
+    if (course && section) {
+      form.data = section;
+    }
+  });
 </script>
 
 {#if course && section}

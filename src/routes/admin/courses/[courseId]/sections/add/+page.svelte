@@ -6,7 +6,11 @@
   import H2 from "$lib/components/headings/H2.svelte";
   import SectionForm from "../SectionForm.svelte";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const { course } = data;
 </script>

@@ -7,7 +7,11 @@
   import { page } from "$app/stores";
   import Giscus from "@giscus/svelte";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const { metadata, post: Post } = data;
 </script>

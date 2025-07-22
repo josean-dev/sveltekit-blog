@@ -2,7 +2,11 @@
   import type { MarkdownPost } from "../../types";
   import { formatPublishedAt } from "$lib/utils/dates";
 
-  export let metadata: MarkdownPost["metadata"];
+  interface Props {
+    metadata: MarkdownPost["metadata"];
+  }
+
+  let { metadata }: Props = $props();
 </script>
 
 <header class="p-4">
@@ -13,7 +17,7 @@
           title={metadata.title}
           src={`https://www.youtube.com/embed/${metadata.youtubeId}?origin=http://example.com`}
           allow="fullscreen"
-        />
+></iframe>
       {:else}
         <img
           src={metadata.imgUrl}

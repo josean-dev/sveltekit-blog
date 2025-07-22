@@ -3,15 +3,19 @@
   import type { HTMLTdAttributes } from "svelte/elements";
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  interface $$Props extends Partial<HTMLTdAttributes> {
+  
+
+
+  interface Props {
     href?: string;
+    class?: string | undefined | null;
+    children?: import('svelte').Snippet;
+    [key: string]: any
   }
 
-  export let href: string = "";
+  let { href = "", class: klass = "", children, ...rest }: Props = $props();
 
-  let klass: string | undefined | null = "";
-
-  export { klass as class };
+  
 </script>
 
 <td
@@ -21,7 +25,7 @@
     "px-6 py-4": !href,
     [klass || ""]: true
   })}
-  {...$$restProps}
+  {...rest}
 >
   {#if href}
     <a
@@ -31,9 +35,9 @@
         "px-6 py-4": true
       })}
     >
-      <slot />
+      {@render children?.()}
     </a>
   {:else}
-    <slot />
+    {@render children?.()}
   {/if}
 </td>

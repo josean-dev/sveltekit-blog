@@ -16,15 +16,31 @@
   };
   type $$Events = ButtonEvents;
 
-  let klass: string | undefined | null = "";
 
-  export { klass as class };
+  
 
-  export let color: "primary" | "secondary" | "neutral" = "primary";
-  export let outline: boolean = false;
-  export let dashedOutline: boolean = false;
 
-  export let loading = false;
+  interface Props {
+    class?: string | undefined | null;
+    color?: "primary" | "secondary" | "neutral";
+    outline?: boolean;
+    dashedOutline?: boolean;
+    loading?: boolean;
+    icon?: import('svelte').Snippet;
+    children?: import('svelte').Snippet;
+    [key: string]: any
+  }
+
+  let {
+    class: klass = "",
+    color = "primary",
+    outline = false,
+    dashedOutline = false,
+    loading = false,
+    icon,
+    children,
+    ...rest
+  }: Props = $props();
 </script>
 
 <Button.Root
@@ -51,7 +67,7 @@
   })}
   on:click
   on:keydown
-  {...$$restProps}
+  {...rest}
 >
   <div
     class={cn({
@@ -59,8 +75,8 @@
       "flex items-center justify-center space-x-2": true
     })}
   >
-    <slot name="icon" />
-    <slot />
+    {@render icon?.()}
+    {@render children?.()}
   </div>
 
   <div

@@ -3,10 +3,14 @@
   import type { SelectSubsection } from "$lib/server/db/schema";
   import { formatHoursMinutesSeconds } from "$lib/utils/time";
 
-  export let subsection: Pick<
+  interface Props {
+    subsection: Pick<
     SelectSubsection,
     "name" | "videoLength"
   >;
+  }
+
+  let { subsection }: Props = $props();
 </script>
 
 <li>

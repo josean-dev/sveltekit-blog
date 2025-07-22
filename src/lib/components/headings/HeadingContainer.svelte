@@ -2,23 +2,28 @@
   import { cn } from "$lib/utils/tailwindcss";
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  interface $$Props extends Partial<HTMLHeadingElement> {
+  
+
+  interface Props {
     underline?: boolean;
+    children?: import('svelte').Snippet;
+    button?: import('svelte').Snippet;
+    [key: string]: any
   }
 
-  export let underline = false;
+  let { underline = false, children, button, ...rest }: Props = $props();
 </script>
 
 <div
-  {...$$restProps}
+  {...rest}
   class={cn({
     "p-4 flex items-center justify-between": true,
     "border-b dark:border-gray-700": underline,
-    [$$restProps.class]: true
+    [rest.class]: true
   })}
 >
   <div>
-    <slot />
+    {@render children?.()}
   </div>
-  <slot name="button" />
+  {@render button?.()}
 </div>

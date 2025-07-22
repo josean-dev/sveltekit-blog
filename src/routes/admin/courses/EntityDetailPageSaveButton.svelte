@@ -1,9 +1,13 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte";
 
-  export let disabled: boolean = false;
-  export let formId: string;
-  export let saving: boolean = false;
+  interface Props {
+    disabled?: boolean;
+    formId: string;
+    saving?: boolean;
+  }
+
+  let { disabled = false, formId, saving = false }: Props = $props();
 </script>
 
 <div class="flex w-full justify-end p-3">

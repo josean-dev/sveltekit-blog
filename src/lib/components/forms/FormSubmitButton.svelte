@@ -1,9 +1,14 @@
 <script lang="ts">
   import Button from "../Button.svelte";
 
-  export let submitting = false;
+  interface Props {
+    submitting?: boolean;
+    children?: import('svelte').Snippet;
+  }
+
+  let { submitting = false, children }: Props = $props();
 </script>
 
 <Button loading={submitting} class="w-full">
-  <slot />
+  {@render children?.()}
 </Button>

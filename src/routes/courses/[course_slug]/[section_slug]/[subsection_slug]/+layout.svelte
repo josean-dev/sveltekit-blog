@@ -7,10 +7,15 @@
   import { formatHoursMinutesSeconds } from "$lib/utils/time";
   import type { LayoutData } from "./$types";
 
-  export let data: LayoutData;
+  interface Props {
+    data: LayoutData;
+    children?: import('svelte').Snippet;
+  }
 
-  $: ({ section_slug: sectionSlug, subsection_slug: subsectionSlug } =
-    $page.params);
+  let { data, children }: Props = $props();
+
+  let { section_slug: sectionSlug, subsection_slug: subsectionSlug } =
+    $derived($page.params);
 
   const course = data.course;
 </script>
@@ -74,7 +79,7 @@
   <div class="flex-1">
     <PageTransition pagePath={data.pathname}>
       <div class="px-4 pb-10 pt-4">
-        <slot />
+        {@render children?.()}
       </div>
     </PageTransition>
   </div>
