@@ -3,8 +3,8 @@ import { zod } from "sveltekit-superforms/adapters";
 import { fail, redirect } from "@sveltejs/kit";
 import { courseFormSchema } from "../courseFormSchema";
 import { db } from "$lib/server/db/client";
-import { course, SelectCourse } from "$lib/server/db/schema";
-import { PostgresError } from "postgres";
+import { course, type SelectCourse } from "$lib/server/db/schema";
+import postgres from "postgres";
 
 export const load = async () => {
   const form = await superValidate(zod(courseFormSchema));
@@ -35,7 +35,7 @@ export const actions = {
 
       createdCourse = insertedCourses[0];
     } catch (err) {
-      if (err instanceof PostgresError) {
+      if (err instanceof postgres.PostgresError) {
         if (err.constraint_name === "course_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.

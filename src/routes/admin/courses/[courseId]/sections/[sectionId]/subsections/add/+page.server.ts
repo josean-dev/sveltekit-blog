@@ -3,7 +3,7 @@ import { zod } from "sveltekit-superforms/adapters";
 import { subsectionFormSchema } from "../subsectionFormSchema";
 import { SelectSubsection, subsection } from "$lib/server/db/schema";
 import { db } from "$lib/server/db/client";
-import { PostgresError } from "postgres";
+import postgress from "postgres";
 import { redirect } from "@sveltejs/kit";
 
 export const load = async () => {
@@ -39,7 +39,7 @@ export const actions = {
 
       createdSubsection = insertedSubsections[0];
     } catch (err) {
-      if (err instanceof PostgresError) {
+      if (err instanceof postgress.PostgresError) {
         if (err.constraint_name === "subsection_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
@@ -64,9 +64,9 @@ export const actions = {
 
     if (createdSubsection) {
       redirect(
-                303,
-                `/admin/courses/${params.courseId}/sections/${params.sectionId}`
-              );
+        303,
+        `/admin/courses/${params.courseId}/sections/${params.sectionId}`
+      );
     }
   }
 };

@@ -4,7 +4,7 @@ import { zod } from "sveltekit-superforms/adapters";
 import { courseFormSchema } from "../courseFormSchema";
 import { course } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
-import { PostgresError } from "postgres";
+import postgres from "postgres";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -60,7 +60,7 @@ export const actions = {
         .returning();
     } catch (err) {
       console.log(err);
-      if (err instanceof PostgresError) {
+      if (err instanceof postgres.PostgresError) {
         if (err.constraint_name === "course_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.

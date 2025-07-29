@@ -2,8 +2,8 @@ import { message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail, redirect } from "@sveltejs/kit";
 import { db } from "$lib/server/db/client";
-import { section, SelectSection } from "$lib/server/db/schema";
-import { PostgresError } from "postgres";
+import { section, type SelectSection } from "$lib/server/db/schema";
+import postgress from "postgres";
 import { sectionFormSchema } from "../sectionFormSchema.js";
 
 export const load = async () => {
@@ -36,7 +36,7 @@ export const actions = {
 
       createdSection = insertedSections[0];
     } catch (err) {
-      if (err instanceof PostgresError) {
+      if (err instanceof postgress.PostgresError) {
         if (err.constraint_name === "section_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
