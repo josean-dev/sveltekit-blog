@@ -1,17 +1,18 @@
 <script lang="ts">
   import { onMount, mount } from "svelte";
   import CopyCodeButton from "./CopyCodeButton.svelte";
+
   interface Props {
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
-  let { children }: Props = $props();
+  const { children }: Props = $props();
 
   onMount(() => {
     const preTags: HTMLCollectionOf<HTMLPreElement> =
       document.getElementsByTagName("pre");
 
-    for (let preTag of preTags) {
+    for (const preTag of preTags) {
       const classList = Array.from(preTag.classList);
 
       const isCodeBlock = classList.some((className) =>
@@ -25,8 +26,8 @@
         newCodeBlockWrapper.className = `relative`;
 
         mount(CopyCodeButton, {
-                    target: newCodeBlockWrapper
-                  });
+          target: newCodeBlockWrapper
+        });
 
         preTag.className = `not-prose p-4 rounded-lg text-base leading-7`;
 
