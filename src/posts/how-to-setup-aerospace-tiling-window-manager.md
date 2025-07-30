@@ -334,7 +334,6 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-b = 'workspace B'
 alt-b = 'workspace B' # for Browser
 alt-e = 'workspace E' # for File Explorer (Finder)
 alt-m = 'workspace M' # for Music
