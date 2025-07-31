@@ -1,17 +1,15 @@
 <script lang="ts">
   import { cn } from "$lib/utils/tailwindcss";
-  import type { HTMLLabelAttributes } from "svelte/elements";
+  import { Label } from "formsnap";
+
   interface Props {
-    children?: import('svelte').Snippet;
-    [key: string]: any
+    children?: import("svelte").Snippet;
+    class?: string;
   }
 
-  let { children, ...rest }: Props = $props();
-
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-  
+  let { children, class: klass }: Props = $props();
 </script>
 
-<label {...rest} class={cn("mb-2 block", rest.class)}>
+<Label class={cn("mb-2 block", klass)}>
   {@render children?.()}
-</label>
+</Label>

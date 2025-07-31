@@ -1,33 +1,27 @@
 <script lang="ts">
-  import { Control, Label, type ControlProps } from "formsnap";
+  import { Control } from "formsnap";
+  import type { ComponentProps } from "svelte";
   import FormLabel from "./FormLabel.svelte";
 
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-  type $$Props = ControlProps & {
+  let {
+    label,
+    // Rename the children prop to childrenProp to avoid
+    // conflicts with the Control component
+    children: childrenProp,
+    ...restProps
+  }: ComponentProps<typeof Control> & {
     label: string;
-  };
-
-  interface Props {
-    label: string;
-    children?: import('svelte').Snippet<[any]>;
-    [key: string]: any
-  }
-
-  let { label, children, ...rest }: Props = $props();
-
-  const children_render = $derived(children);
+  } = $props();
 </script>
 
-<Control  {...rest}>
-  {#snippet children({ attrs })}
+<Control {...restProps}>
+  {#snippet children({ props })}
     <div class="flex flex-col gap-2">
-      <Label asChild >
-        {#snippet children({ labelAttrs })}
-            <FormLabel {...labelAttrs}>{label}</FormLabel>
-                  {/snippet}
-        </Label>
+      <FormLabel>{label}</FormLabel>
 
-      {@render children_render?.({ attrs, })}
+      {#if childrenProp}
+        {@render childrenProp({ props })}
+      {/if}
     </div>
   {/snippet}
 </Control>

@@ -12,38 +12,32 @@
   lang="ts"
   generics="T extends Record<string, unknown>, U extends FormPath<T>"
 >
+  import { Field, type FieldProps, FieldErrors } from "formsnap";
+
+  import FormFieldError from "./FormFieldError.svelte";
   import FormInputContainer from "./FormInputContainer.svelte";
 
-  import { Field, type FieldProps, FieldErrors } from "formsnap";
-  import type { SuperForm } from "sveltekit-superforms";
-  import FormFieldError from "./FormFieldError.svelte";
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  type $$Props = FieldProps<T, U>;
-
-  interface Props {
-    form: SuperForm<T>;
-    name: U;
-    children?: import('svelte').Snippet<[any]>;
-  }
-
-  let { form, name, children }: Props = $props();
-
-  const children_render = $derived(children);
+  let {
+    form,
+    name,
+    children: childrenProp
+  }: FieldProps<T, U> = $props();
 </script>
 
 <!-- passing the slot props down are optional -->
-<Field {form} {name}    >
-  {#snippet children({ value, errors, tainted, constraints })}
+<Field {form} {name}>
+  {#snippet children(snippetProps)}
     <FormInputContainer>
-      {@render children_render?.({ value, errors, tainted, constraints, })}
-      <FieldErrors  >
-        {#snippet children({ errors, errorAttrs })}
-            {#if errors.length > 0}
-            <FormFieldError errorMessage={errors[0]} {errorAttrs} />
+      {#if childrenProp}
+        {@render childrenProp(snippetProps)}
+      {/if}
+      <FieldErrors>
+        {#snippet children({ errors, errorProps })}
+          {#if errors.length > 0}
+            <FormFieldError errorMessage={errors[0]} {errorProps} />
           {/if}
-                  {/snippet}
-        </FieldErrors>
+        {/snippet}
+      </FieldErrors>
     </FormInputContainer>
   {/snippet}
 </Field>

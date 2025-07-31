@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm";
 import postgres from "postgres";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, parent }) => {
   const sections = await db.query.section.findMany({
     where: (section, { eq }) =>
       eq(section.courseId, parseInt(params.courseId)),
@@ -32,7 +32,9 @@ export const load: PageServerLoad = async ({ params }) => {
     }
   });
 
-  const form = await superValidate(zod(courseFormSchema));
+  const { course } = await parent();
+
+  const form = await superValidate(course, zod(courseFormSchema));
 
   return {
     sections,
@@ -41,7 +43,7 @@ export const load: PageServerLoad = async ({ params }) => {
 };
 
 export const actions = {
-  default: async ({ request }) => {
+  default: async ({ request, params }) => {
     const form = await superValidate(request, zod(courseFormSchema));
 
     if (!form.valid) {
@@ -56,8 +58,7 @@ export const actions = {
           name: form.data.name,
           slug: form.data.slug
         })
-        .where(eq(course.id, form.data.id!))
-        .returning();
+        .where(eq(course.id, parseInt(params.courseId)));
     } catch (err) {
       console.log(err);
       if (err instanceof postgres.PostgresError) {

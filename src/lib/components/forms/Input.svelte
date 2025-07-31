@@ -1,22 +1,12 @@
 <script lang="ts">
-  import { createBubbler } from 'svelte/legacy';
-
-  const bubble = createBubbler();
   import { cn } from "$lib/utils/tailwindcss";
   import type { HTMLInputAttributes } from "svelte/elements";
 
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-  
-
-  interface Props {
-    value?: string;
-    class?: string | undefined | null;
-    [key: string]: any
-  }
-
-  let { value = $bindable(""), class: klass = "", ...rest }: Props = $props();
-
-  
+  let {
+    class: klass = "",
+    value = $bindable(""),
+    ...rest
+  }: HTMLInputAttributes = $props();
 </script>
 
 <input
@@ -29,6 +19,5 @@
     klass
   )}
   bind:value
-  oninput={bubble('input')}
   {...rest}
 />
