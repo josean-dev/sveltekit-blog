@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
+  import BasicButton from "$lib/components/BasicButton.svelte";
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import PlusIcon from "$lib/components/svg/PlusIcon.svelte";
@@ -22,11 +22,11 @@
   <HeadingContainer>
     <H1>Courses</H1>
     {#snippet button()}
-        <Button href="/admin/courses/add" >
+      <BasicButton href="/admin/courses/add">
         <PlusIcon class="size-5 fill-current" />
         <span>Add Course</span>
-      </Button>
-      {/snippet}
+      </BasicButton>
+    {/snippet}
   </HeadingContainer>
 
   <Table>

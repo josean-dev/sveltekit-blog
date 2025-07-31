@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
+  import BasicButton from "$lib/components/BasicButton.svelte";
 
   interface Props {
     disabled?: boolean;
@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex w-full justify-end p-3">
-  <Button {disabled} form={formId} loading={saving}
-    >Save Changes</Button
-  >
+  <BasicButton {disabled} form={formId} loading={saving}>
+    Save Changes
+  </BasicButton>
 </div>

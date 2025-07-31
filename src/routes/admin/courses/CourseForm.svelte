@@ -16,7 +16,8 @@
   import Input from "$lib/components/forms/Input.svelte";
   import EntityDetailPageSaveButton from "./EntityDetailPageSaveButton.svelte";
   import { isDataChanged } from "$lib/utils/forms";
-    import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
+  import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
+  import BasicButton from "$lib/components/BasicButton.svelte";
 
   interface Props {
     courseForm: SuperValidated<Infer<CourseFormSchema>>;
@@ -87,10 +88,7 @@
 
     {#if !edit}
       <FormSubmitButtonContainer>
-        <FormSubmit
-        <Button loading={$submitting}>
-          Create Course
-        </Button>
+        <BasicButton loading={$submitting}>Create Course</BasicButton>
       </FormSubmitButtonContainer>
     {/if}
   </form>
