@@ -4,8 +4,8 @@ import { zod } from "sveltekit-superforms/adapters";
 import { courseFormSchema } from "../courseFormSchema";
 import { course } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
-import postgres from "postgres";
 import type { PageServerLoad } from "./$types";
+import { isDBError } from "$lib/server/db/errors";
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const sections = await db.query.section.findMany({
@@ -60,9 +60,8 @@ export const actions = {
         })
         .where(eq(course.id, parseInt(params.courseId)));
     } catch (err) {
-      console.log(err);
-      if (err instanceof postgres.PostgresError) {
-        if (err.constraint_name === "course_slug_unique") {
+      if (isDBError(err)) {
+        if (err.cause.constraint === "course_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
           return message(
@@ -82,8 +81,8 @@ export const actions = {
           );
         }
       }
-    }
 
-    return { form };
+      return { form };
+    }
   }
 };

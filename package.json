@@ -40,7 +40,6 @@
     "mdsvex": "^0.11.0",
     "pluralize": "^8.0.0",
     "postcss": "^8.4.29",
-    "postgres": "^3.4.7",
     "prettier": "^3.3.3",
     "prettier-plugin-svelte": "^3.2.6",
     "prettier-plugin-tailwindcss": "^0.4.1",
@@ -61,8 +60,10 @@
   "dependencies": {
     "@giscus/svelte": "^2.3.0",
     "@tailwindcss/forms": "^0.5.7",
+    "@types/pg": "^8.15.5",
     "dotenv": "^16.4.5",
     "escape-html": "^1.0.3",
+    "pg": "^8.16.3",
     "prismjs": "^1.29.0",
     "shiki": "^0.14.4",
     "shiki-themes": "^0.2.7"

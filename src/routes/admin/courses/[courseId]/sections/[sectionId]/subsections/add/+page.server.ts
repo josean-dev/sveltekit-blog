@@ -1,10 +1,13 @@
 import { fail, message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { subsectionFormSchema } from "../subsectionFormSchema";
-import { SelectSubsection, subsection } from "$lib/server/db/schema";
+import {
+  type SelectSubsection,
+  subsection
+} from "$lib/server/db/schema";
 import { db } from "$lib/server/db/client";
-import postgress from "postgres";
 import { redirect } from "@sveltejs/kit";
+import { isDBError } from "$lib/server/db/errors";
 
 export const load = async () => {
   const form = await superValidate(zod(subsectionFormSchema));
@@ -39,8 +42,8 @@ export const actions = {
 
       createdSubsection = insertedSubsections[0];
     } catch (err) {
-      if (err instanceof postgress.PostgresError) {
-        if (err.constraint_name === "subsection_slug_unique") {
+      if (isDBError(err)) {
+        if (err.cause.constraint === "subsection_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
           return message(

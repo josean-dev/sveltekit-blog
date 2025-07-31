@@ -4,7 +4,9 @@ import { fail, redirect } from "@sveltejs/kit";
 import { courseFormSchema } from "../courseFormSchema";
 import { db } from "$lib/server/db/client";
 import { course, type SelectCourse } from "$lib/server/db/schema";
-import postgres from "postgres";
+import { DrizzleQueryError } from "drizzle-orm/errors";
+import { DatabaseError } from "pg";
+import { isDBError } from "$lib/server/db/errors";
 
 export const load = async () => {
   const form = await superValidate(zod(courseFormSchema));
@@ -35,8 +37,8 @@ export const actions = {
 
       createdCourse = insertedCourses[0];
     } catch (err) {
-      if (err instanceof postgres.PostgresError) {
-        if (err.constraint_name === "course_slug_unique") {
+      if (isDBError(err)) {
+        if (err.cause.constraint === "course_slug_unique") {
           // Will also return fail, since status is >= 400
           // form.valid will also be set to false.
           return message(
