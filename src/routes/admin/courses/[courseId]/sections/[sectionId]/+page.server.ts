@@ -7,7 +7,7 @@ import { section } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import { isDBError } from "$lib/server/db/errors";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, parent }) => {
   const subsections = await db.query.subsection.findMany({
     where: (subsection, { eq }) =>
       eq(subsection.sectionId, parseInt(params.sectionId)),
@@ -21,7 +21,9 @@ export const load: PageServerLoad = async ({ params }) => {
     }
   });
 
-  const form = await superValidate(zod(sectionFormSchema));
+  const { section } = await parent();
+
+  const form = await superValidate(section, zod(sectionFormSchema));
 
   return {
     subsections,
@@ -45,8 +47,7 @@ export const actions = {
           name: form.data.name,
           slug: form.data.slug
         })
-        .where(eq(section.id, form.data.id!))
-        .returning();
+        .where(eq(section.id, form.data.id!));
     } catch (err) {
       if (isDBError(err)) {
         if (err.cause.constraint === "section_slug_unique") {

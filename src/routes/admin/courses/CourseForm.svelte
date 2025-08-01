@@ -13,11 +13,11 @@
   import FormError from "$lib/components/forms/FormError.svelte";
   import FormField from "$lib/components/forms/FormField.svelte";
   import FormControl from "$lib/components/forms/FormControl.svelte";
-  import Input from "$lib/components/forms/Input.svelte";
   import EntityDetailPageSaveButton from "./EntityDetailPageSaveButton.svelte";
   import { isDataChanged } from "$lib/utils/forms";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
   import BasicButton from "$lib/components/BasicButton.svelte";
+  import FormInput from "$lib/components/forms/FormInput.svelte";
 
   interface Props {
     courseForm: SuperValidated<Infer<CourseFormSchema>>;
@@ -63,7 +63,7 @@
     <FormField {form} name="name">
       <FormControl label="Name">
         {#snippet children({ props })}
-          <Input
+          <FormInput
             type="text"
             placeholder="Enter the name of the course"
             bind:value={$formData.name}
@@ -76,7 +76,7 @@
     <FormField {form} name="slug">
       <FormControl label="Slug">
         {#snippet children({ props })}
-          <Input
+          <FormInput
             type="text"
             placeholder="Enter a unique slug for the course"
             bind:value={$formData.slug}

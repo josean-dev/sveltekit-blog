@@ -36,6 +36,7 @@ export const actions = {
 
       createdSection = insertedSections[0];
     } catch (err) {
+      console.log(err);
       if (isDBError(err)) {
         if (err.cause.constraint === "section_slug_unique") {
           // Will also return fail, since status is >= 400
@@ -60,7 +61,10 @@ export const actions = {
     }
 
     if (createdSection) {
-      redirect(303, `/admin/courses/${params.courseId}`);
+      redirect(
+        303,
+        `/admin/courses/${params.courseId}/sections/${createdSection.id}`
+      );
     }
   }
 };

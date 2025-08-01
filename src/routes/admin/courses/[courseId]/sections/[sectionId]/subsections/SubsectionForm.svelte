@@ -9,7 +9,6 @@
   import FormError from "$lib/components/forms/FormError.svelte";
   import FormField from "$lib/components/forms/FormField.svelte";
   import FormControl from "$lib/components/forms/FormControl.svelte";
-  import Input from "$lib/components/forms/Input.svelte";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
   import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
   import {
@@ -17,8 +16,7 @@
     type SubsectionFormSchema
   } from "./subsectionFormSchema";
   import EntityDetailPageSaveButton from "../../../../EntityDetailPageSaveButton.svelte";
-
-
+  import FormInput from "$lib/components/forms/FormInput.svelte";
 
   const form = superForm(subsectionForm, {
     validators: zodClient(subsectionFormSchema),
@@ -27,20 +25,23 @@
   });
 
   interface Props {
-    subsectionForm: SuperValidated<
-    Infer<SubsectionFormSchema>
-  >;
+    subsectionForm: SuperValidated<Infer<SubsectionFormSchema>>;
     edit?: boolean;
     formId?: string;
   }
 
-  let { subsectionForm, edit = false, formId = "sectionForm" }: Props = $props();
+  let {
+    subsectionForm,
+    edit = false,
+    formId = "sectionForm"
+  }: Props = $props();
 
   const { form: formData, message, enhance, submitting } = form;
 
   let initialData = $derived(subsectionForm.data);
-  let dataChanged =
-    $derived(JSON.stringify($formData) !== JSON.stringify(initialData));
+  let dataChanged = $derived(
+    JSON.stringify($formData) !== JSON.stringify(initialData)
+  );
 </script>
 
 {#if edit}
@@ -60,29 +61,29 @@
 
   <form id={formId} method="POST" use:enhance>
     <FormField {form} name="name">
-      <FormControl label="Name" >
+      <FormControl label="Name">
         {#snippet children({ attrs })}
-                <Input
+          <FormInput
             type="text"
             placeholder="Enter the name of the subsection"
             bind:value={$formData.name}
             {...attrs}
           />
-                      {/snippet}
-            </FormControl>
+        {/snippet}
+      </FormControl>
     </FormField>
 
     <FormField {form} name="slug">
-      <FormControl label="Slug" >
+      <FormControl label="Slug">
         {#snippet children({ attrs })}
-                <Input
+          <FormInput
             type="text"
             placeholder="Enter a unique slug for the subsection"
             bind:value={$formData.slug}
             {...attrs}
           />
-                      {/snippet}
-            </FormControl>
+        {/snippet}
+      </FormControl>
     </FormField>
 
     <Input type="hidden" name="id" value={$formData.id} />
