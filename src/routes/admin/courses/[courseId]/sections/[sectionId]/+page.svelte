@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
-
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import AdminSubsectionListItem from "../../AdminSubsectionListItem.svelte";
@@ -15,17 +13,14 @@
   let { data }: Props = $props();
 
   let { course, section, subsections, form } = $derived(data);
-
-  run(() => {
-    if (course && section) {
-      form.data = section;
-    }
-  });
 </script>
 
 {#if course && section}
   <HeadingContainer underline>
-    <span class="font-light text-slate-400 mb-2">{course.name}</span>
+    <a
+      href="/admin/courses/{course.id}"
+      class="font-light text-slate-400 mb-2">{course.name}</a
+    >
     <H1>{section.name}</H1>
   </HeadingContainer>
 
