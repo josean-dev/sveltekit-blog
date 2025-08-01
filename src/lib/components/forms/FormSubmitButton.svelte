@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import Button from "../Button.svelte";
   import { cn } from "$lib/utils/tailwindcss";
+  import BasicButton from "../BasicButton.svelte";
 
   interface Props extends HTMLButtonAttributes {
     submitting?: boolean;
@@ -14,6 +14,6 @@
   }: Props = $props();
 </script>
 
-<Button loading={submitting} class={cn("w-full", klass)}>
+<BasicButton loading={submitting} class={cn("w-full", klass)}>
   {@render children?.()}
-</Button>
+</BasicButton>

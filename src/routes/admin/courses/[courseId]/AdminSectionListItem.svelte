@@ -31,14 +31,12 @@
     {@render children?.()}
   </ul>
   <div class="py-4 border-b border-dashed dark:border-gray-700">
-    {#snippet button()}
-      <BasicButton
-        href="/admin/courses/{courseId}/sections/{section.id}/subsections/add"
-        outline
-        color="secondary"
-      >
-        + Add Subsection
-      </BasicButton>
-    {/snippet}
+    <BasicButton
+      href="/admin/courses/{courseId}/sections/{section.id}/subsections/add"
+      outline
+      color="secondary"
+    >
+      + Add Subsection
+    </BasicButton>
   </div>
 </li>

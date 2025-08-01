@@ -21,14 +21,12 @@
   </ul>
 
   <div class="py-4">
-    {#snippet button()}
-      <BasicButton
-        href="/admin/courses/{courseId}/sections/add"
-        outline
-        color="primary"
-      >
-        + Add Section
-      </BasicButton>
-    {/snippet}
+    <BasicButton
+      href="/admin/courses/{courseId}/sections/add"
+      outline
+      color="primary"
+    >
+      + Add Section
+    </BasicButton>
   </div>
 </div>

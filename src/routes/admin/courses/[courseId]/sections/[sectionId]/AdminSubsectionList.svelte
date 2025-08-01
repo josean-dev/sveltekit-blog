@@ -1,12 +1,12 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
+  import BasicButton from "$lib/components/BasicButton.svelte";
   import H2 from "$lib/components/headings/H2.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
 
   interface Props {
     courseId: number;
     sectionId: number;
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
   let { courseId, sectionId, children }: Props = $props();
@@ -22,15 +22,12 @@
   </ul>
 
   <div class="py-4">
-    {#snippet button()}
-        <Button
-        
-        href="/admin/courses/{courseId}/sections/{sectionId}/subsections/add"
-        outline
-        color="secondary"
-      >
-        + Add Section
-      </Button>
-      {/snippet}
+    <BasicButton
+      href="/admin/courses/{courseId}/sections/{sectionId}/subsections/add"
+      outline
+      color="secondary"
+    >
+      + Add Section
+    </BasicButton>
   </div>
 </div>
