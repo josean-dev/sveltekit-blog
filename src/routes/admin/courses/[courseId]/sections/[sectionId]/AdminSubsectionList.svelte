@@ -17,17 +17,17 @@
     <H2>Subsections</H2>
   </HeadingContainer>
 
-  <ul class="dark:text-gray-300">
+  <ul class="px-4 dark:text-gray-300">
     {@render children?.()}
   </ul>
 
-  <div class="py-4">
+  <div class="py-4 px-4">
     <BasicButton
       href="/admin/courses/{courseId}/sections/{sectionId}/subsections/add"
       outline
       color="secondary"
     >
-      + Add Section
+      + Add Subsection
     </BasicButton>
   </div>
 </div>

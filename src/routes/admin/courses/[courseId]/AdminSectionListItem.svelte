@@ -27,10 +27,10 @@
       {pluralize("subsections", numSubsections, true)}
     </p>
   </a>
-  <ul>
+  <ul class="px-4 py-1 space-y-1">
     {@render children?.()}
   </ul>
-  <div class="py-4 border-b border-dashed dark:border-gray-700">
+  <div class="py-4 px-4 border-b border-dashed dark:border-gray-700">
     <BasicButton
       href="/admin/courses/{courseId}/sections/{section.id}/subsections/add"
       outline
