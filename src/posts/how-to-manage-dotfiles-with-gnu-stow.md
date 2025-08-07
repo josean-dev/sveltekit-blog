@@ -1,5 +1,5 @@
 ---
-title: "How To EASILY Manage Your Dotfiles With GNU Stow"
+title: "How To Easily Manage Your Dotfiles With GNU Stow"
 imgUrl: "/post-images/how-to-manage-dotfiles-with-gnu-stow/thumbnail.jpg"
 youtubeId: "06x3ZhwrrwA"
 publishedAt: "2025-08-07"
