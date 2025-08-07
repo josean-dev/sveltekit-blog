@@ -196,7 +196,7 @@ To unstow:
 stow -D nvim
 ```
 
-You would do this for everything else. With `.zshrc` as another example:
+You would do this for everything else. With `.zshrc` as another example (assuming `.zshrc` was moved to `dotfiles`):
 
 ```bash
 mkdir zshrc
@@ -232,4 +232,4 @@ git commit -m 'Initial commit'
 git push -u origin main
 ```
 
-Then you can easily clone this repo to another computer & stow your dotfiles to your home directory with GNU Stow 🎉
+Then you can easily clone this repo to another computer & stow your dotfiles to your home directory with GNU Stow
