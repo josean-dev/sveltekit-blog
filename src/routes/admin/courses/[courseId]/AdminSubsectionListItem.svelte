@@ -4,23 +4,27 @@
   import { formatHoursMinutesSeconds } from "$lib/utils/time";
 
   interface Props {
-    subsection: Pick<
-    SelectSubsection,
-    "name" | "videoLength"
-  >;
+    subsection: Pick<SelectSubsection, "name" | "videoLength" | "id">;
+    courseId: number;
+    sectionId: number;
   }
 
-  let { subsection }: Props = $props();
+  let { subsection, courseId, sectionId }: Props = $props();
 </script>
 
 <li>
-  <div>
-    <H4>{subsection.name}</H4>
-  </div>
-
-  {#if subsection.videoLength}
+  <a
+    href="/admin/courses/{courseId}/sections/{sectionId}/subsections/{subsection.id}"
+    class="block"
+  >
     <div>
-      {formatHoursMinutesSeconds(subsection.videoLength, true)}
+      <H4>{subsection.name}</H4>
     </div>
-  {/if}
+
+    {#if subsection.videoLength}
+      <div>
+        {formatHoursMinutesSeconds(subsection.videoLength, true)}
+      </div>
+    {/if}
+  </a>
 </li>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
+  import HeadingLink from "$lib/components/headings/HeadingLink.svelte";
   import AdminSubsectionListItem from "../../AdminSubsectionListItem.svelte";
   import SectionForm from "../SectionForm.svelte";
   import type { PageData } from "./$types";
@@ -17,10 +18,9 @@
 
 {#if course && section}
   <HeadingContainer underline>
-    <a
-      href="/admin/courses/{course.id}"
-      class="font-light text-slate-400 mb-2">{course.name}</a
-    >
+    <HeadingLink href="/admin/courses/{course.id}">
+      {course.name}
+    </HeadingLink>
     <H1>{section.name}</H1>
   </HeadingContainer>
 
@@ -28,7 +28,11 @@
 
   <AdminSubsectionList courseId={course.id} sectionId={section.id}>
     {#each subsections as subsection}
-      <AdminSubsectionListItem {subsection} />
+      <AdminSubsectionListItem
+        courseId={course.id}
+        sectionId={section.id}
+        {subsection}
+      />
     {/each}
   </AdminSubsectionList>
 {/if}

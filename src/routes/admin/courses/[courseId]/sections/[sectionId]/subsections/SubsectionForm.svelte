@@ -17,12 +17,7 @@
   } from "./subsectionFormSchema";
   import EntityDetailPageSaveButton from "../../../../EntityDetailPageSaveButton.svelte";
   import FormInput from "$lib/components/forms/FormInput.svelte";
-
-  const form = superForm(subsectionForm, {
-    validators: zodClient(subsectionFormSchema),
-    validationMethod: "oninput",
-    resetForm: false
-  });
+  import { isDataChanged } from "$lib/utils/forms";
 
   interface Props {
     subsectionForm: SuperValidated<Infer<SubsectionFormSchema>>;
@@ -36,11 +31,16 @@
     formId = "sectionForm"
   }: Props = $props();
 
+  const form = superForm(subsectionForm, {
+    validators: zodClient(subsectionFormSchema),
+    validationMethod: "oninput",
+    resetForm: false
+  });
+
   const { form: formData, message, enhance, submitting } = form;
 
-  let initialData = $derived(subsectionForm.data);
   let dataChanged = $derived(
-    JSON.stringify($formData) !== JSON.stringify(initialData)
+    isDataChanged($formData, subsectionForm.data)
   );
 </script>
 
@@ -62,12 +62,12 @@
   <form id={formId} method="POST" use:enhance>
     <FormField {form} name="name">
       <FormControl label="Name">
-        {#snippet children({ attrs })}
+        {#snippet children({ props })}
           <FormInput
             type="text"
             placeholder="Enter the name of the subsection"
             bind:value={$formData.name}
-            {...attrs}
+            {...props}
           />
         {/snippet}
       </FormControl>
@@ -75,18 +75,16 @@
 
     <FormField {form} name="slug">
       <FormControl label="Slug">
-        {#snippet children({ attrs })}
+        {#snippet children({ props })}
           <FormInput
             type="text"
             placeholder="Enter a unique slug for the subsection"
             bind:value={$formData.slug}
-            {...attrs}
+            {...props}
           />
         {/snippet}
       </FormControl>
     </FormField>
-
-    <Input type="hidden" name="id" value={$formData.id} />
 
     {#if !edit}
       <FormSubmitButtonContainer>

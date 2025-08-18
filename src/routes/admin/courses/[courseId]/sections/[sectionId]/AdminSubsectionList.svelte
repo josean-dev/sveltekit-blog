@@ -17,7 +17,7 @@
     <H2>Subsections</H2>
   </HeadingContainer>
 
-  <ul class="px-4 dark:text-gray-300">
+  <ul class="px-4 dark:text-gray-300 py-2 space-y-2">
     {@render children?.()}
   </ul>
 

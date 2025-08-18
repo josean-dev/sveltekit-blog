@@ -27,7 +27,7 @@
       {pluralize("subsections", numSubsections, true)}
     </p>
   </a>
-  <ul class="px-4 py-1 space-y-1">
+  <ul class="px-4 py-2 space-y-2">
     {@render children?.()}
   </ul>
   <div class="py-4 px-4 border-b border-dashed dark:border-gray-700">

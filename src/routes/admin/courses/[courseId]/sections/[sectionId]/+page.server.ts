@@ -32,7 +32,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 };
 
 export const actions = {
-  default: async ({ request }) => {
+  default: async ({ request, params }) => {
     const form = await superValidate(request, zod(sectionFormSchema));
 
     if (!form.valid) {
@@ -47,7 +47,7 @@ export const actions = {
           name: form.data.name,
           slug: form.data.slug
         })
-        .where(eq(section.id, form.data.id!));
+        .where(eq(section.id, parseInt(params.sectionId)));
     } catch (err) {
       if (isDBError(err)) {
         if (err.cause.constraint === "section_slug_unique") {

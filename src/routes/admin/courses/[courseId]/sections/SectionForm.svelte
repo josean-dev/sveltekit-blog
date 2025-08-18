@@ -86,8 +86,6 @@
       </FormControl>
     </FormField>
 
-    <FormInput type="hidden" name="id" value={$formData.id} />
-
     {#if !edit}
       <FormSubmitButtonContainer>
         <FormSubmitButton submitting={$submitting}>

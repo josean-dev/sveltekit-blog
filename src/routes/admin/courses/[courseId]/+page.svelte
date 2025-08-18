@@ -31,7 +31,11 @@
         courseId={course.id}
       >
         {#each section.subsections as subsection}
-          <AdminSubsectionListItem {subsection} />
+          <AdminSubsectionListItem
+            courseId={course.id}
+            sectionId={section.id}
+            {subsection}
+          />
         {/each}
       </AdminSectionListItem>
     {/each}
