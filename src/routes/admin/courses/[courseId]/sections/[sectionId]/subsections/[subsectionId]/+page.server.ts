@@ -35,10 +35,7 @@ export const actions = {
     try {
       await db
         .update(subsection)
-        .set({
-          name: form.data.name,
-          slug: form.data.slug
-        })
+        .set(form.data)
         .where(eq(subsection.id, parseInt(params.subsectionId)));
     } catch (err) {
       if (isDBError(err)) {

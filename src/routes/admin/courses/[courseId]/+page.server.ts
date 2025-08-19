@@ -54,10 +54,7 @@ export const actions = {
     try {
       await db
         .update(course)
-        .set({
-          name: form.data.name,
-          slug: form.data.slug
-        })
+        .set(form.data)
         .where(eq(course.id, parseInt(params.courseId)));
     } catch (err) {
       if (isDBError(err)) {

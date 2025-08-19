@@ -43,10 +43,7 @@ export const actions = {
     try {
       await db
         .update(section)
-        .set({
-          name: form.data.name,
-          slug: form.data.slug
-        })
+        .set(form.data)
         .where(eq(section.id, parseInt(params.sectionId)));
     } catch (err) {
       if (isDBError(err)) {

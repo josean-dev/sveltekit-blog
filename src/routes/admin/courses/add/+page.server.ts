@@ -29,10 +29,7 @@ export const actions = {
     try {
       const insertedCourses = await db
         .insert(course)
-        .values({
-          name: form.data.name,
-          slug: form.data.slug
-        })
+        .values(form.data)
         .returning();
 
       createdCourse = insertedCourses[0];

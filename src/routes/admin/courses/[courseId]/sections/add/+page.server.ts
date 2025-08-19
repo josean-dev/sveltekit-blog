@@ -28,9 +28,8 @@ export const actions = {
       const insertedSections = await db
         .insert(section)
         .values({
-          name: form.data.name,
-          slug: form.data.slug,
-          courseId: parseInt(params.courseId)
+          courseId: parseInt(params.courseId),
+          ...form.data
         })
         .returning();
 
