@@ -71,8 +71,7 @@ export const subsection = pgTable("subsection", {
   name: text("name").notNull(),
   slug: text("slug").unique().notNull(),
   vimeoVideoId: varchar("vimeo_video_id", { length: 9 }),
-  videoLength: integer("video_length"),
-  markdownFilePath: text("markdown_file_path"),
+  videoLength: integer("video_length"), // in seconds
   sectionId: integer("section_id")
     .references(() => section.id, { onDelete: "cascade" })
     .notNull(),

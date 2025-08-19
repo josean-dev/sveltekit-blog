@@ -86,6 +86,32 @@
       </FormControl>
     </FormField>
 
+    <FormField {form} name="vimeoVideoId">
+      <FormControl label="Vimeo Video Id">
+        {#snippet children({ props })}
+          <FormInput
+            type="text"
+            placeholder="Enter the vimeo video id"
+            bind:value={$formData.vimeoVideoId}
+            {...props}
+          />
+        {/snippet}
+      </FormControl>
+    </FormField>
+
+    <FormField {form} name="videoLength">
+      <FormControl label="Video Length">
+        {#snippet children({ props })}
+          <FormInput
+            type="number"
+            placeholder="Enter the video length in seconds"
+            bind:value={$formData.videoLength}
+            {...props}
+          />
+        {/snippet}
+      </FormControl>
+    </FormField>
+
     {#if !edit}
       <FormSubmitButtonContainer>
         <FormSubmitButton submitting={$submitting}>

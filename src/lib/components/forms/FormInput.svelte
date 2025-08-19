@@ -4,7 +4,7 @@
 
   let {
     class: klass = "",
-    value = $bindable(""),
+    value = $bindable(),
     ...rest
   }: HTMLInputAttributes = $props();
 </script>
