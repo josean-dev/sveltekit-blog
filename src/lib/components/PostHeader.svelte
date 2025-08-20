@@ -6,22 +6,28 @@
 </script>
 
 <header class="p-4">
-  <div class="mb-6 w-full sm:w-3/5">
-    <div class="aspect-h-9 aspect-w-16 overflow-hidden rounded-lg">
-      {#if metadata.youtubeId}
-        <iframe
-          title={metadata.title}
-          src={`https://www.youtube.com/embed/${metadata.youtubeId}?origin=http://example.com`}
-          allow="fullscreen"
-        />
-      {:else}
+  <div class="mb-6 w-full sm:w-3/5 space-y-2">
+    {#if metadata.youtubeId}
+      {#each metadata.youtubeId.split(",") as youtubeId}
+        <div
+          class="aspect-h-9 aspect-w-16 overflow-hidden rounded-lg"
+        >
+          <iframe
+            title={metadata.title}
+            src={`https://www.youtube.com/embed/${youtubeId}?origin=http://example.com`}
+            allow="fullscreen"
+          />
+        </div>
+      {/each}
+    {:else}
+      <div class="aspect-h-9 aspect-w-16 overflow-hidden rounded-lg">
         <img
           src={metadata.imgUrl}
           alt={metadata.title}
           class="object-cover"
         />
-      {/if}
-    </div>
+      </div>
+    {/if}
   </div>
 
   <div>
