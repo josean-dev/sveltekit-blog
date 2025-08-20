@@ -8,7 +8,9 @@ export const load: LayoutServerLoad = async ({ params }) => {
     columns: {
       id: true,
       name: true,
-      slug: true
+      slug: true,
+      vimeoVideoId: true,
+      videoLength: true
     }
   });
 

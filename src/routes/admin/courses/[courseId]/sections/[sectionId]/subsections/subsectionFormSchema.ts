@@ -8,8 +8,8 @@ import { z } from "zod";
 export const subsectionFormSchema = z.object({
   name: nameSchemaField,
   slug: slugSchemaField,
-  vimeoVideoId: z.string().trim().length(9).optional(),
-  videoLength: z.number().int().min(1).optional()
+  vimeoVideoId: z.string().trim().length(9).nullable(),
+  videoLength: z.number().int().min(1).nullable()
 });
 
 export type SubsectionFormSchema = typeof subsectionFormSchema;
