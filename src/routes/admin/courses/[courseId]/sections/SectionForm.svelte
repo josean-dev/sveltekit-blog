@@ -15,7 +15,7 @@
   import FormControl from "$lib/components/forms/FormControl.svelte";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
   import FormSubmitButton from "$lib/components/forms/FormSubmitButton.svelte";
-  import EntityDetailPageSaveButton from "../../EntityDetailPageSaveButton.svelte";
+  import EditEntityActionButtonsContainer from "../../EditEntityActionButtonsContainer.svelte";
   import { isDataChanged } from "$lib/utils/forms";
   import FormInput from "$lib/components/forms/FormInput.svelte";
 
@@ -45,7 +45,7 @@
 </script>
 
 {#if edit}
-  <EntityDetailPageSaveButton
+  <EditEntityActionButtonsContainer
     disabled={!dataChanged}
     {formId}
     saving={$submitting}

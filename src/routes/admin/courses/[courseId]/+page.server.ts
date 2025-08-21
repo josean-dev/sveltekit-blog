@@ -6,6 +6,7 @@ import { course } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import type { PageServerLoad } from "./$types";
 import { isDBError } from "$lib/server/db/errors";
+import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const sections = await db.query.section.findMany({
@@ -34,16 +35,19 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 
   const { course } = await parent();
 
-  const form = await superValidate(course, zod(courseFormSchema));
+  const courseForm = await superValidate(
+    course,
+    zod(courseFormSchema)
+  );
 
   return {
     sections,
-    form
+    courseForm
   };
 };
 
 export const actions = {
-  default: async ({ request, params }) => {
+  submit: async ({ request, params }) => {
     const form = await superValidate(request, zod(courseFormSchema));
 
     if (!form.valid) {
@@ -68,18 +72,33 @@ export const actions = {
               status: 400
             }
           );
-        } else {
-          return message(
-            form,
-            "Something went wrong updating course.",
-            {
-              status: 400
-            }
-          );
         }
+      } else {
+        return message(
+          form,
+          "Something went wrong updating course.",
+          {
+            status: 400
+          }
+        );
       }
 
       return { form };
     }
+  },
+  delete: async ({ params }) => {
+    try {
+      await db
+        .delete(course)
+        .where(eq(course.id, parseInt(params.courseId)));
+    } catch (err) {
+      return {
+        deleteError: {
+          message: "An error occurred trying to delete this course."
+        }
+      };
+    }
+
+    redirect(303, "/admin/dashboard");
   }
 };

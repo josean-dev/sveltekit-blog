@@ -13,22 +13,23 @@
   import FormError from "$lib/components/forms/FormError.svelte";
   import FormField from "$lib/components/forms/FormField.svelte";
   import FormControl from "$lib/components/forms/FormControl.svelte";
-  import EntityDetailPageSaveButton from "./EntityDetailPageSaveButton.svelte";
+  import EditEntityActionButtonsContainer from "./EditEntityActionButtonsContainer.svelte";
   import { isDataChanged } from "$lib/utils/forms";
   import FormSubmitButtonContainer from "$lib/components/forms/FormSubmitButtonContainer.svelte";
   import BasicButton from "$lib/components/BasicButton.svelte";
   import FormInput from "$lib/components/forms/FormInput.svelte";
+  import { enhance } from "$app/forms";
 
   interface Props {
     courseForm: SuperValidated<Infer<CourseFormSchema>>;
     edit?: boolean;
-    formId?: string;
+    deleteErrorMessage?: string;
   }
 
   let {
     courseForm,
     edit = false,
-    formId = "courseForm"
+    deleteErrorMessage
   }: Props = $props();
 
   const form = superForm(courseForm, {
@@ -37,29 +38,58 @@
     resetForm: false
   });
 
-  const { form: formData, message, enhance, submitting } = form;
+  const {
+    form: formData,
+    message,
+    enhance: formEnhance,
+    submitting
+  } = form;
 
   let dataChanged = $derived(
     isDataChanged($formData, courseForm.data)
   );
+
+  let deleting = $state(false);
 </script>
 
 {#if edit}
-  <EntityDetailPageSaveButton
-    disabled={!dataChanged}
-    {formId}
+  <EditEntityActionButtonsContainer
+    saveDisabled={!dataChanged}
     saving={$submitting}
+    {deleting}
   />
 {/if}
+
+<form
+  id="deleteForm"
+  method="POST"
+  action="?/delete"
+  use:enhance={() => {
+    deleting = true;
+    return async ({ update }) => {
+      await update();
+      deleting = false;
+    };
+  }}
+></form>
 
 <FormContainer>
   {#if $message}
     <FormError>
       {$message}
     </FormError>
+  {:else if deleteErrorMessage}
+    <FormError>
+      {deleteErrorMessage}
+    </FormError>
   {/if}
 
-  <form id={formId} method="POST" use:enhance>
+  <form
+    action="?/submit"
+    id="editOrAddForm"
+    method="POST"
+    use:formEnhance
+  >
     <FormField {form} name="name">
       <FormControl label="Name">
         {#snippet children({ props })}

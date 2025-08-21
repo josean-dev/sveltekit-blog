@@ -15,7 +15,7 @@
     subsectionFormSchema,
     type SubsectionFormSchema
   } from "./subsectionFormSchema";
-  import EntityDetailPageSaveButton from "../../../../EntityDetailPageSaveButton.svelte";
+  import EditEntityActionButtonsContainer from "../../../../EditEntityActionButtonsContainer.svelte";
   import FormInput from "$lib/components/forms/FormInput.svelte";
   import { isDataChanged } from "$lib/utils/forms";
 
@@ -45,7 +45,7 @@
 </script>
 
 {#if edit}
-  <EntityDetailPageSaveButton
+  <EditEntityActionButtonsContainer
     disabled={!dataChanged}
     {formId}
     saving={$submitting}
