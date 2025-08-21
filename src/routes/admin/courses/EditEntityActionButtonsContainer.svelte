@@ -24,7 +24,7 @@
   </BasicButton>
   <BasicButton
     disabled={saveDisabled}
-    form="editOrAddForm"
+    form="editAddForm"
     loading={saving}
   >
     Save Changes

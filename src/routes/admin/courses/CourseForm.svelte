@@ -86,7 +86,7 @@
 
   <form
     action="?/submit"
-    id="editOrAddForm"
+    id="editAddForm"
     method="POST"
     use:formEnhance
   >

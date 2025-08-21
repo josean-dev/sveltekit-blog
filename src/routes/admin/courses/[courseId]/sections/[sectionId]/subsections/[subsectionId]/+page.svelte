@@ -3,15 +3,12 @@
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import HeadingLinkList from "$lib/components/headings/HeadingLinkList.svelte";
   import SubsectionForm from "../SubsectionForm.svelte";
-  import type { PageData } from "./$types";
+  import type { PageProps } from "./$types";
 
-  interface Props {
-    data: PageData;
-  }
+  let { data, form }: PageProps = $props();
 
-  let { data }: Props = $props();
-
-  let { section, course, subsection, form } = $derived(data);
+  let { section, course, subsection, subsectionForm } =
+    $derived(data);
 </script>
 
 {#if course && section && subsection}
@@ -30,7 +27,10 @@
       <H1>{subsection.name}</H1>
     </HeadingContainer>
 
-    <SubsectionForm edit subsectionForm={form} />
+    <SubsectionForm
+      edit
+      {subsectionForm}
+      deleteErrorMessage={form?.deleteError?.message}
+    />
   </div>
 {/if}
-

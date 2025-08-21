@@ -4,16 +4,12 @@
   import HeadingLink from "$lib/components/headings/HeadingLink.svelte";
   import AdminSubsectionListItem from "../../AdminSubsectionListItem.svelte";
   import SectionForm from "../SectionForm.svelte";
-  import type { PageData } from "./$types";
+  import type { PageProps } from "./$types";
   import AdminSubsectionList from "./AdminSubsectionList.svelte";
 
-  interface Props {
-    data: PageData;
-  }
+  let { data, form }: PageProps = $props();
 
-  let { data }: Props = $props();
-
-  let { course, section, subsections, form } = $derived(data);
+  let { course, section, subsections, sectionForm } = $derived(data);
 </script>
 
 {#if course && section}
@@ -24,7 +20,11 @@
     <H1>{section.name}</H1>
   </HeadingContainer>
 
-  <SectionForm edit sectionForm={form} />
+  <SectionForm
+    edit
+    {sectionForm}
+    deleteErrorMessage={form?.deleteError?.message}
+  />
 
   <AdminSubsectionList courseId={course.id} sectionId={section.id}>
     {#each subsections as subsection}

@@ -14,7 +14,7 @@ export const load = async () => {
 };
 
 export const actions = {
-  default: async ({ request, params }) => {
+  submit: async ({ request, params }) => {
     const form = await superValidate(request, zod(sectionFormSchema));
 
     if (!form.valid) {

@@ -4,8 +4,6 @@ import { fail, redirect } from "@sveltejs/kit";
 import { courseFormSchema } from "../courseFormSchema";
 import { db } from "$lib/server/db/client";
 import { course, type SelectCourse } from "$lib/server/db/schema";
-import { DrizzleQueryError } from "drizzle-orm/errors";
-import { DatabaseError } from "pg";
 import { isDBError } from "$lib/server/db/errors";
 
 export const load = async () => {
@@ -16,7 +14,7 @@ export const load = async () => {
 };
 
 export const actions = {
-  default: async ({ request }) => {
+  submit: async ({ request }) => {
     const form = await superValidate(request, zod(courseFormSchema));
 
     if (!form.valid) {

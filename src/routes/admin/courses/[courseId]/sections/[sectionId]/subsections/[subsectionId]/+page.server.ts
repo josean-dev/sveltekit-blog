@@ -6,22 +6,23 @@ import type { PageServerLoad } from "./$types";
 import { subsection } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import { isDBError } from "$lib/server/db/errors";
+import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ parent }) => {
   const { subsection } = await parent();
 
-  const form = await superValidate(
+  const subsectionForm = await superValidate(
     subsection,
     zod(subsectionFormSchema)
   );
 
   return {
-    form
+    subsectionForm
   };
 };
 
 export const actions = {
-  default: async ({ request, params }) => {
+  submit: async ({ request, params }) => {
     const form = await superValidate(
       request,
       zod(subsectionFormSchema)
@@ -62,6 +63,25 @@ export const actions = {
     }
 
     return { form };
+  },
+
+  delete: async ({ params }) => {
+    try {
+      await db
+        .delete(subsection)
+        .where(eq(subsection.id, parseInt(params.subsectionId)));
+    } catch (err) {
+      return {
+        deleteError: {
+          message:
+            "An error occurred trying to delete this subsection."
+        }
+      };
+    }
+
+    redirect(
+      303,
+      `/admin/courses/${params.courseId}/sections/${params.sectionId}`
+    );
   }
 };
-

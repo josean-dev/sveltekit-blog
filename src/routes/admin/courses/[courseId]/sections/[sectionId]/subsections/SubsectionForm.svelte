@@ -18,17 +18,18 @@
   import EditEntityActionButtonsContainer from "../../../../EditEntityActionButtonsContainer.svelte";
   import FormInput from "$lib/components/forms/FormInput.svelte";
   import { isDataChanged } from "$lib/utils/forms";
+  import { enhance } from "$app/forms";
 
   interface Props {
     subsectionForm: SuperValidated<Infer<SubsectionFormSchema>>;
     edit?: boolean;
-    formId?: string;
+    deleteErrorMessage?: string;
   }
 
   let {
     subsectionForm,
     edit = false,
-    formId = "sectionForm"
+    deleteErrorMessage
   }: Props = $props();
 
   const form = superForm(subsectionForm, {
@@ -37,29 +38,58 @@
     resetForm: false
   });
 
-  const { form: formData, message, enhance, submitting } = form;
+  const {
+    form: formData,
+    message,
+    enhance: formEnhance,
+    submitting
+  } = form;
 
   let dataChanged = $derived(
     isDataChanged($formData, subsectionForm.data)
   );
+
+  let deleting = $state(false);
 </script>
 
 {#if edit}
   <EditEntityActionButtonsContainer
-    disabled={!dataChanged}
-    {formId}
+    saveDisabled={!dataChanged}
     saving={$submitting}
+    {deleting}
   />
 {/if}
+
+<form
+  id="deleteForm"
+  method="POST"
+  action="?/delete"
+  use:enhance={() => {
+    deleting = true;
+    return async ({ update }) => {
+      await update();
+      deleting = false;
+    };
+  }}
+></form>
 
 <FormContainer>
   {#if $message}
     <FormError>
       {$message}
     </FormError>
+  {:else if deleteErrorMessage}
+    <FormError>
+      {deleteErrorMessage}
+    </FormError>
   {/if}
 
-  <form id={formId} method="POST" use:enhance>
+  <form
+    id="editAddForm"
+    method="POST"
+    action="?/submit"
+    use:formEnhance
+  >
     <FormField {form} name="name">
       <FormControl label="Name">
         {#snippet children({ props })}

@@ -6,6 +6,7 @@ import { sectionFormSchema } from "../sectionFormSchema";
 import { section } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import { isDBError } from "$lib/server/db/errors";
+import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const subsections = await db.query.subsection.findMany({
@@ -23,16 +24,19 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 
   const { section } = await parent();
 
-  const form = await superValidate(section, zod(sectionFormSchema));
+  const sectionForm = await superValidate(
+    section,
+    zod(sectionFormSchema)
+  );
 
   return {
     subsections,
-    form
+    sectionForm
   };
 };
 
 export const actions = {
-  default: async ({ request, params }) => {
+  submit: async ({ request, params }) => {
     const form = await superValidate(request, zod(sectionFormSchema));
 
     if (!form.valid) {
@@ -70,5 +74,21 @@ export const actions = {
     }
 
     return { form };
+  },
+
+  delete: async ({ params }) => {
+    try {
+      await db
+        .delete(section)
+        .where(eq(section.id, parseInt(params.sectionId)));
+    } catch (err) {
+      return {
+        deleteError: {
+          message: "An error occurred trying to delete this section."
+        }
+      };
+    }
+
+    redirect(303, `/admin/courses/${params.courseId}`);
   }
 };
