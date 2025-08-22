@@ -1,26 +1,30 @@
 <script lang="ts">
   import { cn } from "$lib/utils/tailwindcss";
-
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-  
+  import { type Snippet } from "svelte";
 
   interface Props {
     underline?: boolean;
-    children?: import('svelte').Snippet;
-    button?: import('svelte').Snippet;
-    [key: string]: any
+    children?: Snippet;
+    button?: Snippet;
+    class?: string;
   }
 
-  let { underline = false, children, button, ...rest }: Props = $props();
+  let {
+    underline = false,
+    children,
+    button,
+    class: klass
+  }: Props = $props();
 </script>
 
 <div
-  {...rest}
-  class={cn({
-    "p-4 flex items-center justify-between": true,
-    "border-b dark:border-gray-700": underline,
-    [rest.class]: true
-  })}
+  class={cn(
+    "p-4 flex items-center justify-between",
+    {
+      "border-b dark:border-gray-700": underline
+    },
+    klass
+  )}
 >
   <div>
     {@render children?.()}

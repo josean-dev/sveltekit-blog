@@ -1,4 +1,5 @@
 <script lang="ts">
+  import BasicButton from "$lib/components/BasicButton.svelte";
   import H1 from "$lib/components/headings/H1.svelte";
   import HeadingContainer from "$lib/components/headings/HeadingContainer.svelte";
   import HeadingLinkList from "$lib/components/headings/HeadingLinkList.svelte";
@@ -25,6 +26,15 @@
       />
 
       <H1>{subsection.name}</H1>
+
+      {#snippet button()}
+        <BasicButton
+          href="/courses/{course.slug}/{section.slug}/{subsection.slug}"
+          color="neutral"
+        >
+          Preview
+        </BasicButton>
+      {/snippet}
     </HeadingContainer>
 
     <SubsectionForm
