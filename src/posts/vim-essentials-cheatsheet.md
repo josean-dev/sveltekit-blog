@@ -316,7 +316,7 @@ First, here's a list of handy text objects to remember.
 | `aw`         | A **word** including the surrounding whitespace                        |
 | `iw`         | A **word** excluding the surrounding whitespace                        |
 | `ap`         | A **paragraph** including the surrounding whitespace                   |
-| `ip`         | A **paragraph** including the surrounding whitespace                   |
+| `ip`         | A **paragraph** excluding the surrounding whitespace                   |
 
 ### How to use text objects
 
