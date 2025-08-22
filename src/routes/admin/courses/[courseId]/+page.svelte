@@ -6,6 +6,7 @@
   import AdminSubsectionListItem from "./AdminSubsectionListItem.svelte";
   import AdminSectionList from "./AdminSectionList.svelte";
   import AdminSectionListItem from "./AdminSectionListItem.svelte";
+  import HeadingLink from "$lib/components/headings/HeadingLink.svelte";
 
   let { data, form }: PageProps = $props();
 
@@ -14,6 +15,7 @@
 
 {#if course && sections}
   <HeadingContainer underline>
+    <HeadingLink href="/admin/courses">All Courses</HeadingLink>
     <H1>{course.name}</H1>
   </HeadingContainer>
 
