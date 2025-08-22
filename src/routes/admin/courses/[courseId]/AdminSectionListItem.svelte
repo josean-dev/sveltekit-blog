@@ -18,7 +18,7 @@
 <li class="dark:text-gray-300">
   <a
     href="/admin/courses/{courseId}/sections/{section.id}"
-    class="block p-4 border-b border-dashed dark:border-gray-700"
+    class="block p-4 dark:border-gray-700"
   >
     <H3>
       {section.name}
@@ -27,7 +27,7 @@
       {pluralize("subsections", numSubsections, true)}
     </p>
   </a>
-  <ul class="px-4 py-2 space-y-2">
+  <ul class="px-4 bg-gray-300 dark:bg-dark-blue-700 py-2 space-y-2">
     {@render children?.()}
   </ul>
   <div class="py-4 px-4 border-b border-dashed dark:border-gray-700">

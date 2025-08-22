@@ -12,7 +12,7 @@
   let { subsection, courseId, sectionId }: Props = $props();
 </script>
 
-<li>
+<li class="bg-gray-300 dark:bg-dark-blue-700">
   <a
     href="/admin/courses/{courseId}/sections/{sectionId}/subsections/{subsection.id}"
     class="block"
