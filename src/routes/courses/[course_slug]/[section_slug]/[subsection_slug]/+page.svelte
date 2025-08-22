@@ -19,7 +19,7 @@
       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
       style="position:absolute;top:0;left:0;width:100%;height:100%;"
       title={subsection.name}
-></iframe>
+    ></iframe>
   </div>
 
   {#if Markdown}
