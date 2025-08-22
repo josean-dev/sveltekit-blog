@@ -21,6 +21,7 @@
 <div>
   <HeadingContainer>
     <H1>Courses</H1>
+    <span class="text-indigo-400">{coursesCount} Total</span>
     {#snippet button()}
       <BasicButton href="/admin/courses/add">
         <PlusIcon class="size-5 fill-current" />

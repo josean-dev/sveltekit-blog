@@ -4,9 +4,9 @@ import { course, section } from "$lib/server/db/schema";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
-  const coursesCount = await db
-    .select({ count: count() })
-    .from(course);
+  const coursesCount = (
+    await db.select({ count: count() }).from(course)
+  )[0].count;
 
   const courses = await db
     .select({
