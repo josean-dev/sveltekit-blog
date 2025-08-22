@@ -9,7 +9,7 @@
   let { post }: Props = $props();
 
   const href = `/posts/${post.slug}`;
-  const youtubeHref = post.metadata.youtubeId
+  const youtubeHref = post.metadata.youtubeId?.split(",")[0]
     ? `https://youtu.be/${post.metadata.youtubeId}`
     : "";
 </script>
