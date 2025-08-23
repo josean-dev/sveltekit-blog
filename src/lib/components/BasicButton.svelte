@@ -6,7 +6,7 @@
 
   interface Props {
     class?: string;
-    color?: "primary" | "secondary" | "neutral";
+    color?: "primary" | "secondary" | "neutral" | "danger";
     outline?: boolean;
     dashedOutline?: boolean;
     loading?: boolean;
@@ -53,6 +53,9 @@
         color === "neutral" && !outline,
       "border-2 border-black hover:bg-black dark:border-white dark:hover:bg-white text-black hover:text-white dark:text-white dark:hover:text-black":
         color === "neutral" && outline,
+      "bg-red-500 hover:bg-red-600": color === "danger" && !outline,
+      "border-2 border-red-500 hover:bg-red-500 text-red-500":
+        color === "danger" && outline,
       "border-dashed": dashedOutline
     },
     klass

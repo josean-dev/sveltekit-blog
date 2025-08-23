@@ -15,11 +15,7 @@
 </script>
 
 <div class="flex w-full justify-end space-x-2 p-3">
-  <BasicButton
-    loading={deleting}
-    class="bg-red-500 hover:bg-red-700"
-    form="deleteForm"
-  >
+  <BasicButton loading={deleting} color="danger" form="deleteForm">
     Delete
   </BasicButton>
   <BasicButton
