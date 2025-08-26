@@ -1,5 +1,5 @@
 ---
-title: "How To Use OpenCode AI With Neovim & Tmux"
+title: "How To Use OpenCode AI"
 imgUrl: "/post-images/how-to-use-opencode-ai/thumbnail.jpg"
 youtubeId: "9FW43mb1vTM"
 publishedAt: "2025-08-26"
